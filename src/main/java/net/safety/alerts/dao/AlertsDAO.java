@@ -1,6 +1,7 @@
 package net.safety.alerts.dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import net.safety.alerts.model.AlertsData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ import java.io.IOException;
 
 public class AlertsDAO {
 
-    private final static ObjectMapper mapper = new ObjectMapper();
+    private final static ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
     private static final Logger logger = LoggerFactory.getLogger(AlertsDAO.class);
 
     public static AlertsData getData()  {

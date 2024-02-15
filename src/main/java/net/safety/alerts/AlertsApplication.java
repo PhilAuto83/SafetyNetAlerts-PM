@@ -10,4 +10,8 @@ public class AlertsApplication {
 		SpringApplication.run(AlertsApplication.class, args);
 	}
 
+
+
+
+
 }

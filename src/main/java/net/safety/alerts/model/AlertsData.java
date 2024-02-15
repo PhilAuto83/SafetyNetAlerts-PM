@@ -1,5 +1,6 @@
 package net.safety.alerts.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.List;
@@ -7,8 +8,16 @@ import java.util.List;
 public class AlertsData {
 
     private List<Person>persons;
+
+    @JsonAlias({"firestations"})
     private List<FireStation> fireStations;
+    @JsonAlias({"medicalrecords"})
     private List<MedicalRecord>medicalRecords;
+
+    public AlertsData(){
+        super();
+    }
+
 
     public AlertsData(List<Person> persons, List<FireStation> fireStations, List<MedicalRecord> medicalRecords) {
         this.persons = persons;
