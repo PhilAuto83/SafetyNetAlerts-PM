@@ -1,10 +1,10 @@
 ## SafetyNetAlerts-PM
-_This is repository containing the `**Alerts**` app for `**SafetyNet**` Project_  
+_This is repository containing the `Alerts` app for `SafetyNet` Project_  
 Le but de cet application est d'envoyer des informations aux systèmes de services d'urgence.  
 L'application prend en entréé un fichier [data.json](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DA+Java+EN/P5+/data.json) avec la liste des stations de pompier, la liste des personnes de la ville et la liste de dossiers médicaux.  
 
 Voici la liste des endpoints et leur utilité :
-- http://localhost:8080/firestation?stationNumber=`<station_number>`
+- http://localhost:8080/firestation?stationNumber=<station_number>
 >Cette url doit retourner une liste des personnes couvertes par la caserne de pompiers correspondante.
 >Donc, si le numéro de station = 1, elle doit renvoyer les habitants couverts par la station numéro 1. La liste
 >doit inclure les informations spécifiques suivantes : prénom, nom, adresse, numéro de téléphone. De plus,
