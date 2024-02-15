@@ -2,18 +2,20 @@ package net.safety.alerts.dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.safety.alerts.model.AlertsData;
+import net.safety.alerts.model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class AlertsDAO {
 
     ObjectMapper mapper = new ObjectMapper();
     private static final Logger logger = LoggerFactory.getLogger(AlertsDAO.class);
 
-    public AlertsData getData()  {
+    public static AlertsData getData()  {
         AlertsData alertsData = null;
         try {
             logger.info("Trying to access data.json file in src/main/resources folder.");
@@ -25,10 +27,10 @@ public class AlertsDAO {
         } catch (IOException e) {
            logger.error(e.toString());
         }
-        return alertsData;        
+        return alertsData;
     }
 
-    public void save(AlertsData alertsData){
+    public static void save(AlertsData alertsData){
         logger.info("Write AlertsData Object to file");
         try {
             logger.debug("AlertsData object contains a list of persons :"+alertsData.getPersons());
@@ -39,4 +41,5 @@ public class AlertsDAO {
             logger.error(e.toString());
         }
     }
+
 }
