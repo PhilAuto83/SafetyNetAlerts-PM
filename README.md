@@ -1,7 +1,7 @@
 ## SafetyNetAlerts-PM
 _This is repository containing the **Alerts** app for **SafetyNet** Project_  
 Le but de cet application est d'envoyer des informations aux systèmes de services d'urgence.  
-L'application prend en entréé un fichier `json` [link](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DA+Java+EN/P5+/data.json) avec la liste des stations de pompier, la liste des personnes de la ville et la liste de dossiers médicaux.  
+L'application prend en entréé un fichier `[data.json](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DA+Java+EN/P5+/data.json)` avec la liste des stations de pompier, la liste des personnes de la ville et la liste de dossiers médicaux.  
 
 Voici la liste des endpoints et leur utilité :
 - http://localhost:8080/firestation?stationNumber=<station_number>
