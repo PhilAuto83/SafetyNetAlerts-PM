@@ -1,6 +1,8 @@
 ## SafetyNetAlerts-PM
-_This is repository containing the Alerts app for SafetyNet Project_
-Le but de cet application est d'envoyer des informations aux systèmes de services d'urgence.
+_This is repository containing the **Alerts** app for **SafetyNet** Project_  
+Le but de cet application est d'envoyer des informations aux systèmes de services d'urgence.  
+L'application prend en entréé un fichier `json` avec la liste des stations de pompier, la liste des personnes de la ville et la liste de dossiers médicaux.  
+
 Voici la liste des endpoints et leur utilité :
 - http://localhost:8080/firestation?stationNumber=<station_number>
 >Cette url doit retourner une liste des personnes couvertes par la caserne de pompiers correspondante.
