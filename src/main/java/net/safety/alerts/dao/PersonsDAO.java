@@ -16,7 +16,7 @@ public class PersonsDAO {
         return AlertsDAO.getData().getPersons();
     }
 
-    public void savePersons(List<Person>persons){
-        AlertsDAO.save(new AlertsData(persons,AlertsDAO.getData().getFireStations(),AlertsDAO.getData().getMedicalRecords()));
+    public void savePersons(List<Person>persons, String fileName){
+        AlertsDAO.save(new AlertsData(persons,AlertsDAO.getData().getFireStations(),AlertsDAO.getData().getMedicalRecords()), fileName);
     }
 }

@@ -15,7 +15,7 @@ public class FireStationsDAO {
         return AlertsDAO.getData().getFireStations();
     }
 
-    public void savePersons(List<FireStation>fireStations) throws JsonProcessingException {
-        AlertsDAO.save(new AlertsData(AlertsDAO.getData().getPersons(),fireStations,AlertsDAO.getData().getMedicalRecords()));
+    public void savePersons(List<FireStation>fireStations, String fileName) throws JsonProcessingException {
+        AlertsDAO.save(new AlertsData(AlertsDAO.getData().getPersons(),fireStations,AlertsDAO.getData().getMedicalRecords()), fileName);
     }
 }
