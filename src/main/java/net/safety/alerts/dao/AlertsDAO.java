@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 
 
 public class AlertsDAO {
@@ -18,11 +19,7 @@ public class AlertsDAO {
     public static AlertsData getData()  {
         AlertsData alertsData = null;
         try {
-            logger.info("Trying to access data.json file in src/main/resources folder.");
             alertsData = mapper.readValue(new File("src/main/resources/data.json"), AlertsData.class);
-            logger.debug("List of persons retrieved from folder AlertsData Object :"+alertsData.getPersons());
-            logger.debug("List of fire stations retrieved from folder AlertsData Object :"+alertsData.getFireStations());
-            logger.debug("List of medical records retrieved from folder AlertsData Object :"+alertsData.getMedicalRecords());
             return alertsData;
         } catch (IOException e) {
            logger.error(e.toString());

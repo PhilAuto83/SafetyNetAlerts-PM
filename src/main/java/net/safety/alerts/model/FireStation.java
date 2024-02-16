@@ -8,7 +8,6 @@ public class FireStation {
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
@@ -19,5 +18,10 @@ public class FireStation {
 
     public void setStation(String station) {
         this.station = station;
+    }
+
+    public String toString(){
+        return "['address' : "+address+
+                ",'station' : "+station;
     }
 }

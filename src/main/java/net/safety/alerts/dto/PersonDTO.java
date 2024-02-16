@@ -1,19 +1,21 @@
-package net.safety.alerts.model;
-
+package net.safety.alerts.dto;
 
 import jakarta.validation.constraints.Pattern;
 
-public class Person {
+public class PersonDTO {
 
     private String firstName;
     private String lastName;
     private String address;
-    private String city;
-    private String zip;
     @Pattern(regexp = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$")
     private String phone;
-    @Pattern(regexp = "^[a-z]+@[a-z]{2,}.[a-z]{2,}" )
-    private String email;
+
+    public PersonDTO(String firstName, String lastName, String address, String phone) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phone = phone;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -39,22 +41,6 @@ public class Person {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -63,23 +49,10 @@ public class Person {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String toString(){
         return "['firstName' : "+firstName
                 +" ,'lastName' : "+lastName
                 +" ,'address' :"+address
-                +" ,'city' :"+city
-                +" ,'zip' :"+zip
-                +" ,'phone' : "+phone
-                +" ,'email' :"+email;
+                +" ,'phone' : "+phone;
     }
-
-
 }
