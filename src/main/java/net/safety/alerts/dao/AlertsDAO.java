@@ -5,16 +5,19 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import net.safety.alerts.model.AlertsData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 
 
+@Repository
 public class AlertsDAO {
 
     private final static ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
     private static final Logger logger = LoggerFactory.getLogger(AlertsDAO.class);
+
 
     public static AlertsData getData()  {
         AlertsData alertsData = null;

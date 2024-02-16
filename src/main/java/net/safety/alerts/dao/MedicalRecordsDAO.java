@@ -3,9 +3,12 @@ package net.safety.alerts.dao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import net.safety.alerts.model.AlertsData;
 import net.safety.alerts.model.MedicalRecord;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
+@Repository
 public class MedicalRecordsDAO {
 
     public List<MedicalRecord> getFireStations()  {
