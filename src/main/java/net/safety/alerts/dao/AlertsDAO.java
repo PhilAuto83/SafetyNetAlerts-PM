@@ -32,9 +32,9 @@ public class AlertsDAO {
     public static void save(AlertsData alertsData, String fileName){
         logger.info("Write AlertsData Object to file");
         try {
-            logger.debug("AlertsData object contains a list of persons :"+alertsData.getPersons());
-            logger.debug("AlertsData object contains a list of fire stations :"+alertsData.getFireStations());
-            logger.debug("AlertsData object contains a list of medical records :"+alertsData.getMedicalRecords());
+            logger.debug("AlertsData object contains a list of persons : {}", alertsData.getPersons());
+            logger.debug("AlertsData object contains a list of fire stations {}", alertsData.getFireStations());
+            logger.debug("AlertsData object contains a list of medical records {}", alertsData.getMedicalRecords());
             mapper.writeValue(new File("src/main/resources/"+fileName),alertsData);
         } catch (IOException e) {
             logger.error(e.toString());

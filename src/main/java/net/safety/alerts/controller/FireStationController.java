@@ -3,6 +3,7 @@ package net.safety.alerts.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import net.safety.alerts.dto.PersonByFireStation;
 import net.safety.alerts.service.FireStationService;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Validated
 public class FireStationController {
 
     private static final Logger logger = LoggerFactory.getLogger(FireStationController.class);
@@ -24,7 +26,7 @@ public class FireStationController {
     private FireStationService fireStationService;
 
     @GetMapping("/firestation")
-    public ResponseEntity<PersonByFireStation> PersonsInfoByStationNumber(@RequestParam(value = "stationNumber") @Min(value = 1,  message="Station number must be an integer whose minimum value must be 1")   int stationNumber){
+    public ResponseEntity<PersonByFireStation> PersonsInfoByStationNumber(@RequestParam(value = "stationNumber") @Min(value = 1,  message="Station number must be an integer whose minimum value must be 1") int stationNumber){
         PersonByFireStation personByFireStation = null;
         logger.info("Request launched : /firestation?stationNumber= "+stationNumber);
         if(!fireStationService.doesStationNumberExist(stationNumber)){
