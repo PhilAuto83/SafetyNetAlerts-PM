@@ -24,4 +24,16 @@ public class CustomExceptionHandler {
         return errorBody;
     }
 
+    @ExceptionHandler(StationNumberNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public Object handleNotFoundMessage(Exception ex, HttpServletRequest request){
+        Map<String, Object> errorBody = new HashMap<>();
+        errorBody.put("timestamp", new Date());
+        errorBody.put("status", HttpStatus.NOT_FOUND.value());
+        errorBody.put("message", ex.getMessage());
+        errorBody.put("path", request.getRequestURL()+"?"+request.getQueryString());
+        return errorBody;
+    }
+
 }

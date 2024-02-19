@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import net.safety.alerts.dto.PersonByFireStation;
+import net.safety.alerts.exceptions.StationNumberNotFoundException;
 import net.safety.alerts.service.FireStationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class FireStationController {
         logger.info("Request launched : /firestation?stationNumber= "+stationNumber);
         if(!fireStationService.doesStationNumberExist(stationNumber)){
             logger.debug("Station number {} does not exist.", stationNumber);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            throw new StationNumberNotFoundException(String.format("Station number %d does not exist.", stationNumber));
         }
         try {
             personByFireStation = fireStationService.getPersonsInfoByStationNumber(stationNumber);
