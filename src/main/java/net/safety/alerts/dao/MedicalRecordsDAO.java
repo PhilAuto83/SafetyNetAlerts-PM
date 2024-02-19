@@ -9,13 +9,13 @@ import java.util.List;
 
 
 @Repository
-public class MedicalRecordsDAO {
+public class MedicalRecordsDAO extends AlertsDAO{
 
     public List<MedicalRecord> getFireStations()  {
         return AlertsDAO.getData().getMedicalRecords();
     }
 
     public void savePersons(List<MedicalRecord>medicalRecords, String filename) throws JsonProcessingException {
-        AlertsDAO.save(new AlertsData(AlertsDAO.getData().getPersons(),AlertsDAO.getData().getFireStations(),medicalRecords), filename);
+        AlertsDAO.save(new AlertsData(getData().getPersons(),getData().getFireStations(),medicalRecords));
     }
 }

@@ -1,9 +1,12 @@
 package net.safety.alerts.integration;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.dto.PersonByFireStation;
 import net.safety.alerts.dto.PersonDTO;
 import net.safety.alerts.service.FireStationService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -23,6 +26,17 @@ public class FireStationServiceWithDaoIT {
 
     @Autowired
     private FireStationService fireStationService;
+
+    @BeforeAll
+    public static void setUpDataSource(){
+        AlertsDAO.setFilePath("src/test/resources/data-test.json");
+    }
+
+    @AfterAll
+    public static void RollbackDataSource(){
+        AlertsDAO.setFilePath("src/main/resources/data.json");
+    }
+
 
     @ParameterizedTest(name = "Check method doesStationNumberExist() returns true when station number is {0}")
     @ValueSource(ints={1,2,3,4})

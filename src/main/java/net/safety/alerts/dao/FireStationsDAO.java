@@ -9,13 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class FireStationsDAO {
+public class FireStationsDAO extends AlertsDAO{
 
     public List<FireStation> getFireStations() throws JsonProcessingException {
-        return AlertsDAO.getData().getFireStations();
+        return getData().getFireStations();
     }
 
-    public void savePersons(List<FireStation>fireStations, String fileName) throws JsonProcessingException {
-        AlertsDAO.save(new AlertsData(AlertsDAO.getData().getPersons(),fireStations,AlertsDAO.getData().getMedicalRecords()), fileName);
+    public void savePersons(List<FireStation>fireStations, String filePath) throws JsonProcessingException {
+        AlertsDAO.save(new AlertsData(getData().getPersons(),fireStations,getData().getMedicalRecords()));
     }
 }

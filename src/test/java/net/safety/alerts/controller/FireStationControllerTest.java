@@ -1,5 +1,6 @@
 package net.safety.alerts.controller;
 
+
 import net.safety.alerts.dto.PersonByFireStation;
 import net.safety.alerts.dto.PersonDTO;
 import net.safety.alerts.service.FireStationService;
@@ -35,11 +36,10 @@ public class FireStationControllerTest {
 
     private PersonByFireStation personByFireStation;
 
+
     @BeforeEach
     public void setUpData(){
         personByFireStation = new PersonByFireStation(List.of(new PersonDTO("Phil", "Test","1 st Test", "444-555-8888")),1,0);
-
-
     }
 
     @Test

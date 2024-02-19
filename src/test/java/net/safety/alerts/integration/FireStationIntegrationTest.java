@@ -1,7 +1,10 @@
 package net.safety.alerts.integration;
 
 
+import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.service.FireStationService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,16 @@ public class FireStationIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @BeforeAll
+    public static void setUpDataSource(){
+        AlertsDAO.setFilePath("src/test/resources/data-test.json");
+    }
+
+    @AfterAll
+    public static void RollbackDataSource(){
+        AlertsDAO.setFilePath("src/main/resources/data.json");
+    }
 
     @Test
     @DisplayName("Check station number 1 returns a json with Person list, nbAdults and nbChidren infos.")
