@@ -40,7 +40,7 @@ public class FireStationIntegrationTest {
 
     @Test
     @DisplayName("Check station number 1 returns a json with Person list, nbAdults and nbChidren infos.")
-    public void testingResponseSuccessWithStationNUmberOne() throws Exception {
+    public void testingResponseSuccessWithStationNumberOne() throws Exception {
         mockMvc.perform(get("/firestation?stationNumber=1"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -51,14 +51,14 @@ public class FireStationIntegrationTest {
 
     @Test
     @DisplayName("Check station number 6 returns a 404 status code.")
-    public void testingCodeNotFoundWithStationNUmberSix() throws Exception {
+    public void testingCodeNotFoundWithStationNumberSix() throws Exception {
         mockMvc.perform(get("/firestation?stationNumber=6"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
     @DisplayName("Check station number empty returns a 400 status code.")
-    public void testingBadRequestWithStationNUmberEmpty() throws Exception {
+    public void testingBadRequestWithStationNumberEmpty() throws Exception {
         mockMvc.perform(get("/firestation?stationNumber="))
                 .andExpect(status().isBadRequest());
     }
