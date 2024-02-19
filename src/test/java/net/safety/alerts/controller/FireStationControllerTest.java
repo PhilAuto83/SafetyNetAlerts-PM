@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 
@@ -21,8 +22,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = FireStationController.class)
 public class FireStationControllerTest {
@@ -48,6 +48,7 @@ public class FireStationControllerTest {
         when(fireStationService.getPersonsInfoByStationNumber(any(Integer.class))).thenReturn(personByFireStation);
         mockMvc.perform(get("/firestation?stationNumber=1"))
                 .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.persons",hasSize(1)))
                 .andExpect(jsonPath("$.persons[0].firstName", Matchers.is("Phil")))
                 .andExpect(jsonPath("$.persons[0].lastName", Matchers.is("Test")))
