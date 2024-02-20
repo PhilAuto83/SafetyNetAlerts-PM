@@ -30,7 +30,7 @@ public class FireStationController {
     private FireStationService fireStationService;
 
     @GetMapping("/firestation")
-    public ResponseEntity<PersonByFireStation> PersonsInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="Station number must be a positive number with maximum 2 digits whose minimum value starts at 1")  String stationNumber){
+    public ResponseEntity<PersonByFireStation> getPersonInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="Station number must be a positive number with maximum 2 digits whose minimum value starts at 1")  String stationNumber){
 
         PersonByFireStation personByFireStation = null;
         logger.info("Request launched : /firestation?stationNumber= "+stationNumber);
