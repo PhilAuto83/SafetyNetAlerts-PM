@@ -20,13 +20,13 @@ import static java.time.temporal.ChronoUnit.MONTHS;
 @Service
 public class FireStationService {
 
-    private static Logger logger = LoggerFactory.getLogger(FireStationService.class);
+    private static final Logger logger = LoggerFactory.getLogger(FireStationService.class);
 
     List<Person>personList;
     List<FireStation>fireStationList;
     List<MedicalRecord> medicalRecordList;
 
-    public boolean doesStationNumberExist(int stationNumber){
+    public boolean doesStationNumberExist(String stationNumber){
         fireStationList = AlertsDAO.getData().getFireStations();
         for(FireStation firestation : fireStationList){
             if(firestation.getStation().equals(String.valueOf(stationNumber))){
@@ -36,12 +36,12 @@ public class FireStationService {
         return false;
     }
 
-    private List<PersonDTO> getRestrictedPersonInfoByStationNumber(int stationNumber) throws JsonProcessingException {
+    private List<PersonDTO> getRestrictedPersonInfoByStationNumber(String stationNumber) throws JsonProcessingException {
         List<PersonDTO> personsRestrictedInfo = new ArrayList<>();
         fireStationList = AlertsDAO.getData().getFireStations();
         personList= AlertsDAO.getData().getPersons();
         for(FireStation firestation : fireStationList){
-            if(firestation.getStation().equals(String.valueOf(stationNumber))){
+            if(firestation.getStation().equals(stationNumber)){
                 for(Person person : personList){
                     if(person.getAddress().equals(firestation.getAddress())){
                         personsRestrictedInfo.add(new PersonDTO(person.getFirstName(), person.getLastName(), person.getAddress(), person.getPhone()));
@@ -52,7 +52,7 @@ public class FireStationService {
         return personsRestrictedInfo;
     }
 
-    private int getNumberOfAdults(int stationNumber) throws JsonProcessingException {
+    private int getNumberOfAdults(String stationNumber) throws JsonProcessingException {
         int nbAdults = 0;
         List<PersonDTO> personRestrictedInfoList = getRestrictedPersonInfoByStationNumber(stationNumber);
         medicalRecordList = AlertsDAO.getData().getMedicalRecords();
@@ -68,7 +68,7 @@ public class FireStationService {
         return nbAdults;
     }
 
-    private int getNumberOfChildren(int stationNumber) throws JsonProcessingException {
+    private int getNumberOfChildren(String stationNumber) throws JsonProcessingException {
         int nbChildren = 0;
         List<PersonDTO> personRestrictedInfoList = getRestrictedPersonInfoByStationNumber(stationNumber);
         medicalRecordList = AlertsDAO.getData().getMedicalRecords();
@@ -84,7 +84,7 @@ public class FireStationService {
         return nbChildren;
     }
 
-    public PersonByFireStation getPersonsInfoByStationNumber(int stationNumber) throws JsonProcessingException {
+    public PersonByFireStation getPersonsInfoByStationNumber(String stationNumber) throws JsonProcessingException {
         if(getRestrictedPersonInfoByStationNumber(stationNumber).equals(new ArrayList<PersonDTO>())){
             return null;
         }

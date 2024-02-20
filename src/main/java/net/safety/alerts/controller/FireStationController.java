@@ -3,9 +3,7 @@ package net.safety.alerts.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import jakarta.validation.constraints.Min;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import net.safety.alerts.dto.PersonByFireStation;
 import net.safety.alerts.exceptions.StationNumberNotFoundException;
@@ -32,13 +30,13 @@ public class FireStationController {
     private FireStationService fireStationService;
 
     @GetMapping("/firestation")
-    public ResponseEntity<PersonByFireStation> PersonsInfoByStationNumber(@RequestParam(name = "stationNumber") @Min(value = 1,  message="Station number must be an integer whose minimum value must be 1")  int stationNumber){
+    public ResponseEntity<PersonByFireStation> PersonsInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="Station number must be a positive number with maximum 2 digits whose minimum value starts at 1")  String stationNumber){
 
         PersonByFireStation personByFireStation = null;
         logger.info("Request launched : /firestation?stationNumber= "+stationNumber);
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
             logger.debug("Station number {} does not exist.", stationNumber);
-            throw new StationNumberNotFoundException(String.format("Station number %d does not exist.", stationNumber));
+            throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));
         }
         try {
             personByFireStation = fireStationService.getPersonsInfoByStationNumber(stationNumber);
