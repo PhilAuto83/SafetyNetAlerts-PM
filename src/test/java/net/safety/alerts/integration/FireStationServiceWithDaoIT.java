@@ -39,22 +39,22 @@ public class FireStationServiceWithDaoIT {
 
 
     @ParameterizedTest(name = "Check method doesStationNumberExist() returns true when station number is {0}")
-    @ValueSource(ints={1,2,3,4})
+    @ValueSource(strings={"1","2","3","4"})
     @DisplayName("Check method doesStationNumberExist() return true if station number is in the list")
-    public void givenStationNumberExists_whenCallingDoesStationNumberExistMethod_ThenReturnTrueTest(int stationNumber){
+    public void givenStationNumberExists_whenCallingDoesStationNumberExistMethod_ThenReturnTrueTest(String stationNumber){
         assertTrue(fireStationService.doesStationNumberExist(stationNumber));
     }
 
     @Test
     @DisplayName("Check method doesStationNumberExist() return false if station number 7 is not in the list")
     public void givenStationNumberNotExists_whenCallingDoesStationNumberExistMethod_ThenReturnFalseTest(){
-        assertFalse(fireStationService.doesStationNumberExist(7));
+        assertFalse(fireStationService.doesStationNumberExist("7"));
     }
 
     @Test
     @DisplayName("Checking wrong station number returns null PersonByFireStation Object")
     public void givenStationNumberNotFound_whenCallingGetPersonsInfoByStationNumber_thenReturnNull() throws JsonProcessingException {
-        PersonByFireStation personByFireStation = fireStationService.getPersonsInfoByStationNumber(6);
+        PersonByFireStation personByFireStation = fireStationService.getPersonsInfoByStationNumber("6");
         assertNull(personByFireStation);
     }
 
@@ -62,7 +62,7 @@ public class FireStationServiceWithDaoIT {
     @DisplayName("Check person list content and nb of adults and children for station 1")
     public void givenStationNumberOneIsRequested_whenCallingGetPersonsInfoByStationNumber_thenCheckResultIsNotNull() throws JsonProcessingException {
 
-        PersonByFireStation personByFireStation = fireStationService.getPersonsInfoByStationNumber(1);
+        PersonByFireStation personByFireStation = fireStationService.getPersonsInfoByStationNumber("1");
         assertNotNull(personByFireStation);
         assertEquals(5, personByFireStation.getNbAdults());
         assertEquals(1, personByFireStation.getNbChildren());

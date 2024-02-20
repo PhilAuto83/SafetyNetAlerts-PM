@@ -1,20 +1,25 @@
 package net.safety.alerts.integration;
 
 
+import jakarta.validation.ConstraintViolationException;
 import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.service.FireStationService;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -53,14 +58,17 @@ public class FireStationIntegrationTest {
     @DisplayName("Check station number 6 returns a 404 status code.")
     public void testingCodeNotFoundWithStationNumberSix() throws Exception {
         mockMvc.perform(get("/firestation?stationNumber=6"))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("Station number 6 does not exist.")));
     }
 
-    @Test
-    @DisplayName("Check station number empty returns a 400 status code.")
-    public void testingBadRequestWithStationNumberEmpty() throws Exception {
-        mockMvc.perform(get("/firestation?stationNumber="))
-                .andExpect(status().isBadRequest());
+    @ParameterizedTest(name = "Wrong parameter \"{0}\" for station number leads to bad request response.")
+    @ValueSource(strings={"0","-1","s","","0.0","01","$1"})
+    public void testingBadRequestWithStationNumberEmpty(String stationNumber) throws Exception {
+        mockMvc.perform(get("/firestation?stationNumber="+stationNumber))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message",containsString("Station number must be a positive number with maximum 2 digits whose minimum value starts at 1")));
+
     }
 
 }

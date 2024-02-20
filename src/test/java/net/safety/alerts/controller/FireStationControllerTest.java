@@ -44,8 +44,8 @@ public class FireStationControllerTest {
 
     @Test
     public void givenStationNumberExists_whenCallingController_thenPersonByFireStationIsOk() throws Exception {
-        when(fireStationService.doesStationNumberExist(any(Integer.class))).thenReturn(true);
-        when(fireStationService.getPersonsInfoByStationNumber(any(Integer.class))).thenReturn(personByFireStation);
+        when(fireStationService.doesStationNumberExist(any(String.class))).thenReturn(true);
+        when(fireStationService.getPersonsInfoByStationNumber(any(String.class))).thenReturn(personByFireStation);
         mockMvc.perform(get("/firestation?stationNumber=1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -59,7 +59,7 @@ public class FireStationControllerTest {
 
     @Test
     public void givenStationNumberDoNotExist_whenCallingController_thenReturnNotFound() throws Exception {
-        when(fireStationService.doesStationNumberExist(any(Integer.class))).thenReturn(false);
+        when(fireStationService.doesStationNumberExist(any(String.class))).thenReturn(false);
         mockMvc.perform(get("/firestation?stationNumber=1"))
                 .andExpect(status().isNotFound());
     }
@@ -67,7 +67,7 @@ public class FireStationControllerTest {
     @ParameterizedTest(name = "Station number {0} should return bad request")
     @ValueSource(ints={0, -1})
     public void givenWrongStationNumber_whenCallingController_thenReturn400(int stationNumber) throws Exception {
-        when(fireStationService.doesStationNumberExist(any(Integer.class))).thenReturn(false);
+        when(fireStationService.doesStationNumberExist(any(String.class))).thenReturn(false);
         mockMvc.perform(get("/firestation?stationNumber="+stationNumber))
                 .andExpect(status().isBadRequest());
     }
