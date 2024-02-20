@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.http.ResponseEntity.ok;
 
 
 @RestController
@@ -43,6 +44,6 @@ public class FireStationController {
         }catch (JsonProcessingException e) {
             logger.error(e.toString());
         }
-        return ResponseEntity.ofNullable(personByFireStation);
+        return ResponseEntity.ok(personByFireStation);
     }
 }

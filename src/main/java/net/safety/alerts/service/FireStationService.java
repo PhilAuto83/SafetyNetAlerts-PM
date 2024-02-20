@@ -85,12 +85,7 @@ public class FireStationService {
     }
 
     public PersonByFireStation getPersonsInfoByStationNumber(String stationNumber) throws JsonProcessingException {
-        if(getRestrictedPersonInfoByStationNumber(stationNumber).equals(new ArrayList<PersonDTO>())){
-            return null;
-        }
         return  new PersonByFireStation(getRestrictedPersonInfoByStationNumber(stationNumber),getNumberOfAdults(stationNumber), getNumberOfChildren(stationNumber));
     }
-
-
 
 }

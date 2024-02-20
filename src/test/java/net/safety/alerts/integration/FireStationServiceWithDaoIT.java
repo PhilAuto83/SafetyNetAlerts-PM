@@ -17,6 +17,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -52,10 +56,12 @@ public class FireStationServiceWithDaoIT {
     }
 
     @Test
-    @DisplayName("Checking wrong station number returns null PersonByFireStation Object")
-    public void givenStationNumberNotFound_whenCallingGetPersonsInfoByStationNumber_thenReturnNull() throws JsonProcessingException {
+    @DisplayName("Checking station number returning empty list of PersonByFireStation")
+    public void givenStationNumber_whenCallingGetPersonsInfoByStationNumber_thenReturnEmptyList() throws JsonProcessingException {
         PersonByFireStation personByFireStation = fireStationService.getPersonsInfoByStationNumber("6");
-        assertNull(personByFireStation);
+        assertEquals(Collections.emptyList(),personByFireStation.getPersons());
+        assertEquals(0,personByFireStation.getNbChildren());
+        assertEquals(0,personByFireStation.getNbAdults());
     }
 
     @Test
