@@ -24,7 +24,7 @@ public class CustomExceptionHandler {
         return errorBody;
     }
 
-    @ExceptionHandler(StationNumberNotFoundException.class)
+    @ExceptionHandler({StationNumberNotFoundException.class, AddressNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     public Object handleNotFoundMessage(Exception ex, HttpServletRequest request){
