@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class MedicalRecordsDAO extends AlertsDAO{
 
-    public List<MedicalRecord> getFireStations()  {
+    public List<MedicalRecord> getMedicalRecords()  {
         return AlertsDAO.getData().getMedicalRecords();
     }
 

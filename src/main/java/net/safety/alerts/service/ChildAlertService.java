@@ -1,13 +1,18 @@
 package net.safety.alerts.service;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import net.safety.alerts.dao.AlertsDAO;
+import net.safety.alerts.dao.FireStationsDAO;
+import net.safety.alerts.dao.MedicalRecordsDAO;
+import net.safety.alerts.dao.PersonsDAO;
 import net.safety.alerts.dto.ChildAlertDTO;
 import net.safety.alerts.dto.PersonAgeDTO;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -20,10 +25,14 @@ import static java.time.temporal.ChronoUnit.YEARS;
 public class ChildAlertService {
     private static final Logger logger = LoggerFactory.getLogger(ChildAlertService.class);
 
-    List<Person> personList = AlertsDAO.getData().getPersons();
-    List<MedicalRecord> medicalRecordList = AlertsDAO.getData().getMedicalRecords();
 
-    public int getAddressOccurrence(String address){
+    @Autowired
+    private PersonsDAO personsDAO;
+    @Autowired
+    private MedicalRecordsDAO medicalRecordsDAO;
+
+    public int getAddressOccurrence(String address) throws JsonProcessingException {
+        List<Person>personList = personsDAO.getPersons();
         int countAddressOccurrence = 0;
         for(Person person : personList){
             if(person.getAddress().equals(address)){
@@ -33,7 +42,9 @@ public class ChildAlertService {
         return countAddressOccurrence;
     }
 
-    public ChildAlertDTO getPersonFromAddress(String address){
+    public ChildAlertDTO getPersonFromAddress(String address) throws JsonProcessingException {
+        List<Person>personList = personsDAO.getPersons();
+        List<MedicalRecord>medicalRecordList = medicalRecordsDAO.getMedicalRecords();
         List<PersonAgeDTO> childrenList = new ArrayList<>();
         List<PersonAgeDTO> otherMembers = new ArrayList<>();
 

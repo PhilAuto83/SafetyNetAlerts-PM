@@ -45,13 +45,13 @@ public class FireStationServiceWithDaoIT {
     @ParameterizedTest(name = "Check method doesStationNumberExist() returns true when station number is {0}")
     @ValueSource(strings={"1","2","3","4"})
     @DisplayName("Check method doesStationNumberExist() return true if station number is in the list")
-    public void givenStationNumberExists_whenCallingDoesStationNumberExistMethod_ThenReturnTrueTest(String stationNumber){
+    public void givenStationNumberExists_whenCallingDoesStationNumberExistMethod_ThenReturnTrueTest(String stationNumber) throws JsonProcessingException {
         assertTrue(fireStationService.doesStationNumberExist(stationNumber));
     }
 
     @Test
     @DisplayName("Check method doesStationNumberExist() return false if station number 7 is not in the list")
-    public void givenStationNumberNotExists_whenCallingDoesStationNumberExistMethod_ThenReturnFalseTest(){
+    public void givenStationNumberNotExists_whenCallingDoesStationNumberExistMethod_ThenReturnFalseTest() throws JsonProcessingException {
         assertFalse(fireStationService.doesStationNumberExist("7"));
     }
 

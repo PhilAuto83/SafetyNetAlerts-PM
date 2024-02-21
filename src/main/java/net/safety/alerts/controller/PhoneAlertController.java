@@ -1,5 +1,6 @@
 package net.safety.alerts.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import net.safety.alerts.exceptions.StationNumberNotFoundException;
@@ -30,7 +31,7 @@ public class PhoneAlertController {
 
     @GetMapping("/phoneAlert")
     public Set<String> getPhonesByFireStation(@RequestParam("firestation") @NotBlank @Pattern(regexp ="^[1-9]\\d?$",
-            message="Station number must be a positive number with maximum 2 digits whose minimum value starts at 1") String stationNumber){
+            message="Station number must be a positive number with maximum 2 digits whose minimum value starts at 1") String stationNumber) throws JsonProcessingException {
         Set<String> phones = new HashSet<>();
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()

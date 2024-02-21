@@ -25,7 +25,7 @@ public class AlertsDAO {
     private static String filePath = "src/main/resources/data.json";
 
 
-    public static AlertsData getData()  {
+    protected static AlertsData getData()  {
         AlertsData alertsData = new AlertsData(new ArrayList<Person>(),new ArrayList<FireStation>(), new ArrayList<MedicalRecord>());
         try {
             alertsData = mapper.readValue(new File(AlertsDAO.filePath), AlertsData.class);
@@ -36,7 +36,7 @@ public class AlertsDAO {
         return alertsData;
     }
 
-    public static void save(AlertsData alertsData){
+    protected static void save(AlertsData alertsData){
         logger.info("Write AlertsData Object to file");
         try {
             logger.debug("AlertsData object contains a list of persons : {}", alertsData.getPersons());

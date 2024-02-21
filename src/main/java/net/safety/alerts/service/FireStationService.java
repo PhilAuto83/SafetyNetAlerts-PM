@@ -2,6 +2,9 @@ package net.safety.alerts.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import net.safety.alerts.dao.AlertsDAO;
+import net.safety.alerts.dao.FireStationsDAO;
+import net.safety.alerts.dao.MedicalRecordsDAO;
+import net.safety.alerts.dao.PersonsDAO;
 import net.safety.alerts.dto.PersonByFireStation;
 import net.safety.alerts.dto.PersonDTO;
 import net.safety.alerts.model.FireStation;
@@ -9,6 +12,7 @@ import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,12 +26,15 @@ public class FireStationService {
 
     private static final Logger logger = LoggerFactory.getLogger(FireStationService.class);
 
-    List<Person>personList;
-    List<FireStation>fireStationList;
-    List<MedicalRecord> medicalRecordList;
+    @Autowired
+    private FireStationsDAO fireStationsDAO;
+    @Autowired
+    private PersonsDAO personsDAO;
+    @Autowired
+    private MedicalRecordsDAO medicalRecordsDAO;
 
-    public boolean doesStationNumberExist(String stationNumber){
-        fireStationList = AlertsDAO.getData().getFireStations();
+    public boolean doesStationNumberExist(String stationNumber) throws JsonProcessingException {
+        List<FireStation> fireStationList = fireStationsDAO.getFireStations();
         for(FireStation firestation : fireStationList){
             if(firestation.getStation().equals(String.valueOf(stationNumber))){
                 return true;
@@ -38,8 +45,8 @@ public class FireStationService {
 
     private List<PersonDTO> getRestrictedPersonInfoByStationNumber(String stationNumber) throws JsonProcessingException {
         List<PersonDTO> personsRestrictedInfo = new ArrayList<>();
-        fireStationList = AlertsDAO.getData().getFireStations();
-        personList= AlertsDAO.getData().getPersons();
+        List<FireStation> fireStationList = fireStationsDAO.getFireStations();
+        List<Person>personList= personsDAO.getPersons();
         for(FireStation firestation : fireStationList){
             if(firestation.getStation().equals(stationNumber)){
                 for(Person person : personList){
@@ -55,7 +62,7 @@ public class FireStationService {
     private int getNumberOfAdults(String stationNumber) throws JsonProcessingException {
         int nbAdults = 0;
         List<PersonDTO> personRestrictedInfoList = getRestrictedPersonInfoByStationNumber(stationNumber);
-        medicalRecordList = AlertsDAO.getData().getMedicalRecords();
+        List<MedicalRecord>medicalRecordList = medicalRecordsDAO.getMedicalRecords();
         for (PersonDTO person : personRestrictedInfoList) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {
@@ -71,7 +78,7 @@ public class FireStationService {
     private int getNumberOfChildren(String stationNumber) throws JsonProcessingException {
         int nbChildren = 0;
         List<PersonDTO> personRestrictedInfoList = getRestrictedPersonInfoByStationNumber(stationNumber);
-        medicalRecordList = AlertsDAO.getData().getMedicalRecords();
+        List<MedicalRecord>medicalRecordList = medicalRecordsDAO.getMedicalRecords();
         for (PersonDTO person : personRestrictedInfoList) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {

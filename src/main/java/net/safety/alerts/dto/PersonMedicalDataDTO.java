@@ -17,7 +17,7 @@ public class PersonMedicalDataDTO {
     private String firstName;
     private String lastName;
     private String phone;
-    private String age;
-    private Map<String, List<String>> medicalInfos;
+    private int age;
+    private Map<String, List<String>> medicalData;
 
 }

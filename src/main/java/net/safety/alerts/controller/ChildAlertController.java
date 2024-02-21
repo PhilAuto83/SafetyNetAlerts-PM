@@ -1,6 +1,7 @@
 package net.safety.alerts.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.constraints.NotBlank;
 import net.safety.alerts.dto.ChildAlertDTO;
 import net.safety.alerts.exceptions.AddressNotFoundException;
@@ -26,7 +27,7 @@ public class ChildAlertController {
     private ChildAlertService childAlertService;
 
     @GetMapping("/childAlert")
-    public ChildAlertDTO getChildrenListByAddress(@RequestParam("address") @NotBlank(message="Address cannot be null or empty") String address){
+    public ChildAlertDTO getChildrenListByAddress(@RequestParam("address") @NotBlank(message="Address cannot be null or empty") String address) throws JsonProcessingException {
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .replaceQueryParam("address", address)
