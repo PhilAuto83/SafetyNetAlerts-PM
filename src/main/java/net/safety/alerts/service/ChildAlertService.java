@@ -47,7 +47,6 @@ public class ChildAlertService {
                         }else{
                             otherMembers.add(new PersonAgeDTO(person.getFirstName(), person.getLastName(),personAge));
                         }
-
                     }
                 }
             }

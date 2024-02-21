@@ -39,7 +39,7 @@ public class FireStationIntegrationTest {
     }
 
     @AfterAll
-    public static void RollbackDataSource(){
+    public static void rollbackDataSource(){
         AlertsDAO.setFilePath("src/main/resources/data.json");
     }
 
