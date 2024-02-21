@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.time.temporal.ChronoUnit.MONTHS;
+import static java.time.temporal.ChronoUnit.YEARS;
 
 @Service
 public class FireStationService {
@@ -59,7 +59,7 @@ public class FireStationService {
         for (PersonDTO person : personRestrictedInfoList) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {
-                    if (MONTHS.between(medicalRecord.getBirthDate(),LocalDate.now()) > 192) {
+                    if (YEARS.between(medicalRecord.getBirthDate(),LocalDate.now()) > 18) {
                         nbAdults++;
                     }
                 }
@@ -75,7 +75,7 @@ public class FireStationService {
         for (PersonDTO person : personRestrictedInfoList) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {
-                    if (MONTHS.between(medicalRecord.getBirthDate(),LocalDate.now()) < 192) {
+                    if (YEARS.between(medicalRecord.getBirthDate(),LocalDate.now()) < 18) {
                         nbChildren++;
                     }
                 }
