@@ -75,7 +75,7 @@ public class FireStationService {
         for (PersonDTO person : personRestrictedInfoList) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {
-                    if (YEARS.between(medicalRecord.getBirthDate(),LocalDate.now()) < 18) {
+                    if (YEARS.between(medicalRecord.getBirthDate(),LocalDate.now()) <= 18) {
                         nbChildren++;
                     }
                 }
