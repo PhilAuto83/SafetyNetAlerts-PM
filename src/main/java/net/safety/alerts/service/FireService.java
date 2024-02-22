@@ -41,13 +41,16 @@ public class FireService {
                 stationNumber = fireStation.getStation();
             }
         }
+        logger.debug("In getStationNumberByAddress({}), station number retrieved is {}",address, stationNumber);
         return stationNumber;
     }
 
     private List<PersonMedicalDataDTO> getPersonMedicalDataListFromAddress(String address) throws JsonProcessingException {
         List<PersonMedicalDataDTO> personMedicalDataDTOList = new ArrayList<>();
         List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        logger.debug("Size of medicalRecords is : {}", medicalRecords.size());
         List<Person> persons = personsDAO.getPersons();
+        logger.debug("Size of person list is : {}", persons.size());
         for(Person person : persons){
             if(person.getAddress().equals(address)){
                 for(MedicalRecord medicalRecord : medicalRecords){
@@ -63,14 +66,17 @@ public class FireService {
                 }
             }
         }
+        logger.debug("List of person with medical info is not empty : {}", personMedicalDataDTOList);
         return personMedicalDataDTOList;
     }
 
     public FireDTO getPersonMedicalInfoByAddress(String address) throws JsonProcessingException {
 
         if(getStationNumberByAddress(address)==null){
+            logger.error("No station was retrieved when searching by address for address {}", address);
             throw new StationNumberNotFoundException("Station number does not exist at address : "+address);
         }
+
         return new FireDTO(getPersonMedicalDataListFromAddress(address), getStationNumberByAddress(address));
     }
 }

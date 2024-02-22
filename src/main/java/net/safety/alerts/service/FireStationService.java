@@ -40,6 +40,7 @@ public class FireStationService {
                 return true;
             }
         }
+        logger.debug("No station number {} exists in the list of firestations.", stationNumber );
         return false;
     }
 
@@ -72,6 +73,7 @@ public class FireStationService {
                 }
             }
         }
+        logger.debug("Number of adults retrieved from method getNumberOfAdults({}) is {}", stationNumber, nbAdults);
         return nbAdults;
     }
 
@@ -88,6 +90,7 @@ public class FireStationService {
                 }
             }
         }
+        logger.debug("Number of children retrieved from method getNumberOfChildren({}) is {}", stationNumber,  nbChildren);
         return nbChildren;
     }
 

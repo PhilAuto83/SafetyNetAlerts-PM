@@ -39,6 +39,7 @@ public class ChildAlertService {
                 countAddressOccurrence++;
             }
         }
+        logger.debug("When calling getAddressOccurrence, count for address {} is {}.", address, countAddressOccurrence);
         return countAddressOccurrence;
     }
 
@@ -62,6 +63,8 @@ public class ChildAlertService {
                 }
             }
         }
+        logger.debug("Children list retrieved from address {} has size {}", address, childrenList.size());
+        logger.debug("Adult list retrieved from address {} has size {}", address, otherMembers.size());
         return new ChildAlertDTO(childrenList, otherMembers);
     }
 }

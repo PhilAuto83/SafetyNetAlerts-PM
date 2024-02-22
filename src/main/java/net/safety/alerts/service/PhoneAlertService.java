@@ -7,6 +7,8 @@ import net.safety.alerts.dao.MedicalRecordsDAO;
 import net.safety.alerts.dao.PersonsDAO;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import java.util.Set;
 
 @Service
 public class PhoneAlertService {
+
+    private static final Logger logger = LoggerFactory.getLogger(PhoneAlertService.class);
 
     @Autowired
     private FireStationsDAO fireStationsDAO;
@@ -37,6 +41,7 @@ public class PhoneAlertService {
             }
 
         }
+        logger.debug("Method getPhonesByFireStation({}) returns a list of phones : {}", stationNumber, phones);
         return phones;
     }
 }
