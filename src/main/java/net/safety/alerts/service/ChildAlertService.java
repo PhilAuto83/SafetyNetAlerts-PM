@@ -53,8 +53,9 @@ public class ChildAlertService {
                     int age = AlertsUtility.calculateAgeFromDate(medicalRecord.getBirthDate());
                     if (age <= 18) {
                         childrenList.add(new PersonAgeDTO(person.getFirstName(), person.getLastName(), age));
+                    }else{
+                        otherMembers.add(new PersonAgeDTO(person.getFirstName(), person.getLastName(), age));
                     }
-                    otherMembers.add(new PersonAgeDTO(person.getFirstName(), person.getLastName(), age));
                 }
             }
         }
