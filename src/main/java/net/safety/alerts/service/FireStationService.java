@@ -10,6 +10,7 @@ import net.safety.alerts.dto.PersonDTO;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
+import net.safety.alerts.utils.AlertsUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.time.temporal.ChronoUnit.YEARS;
 
@@ -46,16 +50,11 @@ public class FireStationService {
 
     private List<PersonDTO> getRestrictedPersonInfoByStationNumber(String stationNumber) throws JsonProcessingException {
         List<PersonDTO> personsRestrictedInfo = new ArrayList<>();
-        List<FireStation> fireStationList = fireStationsDAO.getFireStations();
-        List<Person>personList= personsDAO.getPersons();
-        for(FireStation firestation : fireStationList){
-            if(firestation.getStation().equals(stationNumber)){
-                for(Person person : personList){
-                    if(person.getAddress().equals(firestation.getAddress())){
-                        personsRestrictedInfo.add(new PersonDTO(person.getFirstName(), person.getLastName(), person.getAddress(), person.getPhone()));
-                    }
-                }
-            }
+        List<FireStation> fireStations = fireStationsDAO.getFireStations();
+        List<Person>persons= personsDAO.getPersons();
+        List<Person> personsCoveredByStationNumber = AlertsUtility.getListOfPersonFromFireStationNumber(persons, fireStations, stationNumber);
+        for(Person person : personsCoveredByStationNumber){
+           personsRestrictedInfo.add(new PersonDTO(person.getFirstName(), person.getLastName(), person.getAddress(), person.getPhone()));
         }
         return personsRestrictedInfo;
     }
@@ -67,7 +66,7 @@ public class FireStationService {
         for (PersonDTO person : personRestrictedInfoList) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {
-                    if (YEARS.between(medicalRecord.getBirthDate(),LocalDate.now()) > 18) {
+                    if (AlertsUtility.calculateAgeFromDate(medicalRecord.getBirthDate()) > 18) {
                         nbAdults++;
                     }
                 }
@@ -84,7 +83,7 @@ public class FireStationService {
         for (PersonDTO person : personRestrictedInfoList) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {
-                    if (YEARS.between(medicalRecord.getBirthDate(),LocalDate.now()) <= 18) {
+                    if (AlertsUtility.calculateAgeFromDate(medicalRecord.getBirthDate()) <= 18) {
                         nbChildren++;
                     }
                 }
