@@ -57,7 +57,7 @@ public class FireControllerTest {
                 .andExpect(jsonPath("$.stationNumber", is("4")))
                 .andExpect(jsonPath("$.persons[0].phone", is("555-777-9999")))
                 .andExpect(jsonPath("$.persons[0].age", is(45)))
-                .andExpect(jsonPath("$.persons[0].medicalData.allergies[0]", is("peanut")));
+                .andExpect(jsonPath("$.persons[0].medicalInfos.allergies[0]", is("peanut")));
     }
 
     @Test

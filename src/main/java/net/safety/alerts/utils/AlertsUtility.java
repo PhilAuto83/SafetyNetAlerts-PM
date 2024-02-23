@@ -1,7 +1,7 @@
 package net.safety.alerts.utils;
 
 
-import net.safety.alerts.exceptions.PersonNotFound;
+import net.safety.alerts.exceptions.PersonNotFoundException;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
@@ -50,7 +50,7 @@ public final class AlertsUtility {
                 return calculateAgeFromDate(medicalRecord.getBirthDate());
             }
         }
-        throw new PersonNotFound(String.format("No person was found in medical records with firstname %s and lastname %s", person.getFirstName(), person.getLastName()));
+        throw new PersonNotFoundException(String.format("No person was found in medical records with firstname %s and lastname %s", person.getFirstName(), person.getLastName()));
     }
 
     public static Map<String, List<String>> getPersonMedicalData(List<MedicalRecord>medicalRecords, Person person){

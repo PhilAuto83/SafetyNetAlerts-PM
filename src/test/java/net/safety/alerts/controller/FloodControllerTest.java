@@ -55,8 +55,8 @@ public class FloodControllerTest {
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.[0].address", is("1 st Test")))
                 .andExpect(jsonPath("$.[0].persons[0].age", is(26)))
-                .andExpect(jsonPath("$.[0].persons[0].medicalData.medications[0]", is("doliprane:500mg")))
-                .andExpect(jsonPath("$.[0].persons[0].medicalData.allergies[1]", is("oil")));
+                .andExpect(jsonPath("$.[0].persons[0].medicalInfos.medications[0]", is("doliprane:500mg")))
+                .andExpect(jsonPath("$.[0].persons[0].medicalInfos.allergies[1]", is("oil")));
     }
 
     @Test

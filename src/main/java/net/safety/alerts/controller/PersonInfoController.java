@@ -2,7 +2,10 @@ package net.safety.alerts.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import net.safety.alerts.dto.PersonInfoDTO;
+import net.safety.alerts.exceptions.PersonNotFoundException;
 import net.safety.alerts.service.PersonInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +29,7 @@ public class PersonInfoController {
     private PersonInfoService personInfoService;
 
     @GetMapping("/personInfo")
-    public List<PersonInfoDTO> getPersonInfoByStationNumber(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName") String lastName) throws JsonProcessingException {
+    public List<PersonInfoDTO> getPersonInfoByStationNumber(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName") @Pattern(regexp = "[a-zA-Z]{2,}", message= "must be at least 2 characters long with letters only") @NotBlank(message="cannot be null or empty") String lastName) throws JsonProcessingException {
 
         List<PersonInfoDTO> personInfoDTOList = new ArrayList<>();
         String currentRequest = ServletUriComponentsBuilder
@@ -35,8 +38,10 @@ public class PersonInfoController {
                 .replaceQueryParam("lastName", lastName)
                 .toUriString();
         logger.info("Request launched : {}", currentRequest);
-
-        return personInfoDTOList;
+        if(!personInfoService.doesPersonExists(firstName, lastName)){
+            throw new PersonNotFoundException(String.format("Person with firstname filled or empty and lastname %s was not found.", lastName));
+        }
+        return personInfoService.getPersonList(firstName, lastName);
     }
 }
 

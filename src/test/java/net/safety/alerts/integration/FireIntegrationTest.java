@@ -47,8 +47,8 @@ public class FireIntegrationTest {
                 .andExpect(jsonPath("$.persons", hasSize(1)))
                 .andExpect(jsonPath("$.persons[0].fullName", is("Tessa Carman")))
                 .andExpect(jsonPath("$.persons[0].age", is(12)))
-                .andExpect(jsonPath("$.persons[0].medicalData.medications", hasSize(0)))
-                .andExpect(jsonPath("$.persons[0].medicalData.allergies", hasSize(0)));
+                .andExpect(jsonPath("$.persons[0].medicalInfos.medications", hasSize(0)))
+                .andExpect(jsonPath("$.persons[0].medicalInfos.allergies", hasSize(0)));
     }
 
     @Test

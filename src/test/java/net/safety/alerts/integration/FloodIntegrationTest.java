@@ -50,7 +50,7 @@ public class FloodIntegrationTest {
                 .andExpect(jsonPath("$.[0].persons[0].age", is(29)))
                 .andExpect(jsonPath("$.[0].persons[0].phone", is("841-874-9845")))
                 .andExpect(jsonPath("$.[0].persons[0].fullName", is("Lily Cooper")))
-                .andExpect(jsonPath("$[1].persons[0].medicalData.allergies[0]", is("shellfish")));
+                .andExpect(jsonPath("$[1].persons[0].medicalInfos.allergies[0]", is("shellfish")));
     }
 
     @Test

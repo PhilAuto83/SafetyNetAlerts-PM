@@ -26,7 +26,7 @@ public class CustomExceptionHandler {
     }
 
 
-    @ExceptionHandler({StationNumberNotFoundException.class, AddressNotFoundException.class})
+    @ExceptionHandler({StationNumberNotFoundException.class, AddressNotFoundException.class, PersonNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Object handleNotFoundMessage(Exception ex, HttpServletRequest request){
         Map<String, Object> errorBody = new HashMap<>();
