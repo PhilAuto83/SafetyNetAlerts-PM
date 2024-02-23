@@ -39,7 +39,8 @@ public class PersonInfoController {
                 .toUriString();
         logger.info("Request launched : {}", currentRequest);
         if(!personInfoService.doesPersonExists(firstName, lastName)){
-            throw new PersonNotFoundException(String.format("Person with firstname filled or empty and lastname %s was not found.", lastName));
+            logger.error("Person with firstname \"{}\" and lastname {} was not found.", firstName, lastName);
+            throw new PersonNotFoundException(String.format("Person with firstname '%s' and '%s' was not found.", firstName, lastName));
         }
         return personInfoService.getPersonList(firstName, lastName);
     }
