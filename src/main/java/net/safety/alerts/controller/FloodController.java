@@ -2,39 +2,36 @@ package net.safety.alerts.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-
 import jakarta.validation.constraints.Pattern;
-import net.safety.alerts.dto.PersonByFireStation;
+import net.safety.alerts.dto.FloodDTO;
 import net.safety.alerts.exceptions.StationNumberNotFoundException;
 import net.safety.alerts.service.FireStationService;
+import net.safety.alerts.service.FloodService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import static org.springframework.http.ResponseEntity.ok;
-
+import java.util.List;
 
 @RestController
 @Validated
-public class FireStationController {
+public class FloodController {
 
-    private static final Logger logger = LoggerFactory.getLogger(FireStationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(FloodController.class);
 
+    @Autowired
+    private FloodService floodService;
     @Autowired
     private FireStationService fireStationService;
 
-    @GetMapping("/firestation")
-    public ResponseEntity<PersonByFireStation> getPersonInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="must be a positive number with maximum 2 digits whose minimum value starts at 1")  String stationNumber) throws JsonProcessingException {
-
-        PersonByFireStation personByFireStation = null;
+    @GetMapping("/flood/stations")
+    public List<FloodDTO> getPersonMedicalDataByStationNumber(@RequestParam("stations") @Pattern(regexp ="^[1-9]\\d?$",  message="must be a positive number with maximum 2 digits whose minimum value starts at 1")
+                                                                  String stationNumber) throws JsonProcessingException {
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .replaceQueryParam("stations", stationNumber)
@@ -44,11 +41,6 @@ public class FireStationController {
             logger.debug("Station number {} does not exist.", stationNumber);
             throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));
         }
-        try {
-            personByFireStation = fireStationService.getPersonsInfoByStationNumber(stationNumber);
-        }catch (JsonProcessingException e) {
-            logger.error(e.toString());
-        }
-        return ResponseEntity.ok(personByFireStation);
+        return floodService.getPersonsWithMedicalDataFromStationNumber(stationNumber);
     }
 }

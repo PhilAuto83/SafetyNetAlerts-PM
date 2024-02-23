@@ -3,7 +3,9 @@ package net.safety.alerts.exceptions;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -14,19 +16,18 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public Object handleValidationConstraintError(Exception ex, HttpServletRequest request){
+    public Object handleValidationConstraintError(ConstraintViolationException ex, HttpServletRequest request){
         Map<String, Object> errorBody = new HashMap<>();
         errorBody.put("timestamp", new Date());
         errorBody.put("status", HttpStatus.BAD_REQUEST.value());
         errorBody.put("message", ex.getMessage());
         errorBody.put("path", request.getRequestURL()+"?"+request.getQueryString());
-        return errorBody;
+       return errorBody;
     }
+
 
     @ExceptionHandler({StationNumberNotFoundException.class, AddressNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ResponseBody
     public Object handleNotFoundMessage(Exception ex, HttpServletRequest request){
         Map<String, Object> errorBody = new HashMap<>();
         errorBody.put("timestamp", new Date());
@@ -35,5 +36,4 @@ public class CustomExceptionHandler {
         errorBody.put("path", request.getRequestURL()+"?"+request.getQueryString());
         return errorBody;
     }
-
 }

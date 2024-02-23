@@ -9,11 +9,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class FireDTO {
+@NoArgsConstructor
+public class FloodDTO {
 
-    private String stationNumber;
-    private List<PersonMedicalDataDTO> persons;
-
+    private String address;
+    List<PersonMedicalDataDTO> persons;
 }

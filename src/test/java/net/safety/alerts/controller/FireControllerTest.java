@@ -44,8 +44,8 @@ public class FireControllerTest {
         medicalInfos.put("medications",List.of("hydrapermazol:300mg", "dodoxadin:30mg"));
         medicalInfos.put("allergies", List.of("peanut","nillacilan"));
 
-        fireDTO = new FireDTO(List.of(new PersonMedicalDataDTO("Phil", "Test"
-                ,"555-777-9999", 45, medicalInfos)),"4");
+        fireDTO = new FireDTO("4", List.of(new PersonMedicalDataDTO("Phil Test"
+                ,"555-777-9999", 45, medicalInfos)));
     }
 
     @Test

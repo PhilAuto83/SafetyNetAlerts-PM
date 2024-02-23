@@ -45,8 +45,7 @@ public class FireIntegrationTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.stationNumber", is("3")))
                 .andExpect(jsonPath("$.persons", hasSize(1)))
-                .andExpect(jsonPath("$.persons[0].firstName", is("Tessa")))
-                .andExpect(jsonPath("$.persons[0].lastName", is("Carman")))
+                .andExpect(jsonPath("$.persons[0].fullName", is("Tessa Carman")))
                 .andExpect(jsonPath("$.persons[0].age", is(12)))
                 .andExpect(jsonPath("$.persons[0].medicalData.medications", hasSize(0)))
                 .andExpect(jsonPath("$.persons[0].medicalData.allergies", hasSize(0)));
@@ -65,7 +64,7 @@ public class FireIntegrationTest {
         mockMvc.perform(get("/fire?address="))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.message", containsString("must not be blank")));
+                .andExpect(jsonPath("$.message", containsString("cannot be null or empty")));
     }
 
     @Test
@@ -73,6 +72,6 @@ public class FireIntegrationTest {
         mockMvc.perform(get("/fire?address= "))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.message", containsString("must not be blank")));
+                .andExpect(jsonPath("$.message", containsString("cannot be null or empty")));
     }
 }

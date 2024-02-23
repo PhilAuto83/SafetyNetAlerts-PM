@@ -11,15 +11,12 @@ import net.safety.alerts.exceptions.StationNumberNotFoundException;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
+import net.safety.alerts.utils.AlertsUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.util.*;
-
-import static java.time.temporal.ChronoUnit.YEARS;
 
 @Service
 public class FireService {
@@ -56,11 +53,11 @@ public class FireService {
                 for(MedicalRecord medicalRecord : medicalRecords){
                     if(medicalRecord.getFirstName().equals(person.getFirstName())
                             && medicalRecord.getLastName().equals(person.getLastName())){
-                        int age = (int)YEARS.between(medicalRecord.getBirthDate(), LocalDate.now());
+                        int age = AlertsUtility.calculateAgeFromDate(medicalRecord.getBirthDate());
                         Map<String, List<String>> medicalInfos = new HashMap<>();
                         medicalInfos.put("medications", medicalRecord.getMedications());
                         medicalInfos.put("allergies", medicalRecord.getAllergies());
-                        personMedicalDataDTOList.add(new PersonMedicalDataDTO(person.getFirstName(), person.getLastName(),
+                        personMedicalDataDTOList.add(new PersonMedicalDataDTO(person.getFirstName()+" "+person.getLastName(),
                         person.getPhone(), age, medicalInfos));
                     }
                 }
@@ -77,6 +74,6 @@ public class FireService {
             throw new StationNumberNotFoundException("Station number does not exist at address : "+address);
         }
 
-        return new FireDTO(getPersonMedicalDataListFromAddress(address), getStationNumberByAddress(address));
+        return new FireDTO(getStationNumberByAddress(address), getPersonMedicalDataListFromAddress(address));
     }
 }

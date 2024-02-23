@@ -1,6 +1,7 @@
 package net.safety.alerts.utils;
 
 
+import net.safety.alerts.exceptions.PersonNotFound;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
@@ -41,6 +42,27 @@ public final class AlertsUtility {
             }
         }
         return personsLivingAtAddress;
+    }
+
+    public static int getPersonAgeFromMedicalRecords(List<MedicalRecord>medicalRecords, Person person){
+        for(MedicalRecord medicalRecord: medicalRecords){
+            if(medicalRecord.getFirstName().equals(person.getFirstName()) && medicalRecord.getLastName().equals(person.getLastName())){
+                return calculateAgeFromDate(medicalRecord.getBirthDate());
+            }
+        }
+        throw new PersonNotFound(String.format("No person was found in medical records with firstname %s and lastname %s", person.getFirstName(), person.getLastName()));
+    }
+
+    public static Map<String, List<String>> getPersonMedicalData(List<MedicalRecord>medicalRecords, Person person){
+        Map<String, List<String>> medicalData = new HashMap<>();
+        for(MedicalRecord medicalRecord: medicalRecords){
+            if(medicalRecord.getFirstName().equals(person.getFirstName())&&medicalRecord.getLastName().equals(person.getLastName())){
+                medicalData.put("medications",medicalRecord.getMedications());
+                medicalData.put("allergies", medicalRecord.getAllergies());
+                return medicalData;
+            }
+        }
+        return medicalData;
     }
 
 }

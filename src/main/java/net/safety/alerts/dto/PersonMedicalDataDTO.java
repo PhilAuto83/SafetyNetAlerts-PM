@@ -14,8 +14,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class PersonMedicalDataDTO {
 
-    private String firstName;
-    private String lastName;
+    private String fullName;
     private String phone;
     private int age;
     private Map<String, List<String>> medicalData;

@@ -1,7 +1,6 @@
 package net.safety.alerts.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.dao.FireStationsDAO;
 import net.safety.alerts.dao.MedicalRecordsDAO;
 import net.safety.alerts.dao.PersonsDAO;
@@ -16,14 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static java.time.temporal.ChronoUnit.YEARS;
 
 @Service
 public class FireStationService {
@@ -40,7 +33,7 @@ public class FireStationService {
     public boolean doesStationNumberExist(String stationNumber) throws JsonProcessingException {
         List<FireStation> fireStationList = fireStationsDAO.getFireStations();
         for(FireStation firestation : fireStationList){
-            if(firestation.getStation().equals(String.valueOf(stationNumber))){
+            if(firestation.getStation().equals(stationNumber)){
                 return true;
             }
         }

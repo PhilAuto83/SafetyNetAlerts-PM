@@ -23,7 +23,7 @@ public class FireController {
     private FireService fireService;
 
     @GetMapping("/fire")
-    public FireDTO getPersonMedicalDataByAddress(@RequestParam("address") @NotBlank String address) throws JsonProcessingException {
+    public FireDTO getPersonMedicalDataByAddress(@RequestParam("address") @NotBlank(message= "cannot be null or empty") String address) throws JsonProcessingException {
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .replaceQueryParam("address", address)
