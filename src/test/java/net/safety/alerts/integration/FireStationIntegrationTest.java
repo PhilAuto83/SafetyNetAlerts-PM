@@ -63,7 +63,7 @@ public class FireStationIntegrationTest {
     public void testingBadRequestWithStationNumberEmpty(String stationNumber) throws Exception {
         mockMvc.perform(get("/firestation?stationNumber="+stationNumber))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message",containsString("must be a positive number with maximum 2 digits whose minimum value starts at 1")));
+                .andExpect(jsonPath("$.message",containsString("station number must be a positive with maximum 2 digits whose minimum value starts at 1")));
 
     }
 
