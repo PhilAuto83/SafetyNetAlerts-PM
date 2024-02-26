@@ -30,7 +30,7 @@ public class FloodController {
     private FireStationService fireStationService;
 
     @GetMapping("/flood/stations")
-    public List<FloodDTO> getPersonMedicalDataByStationNumber(@RequestParam("stations") @Pattern(regexp ="^[1-9]\\d?$",  message="station number must be a positive number with maximum 2 digits whose minimum value starts at 1")
+    public List<FloodDTO> getPersonMedicalDataByStationNumber(@RequestParam("stations") @Pattern(regexp ="^[1-9]\\d?$",  message="station number must be positive with maximum 2 digits whose minimum value starts at 1")
                                                                   String stationNumber) throws JsonProcessingException {
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()

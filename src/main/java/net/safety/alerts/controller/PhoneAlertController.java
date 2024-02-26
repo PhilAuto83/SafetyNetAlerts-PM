@@ -31,7 +31,7 @@ public class PhoneAlertController {
 
     @GetMapping("/phoneAlert")
     public Set<String> getPhonesByFireStation(@RequestParam("firestation") @NotBlank @Pattern(regexp ="^[1-9]\\d?$",
-            message="station number must be a positive number with maximum 2 digits whose minimum value starts at 1") String stationNumber) throws JsonProcessingException {
+            message="station number must be positive with maximum 2 digits whose minimum value starts at 1") String stationNumber) throws JsonProcessingException {
         Set<String> phones = new HashSet<>();
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()

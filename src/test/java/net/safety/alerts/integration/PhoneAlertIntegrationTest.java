@@ -56,7 +56,7 @@ public class PhoneAlertIntegrationTest {
     public void whenRequestingEmptyStationNumber_thenReturn400(String stationNumber) throws Exception {
         mockMvc.perform(get("/phoneAlert?firestation="))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message", containsString("station number must be a positive number with maximum 2 digits whose minimum value starts at 1")));;
+                .andExpect(jsonPath("$.message", containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));;
     }
 
     @ParameterizedTest(name="When requesting station number {0} then return a list size of {1}")

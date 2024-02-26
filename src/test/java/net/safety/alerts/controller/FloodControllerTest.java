@@ -70,7 +70,7 @@ public class FloodControllerTest {
     public void testEmptyStationNumberReturns400() throws Exception {
         mockMvc.perform(get("/flood/stations?stations="))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message", containsString("must be a positive number with maximum 2 digits whose minimum value starts at 1")));
+                .andExpect(jsonPath("$.message", is("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
     }
 
 

@@ -64,7 +64,7 @@ public class FireIntegrationTest {
         mockMvc.perform(get("/fire?address="))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.message", containsString("cannot be null or empty")));
+                .andExpect(jsonPath("$.message", is("address cannot be null or empty")));
     }
 
     @Test
@@ -72,6 +72,6 @@ public class FireIntegrationTest {
         mockMvc.perform(get("/fire?address= "))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.message", containsString("cannot be null or empty")));
+                .andExpect(jsonPath("$.message", is("address cannot be null or empty")));
     }
 }

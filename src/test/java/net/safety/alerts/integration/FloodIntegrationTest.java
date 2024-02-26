@@ -67,7 +67,7 @@ public class FloodIntegrationTest {
         mockMvc.perform(get("/flood/stations?stations="+stationNumber))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.message", containsString("must be a positive number with maximum 2 digits whose minimum value starts at 1")));
+                .andExpect(jsonPath("$.message", containsString("must be positive with maximum 2 digits whose minimum value starts at 1")));
     }
 
 }
