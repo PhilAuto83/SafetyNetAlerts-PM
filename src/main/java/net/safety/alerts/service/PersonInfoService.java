@@ -59,12 +59,14 @@ public class PersonInfoService {
             for(Person person : personFoundWithLastName){
                 if(person.getFirstName().equalsIgnoreCase(firstName) && person.getLastName().equalsIgnoreCase(lastName)){
                     for (MedicalRecord medicalRecord : medicalRecords) {
-                        Map<String, List<String>> medicalInfos = new HashMap<>();
-                        medicalInfos.put("medications", medicalRecord.getMedications());
-                        medicalInfos.put("allergies", medicalRecord.getAllergies());
-                        personInfoDTOList.add(new PersonInfoDTO(person.getFirstName() + " " + person.getLastName(), person.getAddress(),
-                                AlertsUtility.calculateAgeFromDate(medicalRecord.getBirthDate()), person.getEmail(), medicalInfos));
-                        return personInfoDTOList;
+                        if(medicalRecord.getFirstName().equalsIgnoreCase(firstName) && medicalRecord.getLastName().equalsIgnoreCase(lastName)){
+                            Map<String, List<String>> medicalInfos = new HashMap<>();
+                            medicalInfos.put("medications", medicalRecord.getMedications());
+                            medicalInfos.put("allergies", medicalRecord.getAllergies());
+                            personInfoDTOList.add(new PersonInfoDTO(person.getFirstName() + " " + person.getLastName(), person.getAddress(),
+                                    AlertsUtility.calculateAgeFromDate(medicalRecord.getBirthDate()), person.getEmail(), medicalInfos));
+                            return personInfoDTOList;
+                        }
                     }
                 }
             }

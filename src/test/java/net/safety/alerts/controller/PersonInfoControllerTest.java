@@ -1,8 +1,6 @@
 package net.safety.alerts.controller;
 
-import net.safety.alerts.dto.FloodDTO;
 import net.safety.alerts.dto.PersonInfoDTO;
-import net.safety.alerts.dto.PersonMedicalDataDTO;
 import net.safety.alerts.service.PersonInfoService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,9 +9,9 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +20,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(PersonInfoController.class)
 public class PersonInfoControllerTest {
@@ -50,7 +47,12 @@ public class PersonInfoControllerTest {
         when(personInfoService.doesPersonExists(null,"Boyd")).thenReturn(true);
         when(personInfoService.getPersonList(null,"Boyd")).thenReturn(personInfoDTO);
         mockMvc.perform(get("/personInfo?lastName=Boyd"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].fullName", is("Phil Test")))
+                .andExpect(jsonPath("$[0].address", is("1 st Test")))
+                .andExpect(jsonPath("$[0].medicalInfos.medications[0]", is("doliprane:500mg")))
+                .andExpect(jsonPath("$[0].medicalInfos.allergies[1]", is("oil")));
     }
 
     @Test

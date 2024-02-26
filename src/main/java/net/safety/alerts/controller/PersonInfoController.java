@@ -29,7 +29,7 @@ public class PersonInfoController {
     private PersonInfoService personInfoService;
 
     @GetMapping("/personInfo")
-    public List<PersonInfoDTO> getPersonInfoByStationNumber(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName") @Pattern(regexp = "[a-zA-Z]{2,}", message= "lastname must be at least 2 characters long with letters only") @NotBlank(message="lastname cannot be null or empty") String lastName) throws JsonProcessingException {
+    public List<PersonInfoDTO> getPersonInfoByStationNumber(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName") @Pattern(regexp = "[a-zA-Z]{2,}", message= "lastname must be at least 2 characters long with letters only") String lastName) throws JsonProcessingException {
 
         List<PersonInfoDTO> personInfoDTOList = new ArrayList<>();
         String currentRequest = ServletUriComponentsBuilder
