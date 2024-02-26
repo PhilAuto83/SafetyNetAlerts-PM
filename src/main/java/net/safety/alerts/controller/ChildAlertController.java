@@ -27,7 +27,7 @@ public class ChildAlertController {
     private ChildAlertService childAlertService;
 
     @GetMapping("/childAlert")
-    public ChildAlertDTO getChildrenListByAddress(@RequestParam("address") @NotBlank(message="Address cannot be null or empty") String address) throws JsonProcessingException {
+    public ChildAlertDTO getChildrenListByAddress(@RequestParam("address") @NotBlank(message="address cannot be null or empty") String address) throws JsonProcessingException {
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .replaceQueryParam("address", address)
