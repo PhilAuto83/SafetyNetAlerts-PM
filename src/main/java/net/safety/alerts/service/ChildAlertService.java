@@ -33,7 +33,7 @@ public class ChildAlertService {
         List<Person> personList = personsDAO.getPersons();
         int countAddressOccurrence = 0;
         for (Person person : personList) {
-            if (person.getAddress().equals(address)) {
+            if (person.getAddress().equalsIgnoreCase(address)) {
                 countAddressOccurrence++;
             }
         }

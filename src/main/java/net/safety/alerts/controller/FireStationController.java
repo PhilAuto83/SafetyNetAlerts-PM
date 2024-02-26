@@ -32,7 +32,7 @@ public class FireStationController {
     private FireStationService fireStationService;
 
     @GetMapping("/firestation")
-    public ResponseEntity<PersonByFireStation> getPersonInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="must be a positive number with maximum 2 digits whose minimum value starts at 1")  String stationNumber) throws JsonProcessingException {
+    public PersonByFireStation getPersonInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="must be a positive number with maximum 2 digits whose minimum value starts at 1")  String stationNumber) throws JsonProcessingException {
 
         PersonByFireStation personByFireStation = null;
         String currentRequest = ServletUriComponentsBuilder
@@ -49,6 +49,6 @@ public class FireStationController {
         }catch (JsonProcessingException e) {
             logger.error(e.toString());
         }
-        return ResponseEntity.ok(personByFireStation);
+        return personByFireStation;
     }
 }

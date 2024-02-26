@@ -34,7 +34,7 @@ public class FireService {
         List<FireStation>fireStations = fireStationsDAO.getFireStations();
         String stationNumber = null;
         for(FireStation fireStation: fireStations){
-            if(fireStation.getAddress().equals(address)){
+            if(fireStation.getAddress().equalsIgnoreCase(address)){
                 stationNumber = fireStation.getStation();
             }
         }
@@ -49,7 +49,7 @@ public class FireService {
         List<Person> persons = personsDAO.getPersons();
         logger.debug("Size of person list is : {}", persons.size());
         for(Person person : persons){
-            if(person.getAddress().equals(address)){
+            if(person.getAddress().equalsIgnoreCase(address)){
                 for(MedicalRecord medicalRecord : medicalRecords){
                     if(medicalRecord.getFirstName().equals(person.getFirstName())
                             && medicalRecord.getLastName().equals(person.getLastName())){

@@ -37,7 +37,7 @@ public final class AlertsUtility {
     public static List<Person> getListOfPersonFromAddress(List<Person> persons, String address){
         List<Person> personsLivingAtAddress = new ArrayList<>();
         for(Person person : persons){
-            if(person.getAddress().equals(address)){
+            if(person.getAddress().equalsIgnoreCase(address)){
                 personsLivingAtAddress.add(person);
             }
         }
