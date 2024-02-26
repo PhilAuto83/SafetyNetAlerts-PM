@@ -68,6 +68,15 @@ public class PersonInfoIntegrationTest {
                 .andExpect(jsonPath("$[0].email", is("aly@imail.com")));
     }
 
+    @ParameterizedTest(name = "When searching with wrong firstname {0} and lastname {1}, result should be 404.")
+    @CsvSource({"Al, Boyd", "Tessa, Carma"})
+    public void testingWrongFirstNameAnfRightLastNameReturns404(String firstName, String lastName) throws Exception {
+        mockMvc.perform(get("/personInfo?firstName="+firstName+"&lastName="+lastName))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is(String.format("Person with firstname '%s' and lastname '%s' was not found.", firstName, lastName))));
+
+    }
+
 
     @ParameterizedTest(name= "Firstname empty and wrong lastname \"{0}\" leads to bad request")
     @ValueSource(strings={"", " ", "12", "1Bob", ".?"})

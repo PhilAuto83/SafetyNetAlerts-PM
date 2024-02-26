@@ -31,7 +31,7 @@ public class FireService {
     private MedicalRecordsDAO medicalRecordsDAO;
 
     private String getStationNumberByAddress(String address) throws JsonProcessingException {
-        List<FireStation>fireStations = fireStationsDAO.getFireStations();
+        List<FireStation>fireStations =fireStationsDAO.getFireStations();
         String stationNumber = null;
         for(FireStation fireStation: fireStations){
             if(fireStation.getAddress().equalsIgnoreCase(address)){

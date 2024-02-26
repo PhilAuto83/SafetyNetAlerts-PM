@@ -40,7 +40,7 @@ public class PersonInfoController {
         logger.info("Request launched : {}", currentRequest);
         if(!personInfoService.doesPersonExists(firstName, lastName)){
             logger.error("Person with firstname \"{}\" and lastname {} was not found.", firstName, lastName);
-            throw new PersonNotFoundException(String.format("Person with firstname '%s' and '%s' was not found.", firstName, lastName));
+            throw new PersonNotFoundException(String.format("Person with firstname '%s' and lastname '%s' was not found.", firstName, lastName));
         }
         return personInfoService.getPersonList(firstName, lastName);
     }
