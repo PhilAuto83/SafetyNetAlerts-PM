@@ -46,12 +46,12 @@ public class CommunityEmailControllerTest {
     }
 
     @ParameterizedTest(name = "Testing city name -> \"{0}\" should return 400.")
-    @ValueSource(strings={"C", "C1", "1c", "", " ", " paris", "!Culver"})
+    @ValueSource(strings={"", " "})
     public void testCommunityEmailControllerReturns400(String city) throws Exception {
         when(communityEmailService.getEmailsFromCity("Culver")).thenReturn(emails);
         mockMvc.perform(get("/communityEmail?city="+city))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message", is("city name must have at least 2 letters.")));
+                .andExpect(jsonPath("$.message", is("city name must not be null or empty.")));
     }
 
     @Test

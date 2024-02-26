@@ -1,7 +1,7 @@
 package net.safety.alerts.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotBlank;
 import net.safety.alerts.service.CommunityEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -18,7 +18,7 @@ public class CommunityEmailController {
     @Autowired
     private CommunityEmailService communityEmailService;
     @GetMapping(value = "/communityEmail")
-    public List<String> getEmailsFromCity(@RequestParam("city") @Pattern(regexp = "^[a-zA-Z]{2,}$", message = "city name must have at least 2 letters.") String city) throws JsonProcessingException {
+    public List<String> getEmailsFromCity(@RequestParam("city") @NotBlank(message = "city name must not be null or empty.") String city) throws JsonProcessingException {
         return communityEmailService.getEmailsFromCity(city);
     }
 }
