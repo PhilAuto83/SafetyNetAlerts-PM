@@ -37,7 +37,7 @@ public class FireStationController {
         PersonByFireStation personByFireStation = null;
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .replaceQueryParam("stations", stationNumber)
+                .replaceQueryParam("stationNumber", stationNumber)
                 .toUriString();
         logger.info("Request launched : {}", currentRequest);
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
