@@ -1,9 +1,6 @@
 package net.safety.alerts.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +9,7 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class PersonMedicalDataDTO {
 
     private String fullName;

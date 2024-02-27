@@ -1,0 +1,901 @@
+10:17:04.069 [main] INFO  net.safety.alerts.AlertsApplication - Starting AlertsApplication using Java 21.0.1 with PID 16492 (C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM\target\classes started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:17:04.083 [main] DEBUG net.safety.alerts.AlertsApplication - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:17:04.084 [main] INFO  net.safety.alerts.AlertsApplication - No active profile set, falling back to 1 default profile: "default"
+10:17:04.969 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+10:17:05.352 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+10:17:05.361 [main] INFO  net.safety.alerts.AlertsApplication - Started AlertsApplication in 1.766 seconds (process running for 2.562)
+10:18:08.661 [http-nio-8080-exec-1] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost:8080/communityEmail?city=Culver
+10:18:12.356 [http-nio-8080-exec-3] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost:8080/communityEmail?city=Culv
+10:18:12.360 [http-nio-8080-exec-3] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:18:12.360 [http-nio-8080-exec-3] ERROR net.safety.alerts.service.CommunityEmailService - City name Culv not found in the list of person's address.
+10:21:14.146 [main] INFO  net.safety.alerts.AlertsApplication - Starting AlertsApplication using Java 21.0.1 with PID 8600 (C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM\target\classes started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:21:14.153 [main] DEBUG net.safety.alerts.AlertsApplication - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:21:14.154 [main] INFO  net.safety.alerts.AlertsApplication - No active profile set, falling back to 1 default profile: "default"
+10:21:14.999 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+10:21:15.380 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+10:21:15.385 [main] INFO  net.safety.alerts.AlertsApplication - Started AlertsApplication in 1.677 seconds (process running for 2.473)
+10:21:37.925 [http-nio-8080-exec-6] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost:8080/communityEmail?city=2
+10:21:37.962 [http-nio-8080-exec-6] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:21:37.962 [http-nio-8080-exec-6] ERROR net.safety.alerts.service.CommunityEmailService - City name 2 not found in the list of person's address.
+10:21:42.403 [http-nio-8080-exec-8] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost:8080/communityEmail?city=7
+10:21:42.406 [http-nio-8080-exec-8] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:21:42.406 [http-nio-8080-exec-8] ERROR net.safety.alerts.service.CommunityEmailService - City name 7 not found in the list of person's address.
+10:21:47.814 [http-nio-8080-exec-10] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost:8080/communityEmail?city=Mia
+10:21:47.818 [http-nio-8080-exec-10] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:21:47.819 [http-nio-8080-exec-10] ERROR net.safety.alerts.service.CommunityEmailService - City name Mia not found in the list of person's address.
+10:21:54.297 [http-nio-8080-exec-1] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost:8080/communityEmail?city=Culver
+10:22:04.443 [http-nio-8080-exec-4] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost:8080/personInfo?firstName&lastName=Boyd
+10:22:04.450 [http-nio-8080-exec-4] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:22:04.461 [http-nio-8080-exec-4] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname Boyd exist in the list of person
+10:22:04.461 [http-nio-8080-exec-4] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:22:04.467 [http-nio-8080-exec-4] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname Boyd
+10:22:04.468 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:22:04.468 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:22:04.475 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:22:04.475 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3f878259]
+10:22:04.476 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:22:04.476 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3f878259, net.safety.alerts.dto.PersonInfoDTO@5dee18b2]
+10:22:04.476 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:22:04.477 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3f878259, net.safety.alerts.dto.PersonInfoDTO@5dee18b2, net.safety.alerts.dto.PersonInfoDTO@2d5aea3d]
+10:22:04.477 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:22:04.477 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3f878259, net.safety.alerts.dto.PersonInfoDTO@5dee18b2, net.safety.alerts.dto.PersonInfoDTO@2d5aea3d, net.safety.alerts.dto.PersonInfoDTO@328176c7]
+10:22:04.478 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:22:04.478 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3f878259, net.safety.alerts.dto.PersonInfoDTO@5dee18b2, net.safety.alerts.dto.PersonInfoDTO@2d5aea3d, net.safety.alerts.dto.PersonInfoDTO@328176c7, net.safety.alerts.dto.PersonInfoDTO@3117af84]
+10:25:19.345 [main] INFO  net.safety.alerts.AlertsApplication - Starting AlertsApplication using Java 21.0.1 with PID 22400 (C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM\target\classes started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:19.353 [main] DEBUG net.safety.alerts.AlertsApplication - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:19.354 [main] INFO  net.safety.alerts.AlertsApplication - No active profile set, falling back to 1 default profile: "default"
+10:25:20.185 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+10:25:20.575 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+10:25:20.582 [main] INFO  net.safety.alerts.AlertsApplication - Started AlertsApplication in 1.623 seconds (process running for 2.463)
+10:25:46.463 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - Starting ChildAlertControllerTest using Java 21.0.1 with PID 16048 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:46.473 [main] DEBUG net.safety.alerts.controller.ChildAlertControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:46.474 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:25:50.543 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - Started ChildAlertControllerTest in 4.916 seconds (process running for 7.731)
+10:25:50.916 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1%20st%20Test
+10:25:51.302 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1%20st%20Test
+10:25:51.427 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - Starting CommunityEmailControllerTest using Java 21.0.1 with PID 16048 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:51.427 [main] DEBUG net.safety.alerts.controller.CommunityEmailControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:51.428 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:25:51.808 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - Started CommunityEmailControllerTest in 0.416 seconds (process running for 8.996)
+10:25:51.820 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:25:52.018 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:25:52.097 [main] INFO  net.safety.alerts.controller.FireControllerTest - Starting FireControllerTest using Java 21.0.1 with PID 16048 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:52.099 [main] DEBUG net.safety.alerts.controller.FireControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:52.099 [main] INFO  net.safety.alerts.controller.FireControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:25:52.387 [main] INFO  net.safety.alerts.controller.FireControllerTest - Started FireControllerTest in 0.319 seconds (process running for 9.575)
+10:25:52.396 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:25:52.418 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:25:52.482 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Starting FireStationControllerTest using Java 21.0.1 with PID 16048 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:52.483 [main] DEBUG net.safety.alerts.controller.FireStationControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:52.483 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:25:52.745 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Started FireStationControllerTest in 0.293 seconds (process running for 9.933)
+10:25:52.771 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:25:52.771 [main] DEBUG net.safety.alerts.controller.FireStationController - Station number 1 does not exist.
+10:25:52.797 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:25:52.884 [main] INFO  net.safety.alerts.controller.FloodControllerTest - Starting FloodControllerTest using Java 21.0.1 with PID 16048 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:52.885 [main] DEBUG net.safety.alerts.controller.FloodControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:52.885 [main] INFO  net.safety.alerts.controller.FloodControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:25:53.122 [main] INFO  net.safety.alerts.controller.FloodControllerTest - Started FloodControllerTest in 0.262 seconds (process running for 10.31)
+10:25:53.130 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:25:53.138 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:25:53.138 [main] DEBUG net.safety.alerts.controller.FloodController - Station number 4 does not exist.
+10:25:53.189 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - Starting PersonInfoControllerTest using Java 21.0.1 with PID 16048 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:53.190 [main] DEBUG net.safety.alerts.controller.PersonInfoControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:53.190 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:25:53.401 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - Started PersonInfoControllerTest in 0.237 seconds (process running for 10.589)
+10:25:53.446 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=&lastName=Boyd
+10:25:53.457 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Phil&lastName=Boyd
+10:25:53.462 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:25:53.466 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=&lastName=By
+10:25:53.466 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "" and lastname By was not found.
+10:25:53.519 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - Starting PhoneAlertControllerTest using Java 21.0.1 with PID 16048 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:53.520 [main] DEBUG net.safety.alerts.controller.PhoneAlertControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:53.520 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:25:53.758 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - Started PhoneAlertControllerTest in 0.256 seconds (process running for 10.945)
+10:25:53.768 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=2
+10:25:53.777 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=2
+10:25:53.806 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=99
+10:25:53.807 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 99 does not exist.
+10:25:58.324 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - Starting FireStationServiceWithDaoIT using Java 21.0.1 with PID 14292 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:25:58.335 [main] DEBUG net.safety.alerts.integration.FireStationServiceWithDaoIT - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:25:58.336 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - No active profile set, falling back to 1 default profile: "default"
+10:25:59.891 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - Started FireStationServiceWithDaoIT in 1.962 seconds (process running for 3.365)
+10:26:00.970 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 7 exists in the list of firestations.
+10:26:01.046 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(6) is 0
+10:26:01.048 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(6) is 0
+10:26:01.059 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(1) is 5
+10:26:01.062 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(1) is 1
+10:26:05.053 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - Starting ChildAlertIntegrationTest using Java 21.0.1 with PID 9068 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:26:05.077 [main] DEBUG net.safety.alerts.integration.ChildAlertIntegrationTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:26:05.079 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+10:26:07.233 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - Started ChildAlertIntegrationTest in 2.771 seconds (process running for 5.756)
+10:26:08.932 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1509%20Culver%20St
+10:26:09.046 [main] DEBUG net.safety.alerts.service.ChildAlertService - When calling getAddressOccurrence, count for address 1509 Culver St is 5.
+10:26:09.052 [main] DEBUG net.safety.alerts.service.ChildAlertService - Children list retrieved from address 1509 Culver St has size 2
+10:26:09.052 [main] DEBUG net.safety.alerts.service.ChildAlertService - Adult list retrieved from address 1509 Culver St has size 3
+10:26:09.179 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1510%20Culver%20St
+10:26:09.182 [main] DEBUG net.safety.alerts.service.ChildAlertService - When calling getAddressOccurrence, count for address 1510 Culver St is 0.
+10:26:09.264 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:26:09.279 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=culver
+10:26:09.290 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=culveR
+10:26:09.306 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Los%20Angeles
+10:26:09.307 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:26:09.307 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Los Angeles not found in the list of person's address.
+10:26:09.314 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=New%20York
+10:26:09.315 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:26:09.315 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name New York not found in the list of person's address.
+10:26:09.323 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Miami
+10:26:09.325 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:26:09.326 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Miami not found in the list of person's address.
+10:26:09.335 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Cul%20ver
+10:26:09.336 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:26:09.336 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Cul ver not found in the list of person's address.
+10:26:09.345 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=%20culver
+10:26:09.347 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:26:09.347 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name  culver not found in the list of person's address.
+10:26:09.377 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Av
+10:26:09.378 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Av), station number retrieved is null
+10:26:09.379 [main] ERROR net.safety.alerts.service.FireService - No station was retrieved when searching by address for address 834 Binoc Av
+10:26:09.383 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:26:09.386 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Ave), station number retrieved is 3
+10:26:09.389 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Ave), station number retrieved is 3
+10:26:09.390 [main] DEBUG net.safety.alerts.service.FireService - Size of medicalRecords is : 23
+10:26:09.391 [main] DEBUG net.safety.alerts.service.FireService - Size of person list is : 23
+10:26:09.391 [main] DEBUG net.safety.alerts.service.FireService - List of person with medical info is not empty : [net.safety.alerts.dto.PersonMedicalDataDTO@c98017f]
+10:26:09.499 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:26:09.511 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(1) is 5
+10:26:09.513 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(1) is 1
+10:26:09.520 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=6&stations=6
+10:26:09.522 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 6 exists in the list of firestations.
+10:26:09.523 [main] DEBUG net.safety.alerts.controller.FireStationController - Station number 6 does not exist.
+10:26:09.538 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:26:09.541 [main] INFO  net.safety.alerts.service.FloodService - Get the list of addresses from station number 4
+10:26:09.546 [main] INFO  net.safety.alerts.service.FloodService - Get list of person covered by address 489 Manchester St
+10:26:09.547 [main] DEBUG net.safety.alerts.service.FloodService - List of person covered by address 489 Manchester St : [net.safety.alerts.model.Person@524b1c70]
+10:26:09.548 [main] INFO  net.safety.alerts.service.FloodService - Map list of persons to their medical data
+10:26:09.549 [main] INFO  net.safety.alerts.service.FloodService - Add a list of persons covered by address 489 Manchester St to the list of flood dto
+10:26:09.550 [main] INFO  net.safety.alerts.service.FloodService - Get list of person covered by address 112 Steppes Pl
+10:26:09.551 [main] DEBUG net.safety.alerts.service.FloodService - List of person covered by address 112 Steppes Pl : [net.safety.alerts.model.Person@708a0150, net.safety.alerts.model.Person@7a282bad, net.safety.alerts.model.Person@195b4f4f]
+10:26:09.552 [main] INFO  net.safety.alerts.service.FloodService - Map list of persons to their medical data
+10:26:09.553 [main] INFO  net.safety.alerts.service.FloodService - Add a list of persons covered by address 112 Steppes Pl to the list of flood dto
+10:26:09.582 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=6
+10:26:09.584 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 6 exists in the list of firestations.
+10:26:09.584 [main] DEBUG net.safety.alerts.controller.FloodController - Station number 6 does not exist.
+10:26:09.642 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:26:09.643 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:26:09.647 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname Boyd exist in the list of person
+10:26:09.648 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:26:09.653 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname Boyd
+10:26:09.654 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.654 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.656 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.657 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@1f8dbc5d]
+10:26:09.657 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.658 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@1f8dbc5d, net.safety.alerts.dto.PersonInfoDTO@32cc87e0]
+10:26:09.658 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.659 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@1f8dbc5d, net.safety.alerts.dto.PersonInfoDTO@32cc87e0, net.safety.alerts.dto.PersonInfoDTO@743afab6]
+10:26:09.659 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.660 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@1f8dbc5d, net.safety.alerts.dto.PersonInfoDTO@32cc87e0, net.safety.alerts.dto.PersonInfoDTO@743afab6, net.safety.alerts.dto.PersonInfoDTO@5125159e]
+10:26:09.661 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.661 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@1f8dbc5d, net.safety.alerts.dto.PersonInfoDTO@32cc87e0, net.safety.alerts.dto.PersonInfoDTO@743afab6, net.safety.alerts.dto.PersonInfoDTO@5125159e, net.safety.alerts.dto.PersonInfoDTO@23b824b3]
+10:26:09.672 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=BOYD
+10:26:09.673 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:26:09.675 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname BOYD exist in the list of person
+10:26:09.675 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:26:09.676 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname BOYD
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@52f950e2]
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@52f950e2, net.safety.alerts.dto.PersonInfoDTO@b0e7bde]
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@52f950e2, net.safety.alerts.dto.PersonInfoDTO@b0e7bde, net.safety.alerts.dto.PersonInfoDTO@28466003]
+10:26:09.677 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.678 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@52f950e2, net.safety.alerts.dto.PersonInfoDTO@b0e7bde, net.safety.alerts.dto.PersonInfoDTO@28466003, net.safety.alerts.dto.PersonInfoDTO@10cd5b30]
+10:26:09.678 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.678 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@52f950e2, net.safety.alerts.dto.PersonInfoDTO@b0e7bde, net.safety.alerts.dto.PersonInfoDTO@28466003, net.safety.alerts.dto.PersonInfoDTO@10cd5b30, net.safety.alerts.dto.PersonInfoDTO@82b778b]
+10:26:09.683 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=boyd
+10:26:09.688 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:26:09.694 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname boyd exist in the list of person
+10:26:09.694 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:26:09.696 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname boyd
+10:26:09.696 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.696 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.697 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.697 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@427475a2]
+10:26:09.697 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.697 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@427475a2, net.safety.alerts.dto.PersonInfoDTO@2bf065c2]
+10:26:09.697 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.697 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@427475a2, net.safety.alerts.dto.PersonInfoDTO@2bf065c2, net.safety.alerts.dto.PersonInfoDTO@30584e91]
+10:26:09.697 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.698 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@427475a2, net.safety.alerts.dto.PersonInfoDTO@2bf065c2, net.safety.alerts.dto.PersonInfoDTO@30584e91, net.safety.alerts.dto.PersonInfoDTO@2706cee5]
+10:26:09.698 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.698 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@427475a2, net.safety.alerts.dto.PersonInfoDTO@2bf065c2, net.safety.alerts.dto.PersonInfoDTO@30584e91, net.safety.alerts.dto.PersonInfoDTO@2706cee5, net.safety.alerts.dto.PersonInfoDTO@463e66c2]
+10:26:09.708 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=bOyd
+10:26:09.709 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:26:09.711 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname bOyd exist in the list of person
+10:26:09.712 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:26:09.715 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname bOyd
+10:26:09.715 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.715 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@38cbc9a7]
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@38cbc9a7, net.safety.alerts.dto.PersonInfoDTO@1006fe59]
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@38cbc9a7, net.safety.alerts.dto.PersonInfoDTO@1006fe59, net.safety.alerts.dto.PersonInfoDTO@3dacb927]
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@38cbc9a7, net.safety.alerts.dto.PersonInfoDTO@1006fe59, net.safety.alerts.dto.PersonInfoDTO@3dacb927, net.safety.alerts.dto.PersonInfoDTO@5d7b361]
+10:26:09.716 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.717 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@38cbc9a7, net.safety.alerts.dto.PersonInfoDTO@1006fe59, net.safety.alerts.dto.PersonInfoDTO@3dacb927, net.safety.alerts.dto.PersonInfoDTO@5d7b361, net.safety.alerts.dto.PersonInfoDTO@6337c48d]
+10:26:09.772 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Al&lastName=Boyd
+10:26:09.773 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "Al" and lastname Boyd was not found.
+10:26:09.777 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Tessa&lastName=Carma
+10:26:09.778 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "Tessa" and lastname Carma was not found.
+10:26:09.782 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:26:09.782 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:26:09.785 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname Boyd exist in the list of person
+10:26:09.785 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:26:09.786 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname Boyd
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@50c253b6]
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@50c253b6, net.safety.alerts.dto.PersonInfoDTO@7094dc0]
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@50c253b6, net.safety.alerts.dto.PersonInfoDTO@7094dc0, net.safety.alerts.dto.PersonInfoDTO@797ed02e]
+10:26:09.787 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.788 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@50c253b6, net.safety.alerts.dto.PersonInfoDTO@7094dc0, net.safety.alerts.dto.PersonInfoDTO@797ed02e, net.safety.alerts.dto.PersonInfoDTO@4d500865]
+10:26:09.788 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:26:09.788 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@50c253b6, net.safety.alerts.dto.PersonInfoDTO@7094dc0, net.safety.alerts.dto.PersonInfoDTO@797ed02e, net.safety.alerts.dto.PersonInfoDTO@4d500865, net.safety.alerts.dto.PersonInfoDTO@fcdad9a]
+10:26:09.792 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=BOYD
+10:26:09.792 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:26:09.794 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname BOYD exist in the list of person
+10:26:09.794 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:26:09.795 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname BOYD
+10:26:09.796 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.796 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.797 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.798 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@620a2725]
+10:26:09.798 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.799 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@620a2725, net.safety.alerts.dto.PersonInfoDTO@1ca49d7c]
+10:26:09.799 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.799 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@620a2725, net.safety.alerts.dto.PersonInfoDTO@1ca49d7c, net.safety.alerts.dto.PersonInfoDTO@6f49a165]
+10:26:09.799 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.800 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@620a2725, net.safety.alerts.dto.PersonInfoDTO@1ca49d7c, net.safety.alerts.dto.PersonInfoDTO@6f49a165, net.safety.alerts.dto.PersonInfoDTO@20110864]
+10:26:09.800 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:26:09.800 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@620a2725, net.safety.alerts.dto.PersonInfoDTO@1ca49d7c, net.safety.alerts.dto.PersonInfoDTO@6f49a165, net.safety.alerts.dto.PersonInfoDTO@20110864, net.safety.alerts.dto.PersonInfoDTO@1391204c]
+10:26:09.804 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=boyd
+10:26:09.805 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:26:09.806 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname boyd exist in the list of person
+10:26:09.806 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:26:09.807 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname boyd
+10:26:09.807 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.807 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3bf572e0]
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3bf572e0, net.safety.alerts.dto.PersonInfoDTO@2089ea49]
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3bf572e0, net.safety.alerts.dto.PersonInfoDTO@2089ea49, net.safety.alerts.dto.PersonInfoDTO@1fc52b51]
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3bf572e0, net.safety.alerts.dto.PersonInfoDTO@2089ea49, net.safety.alerts.dto.PersonInfoDTO@1fc52b51, net.safety.alerts.dto.PersonInfoDTO@5bd3d747]
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:26:09.808 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@3bf572e0, net.safety.alerts.dto.PersonInfoDTO@2089ea49, net.safety.alerts.dto.PersonInfoDTO@1fc52b51, net.safety.alerts.dto.PersonInfoDTO@5bd3d747, net.safety.alerts.dto.PersonInfoDTO@4ba1ccaf]
+10:26:09.812 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=bOyd
+10:26:09.813 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:26:09.817 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname bOyd exist in the list of person
+10:26:09.818 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:26:09.823 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname bOyd
+10:26:09.824 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.825 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:26:09.825 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.825 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@12917a56]
+10:26:09.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@12917a56, net.safety.alerts.dto.PersonInfoDTO@1bec2008]
+10:26:09.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@12917a56, net.safety.alerts.dto.PersonInfoDTO@1bec2008, net.safety.alerts.dto.PersonInfoDTO@6d043931]
+10:26:09.828 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.828 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@12917a56, net.safety.alerts.dto.PersonInfoDTO@1bec2008, net.safety.alerts.dto.PersonInfoDTO@6d043931, net.safety.alerts.dto.PersonInfoDTO@3ac6c956]
+10:26:09.829 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:26:09.829 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [net.safety.alerts.dto.PersonInfoDTO@12917a56, net.safety.alerts.dto.PersonInfoDTO@1bec2008, net.safety.alerts.dto.PersonInfoDTO@6d043931, net.safety.alerts.dto.PersonInfoDTO@3ac6c956, net.safety.alerts.dto.PersonInfoDTO@239c4792]
+10:26:09.837 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Allison&lastName=Boyd
+10:26:09.838 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:26:09.843 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname Allison and lastname Boyd exist in the list of person
+10:26:09.844 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:26:09.853 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=allison&lastName=BOYD
+10:26:09.854 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:26:09.855 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname allison and lastname BOYD exist in the list of person
+10:26:09.856 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:26:09.861 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=allisOn&lastName=boyd
+10:26:09.862 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:26:09.863 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname allisOn and lastname boyd exist in the list of person
+10:26:09.864 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:26:09.872 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=ALLISON&lastName=bOyd
+10:26:09.873 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:26:09.875 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname ALLISON and lastname bOyd exist in the list of person
+10:26:09.876 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:26:09.912 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=3
+10:26:09.921 [main] DEBUG net.safety.alerts.service.PhoneAlertService - Method getPhonesByFireStation(3) returns a list of phones : [841-874-6741, 841-874-6544, 841-874-6874, 841-874-6512, 841-874-6513, 841-874-8888, 841-874-9888]
+10:26:09.928 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=1
+10:26:09.930 [main] DEBUG net.safety.alerts.service.PhoneAlertService - Method getPhonesByFireStation(1) returns a list of phones : [841-874-7784, 841-874-7462, 841-874-6512, 841-874-8547]
+10:26:09.980 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=5
+10:26:09.981 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 5 exists in the list of firestations.
+10:26:09.982 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 5 does not exist.
+10:26:09.987 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=11
+10:26:09.987 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 11 exists in the list of firestations.
+10:26:09.988 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 11 does not exist.
+10:28:17.101 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - Starting ChildAlertControllerTest using Java 21.0.1 with PID 24904 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:17.119 [main] DEBUG net.safety.alerts.controller.ChildAlertControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:17.120 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:28:21.001 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - Started ChildAlertControllerTest in 4.762 seconds (process running for 7.099)
+10:28:21.347 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1%20st%20Test
+10:28:21.643 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1%20st%20Test
+10:28:21.774 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - Starting CommunityEmailControllerTest using Java 21.0.1 with PID 24904 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:21.775 [main] DEBUG net.safety.alerts.controller.CommunityEmailControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:21.776 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:28:22.106 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - Started CommunityEmailControllerTest in 0.367 seconds (process running for 8.204)
+10:28:22.120 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:28:22.228 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:28:22.292 [main] INFO  net.safety.alerts.controller.FireControllerTest - Starting FireControllerTest using Java 21.0.1 with PID 24904 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:22.294 [main] DEBUG net.safety.alerts.controller.FireControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:22.295 [main] INFO  net.safety.alerts.controller.FireControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:28:22.528 [main] INFO  net.safety.alerts.controller.FireControllerTest - Started FireControllerTest in 0.251 seconds (process running for 8.627)
+10:28:22.539 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:28:22.560 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:28:22.625 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Starting FireStationControllerTest using Java 21.0.1 with PID 24904 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:22.627 [main] DEBUG net.safety.alerts.controller.FireStationControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:22.627 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:28:22.929 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Started FireStationControllerTest in 0.329 seconds (process running for 9.027)
+10:28:22.959 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:28:22.959 [main] DEBUG net.safety.alerts.controller.FireStationController - Station number 1 does not exist.
+10:28:22.983 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:28:23.074 [main] INFO  net.safety.alerts.controller.FloodControllerTest - Starting FloodControllerTest using Java 21.0.1 with PID 24904 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:23.076 [main] DEBUG net.safety.alerts.controller.FloodControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:23.076 [main] INFO  net.safety.alerts.controller.FloodControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:28:23.308 [main] INFO  net.safety.alerts.controller.FloodControllerTest - Started FloodControllerTest in 0.262 seconds (process running for 9.407)
+10:28:23.325 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:28:23.340 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:28:23.340 [main] DEBUG net.safety.alerts.controller.FloodController - Station number 4 does not exist.
+10:28:23.453 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - Starting PersonInfoControllerTest using Java 21.0.1 with PID 24904 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:23.454 [main] DEBUG net.safety.alerts.controller.PersonInfoControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:23.454 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:28:23.714 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - Started PersonInfoControllerTest in 0.298 seconds (process running for 9.812)
+10:28:23.761 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=&lastName=Boyd
+10:28:23.771 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Phil&lastName=Boyd
+10:28:23.778 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:28:23.789 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=&lastName=By
+10:28:23.790 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "" and lastname By was not found.
+10:28:23.859 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - Starting PhoneAlertControllerTest using Java 21.0.1 with PID 24904 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:23.862 [main] DEBUG net.safety.alerts.controller.PhoneAlertControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:23.864 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:28:24.097 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - Started PhoneAlertControllerTest in 0.264 seconds (process running for 10.196)
+10:28:24.109 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=2
+10:28:24.115 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=2
+10:28:24.137 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=99
+10:28:24.138 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 99 does not exist.
+10:28:28.995 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - Starting FireStationServiceWithDaoIT using Java 21.0.1 with PID 1156 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:29.002 [main] DEBUG net.safety.alerts.integration.FireStationServiceWithDaoIT - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:29.003 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - No active profile set, falling back to 1 default profile: "default"
+10:28:30.484 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - Started FireStationServiceWithDaoIT in 1.804 seconds (process running for 3.45)
+10:28:31.689 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 7 exists in the list of firestations.
+10:28:31.775 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(6) is 0
+10:28:31.777 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(6) is 0
+10:28:31.792 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(1) is 5
+10:28:31.795 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(1) is 1
+10:28:36.445 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - Starting ChildAlertIntegrationTest using Java 21.0.1 with PID 24440 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:28:36.461 [main] DEBUG net.safety.alerts.integration.ChildAlertIntegrationTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:28:36.461 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+10:28:38.859 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - Started ChildAlertIntegrationTest in 3.052 seconds (process running for 6.621)
+10:28:40.859 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1509%20Culver%20St
+10:28:40.968 [main] DEBUG net.safety.alerts.service.ChildAlertService - When calling getAddressOccurrence, count for address 1509 Culver St is 5.
+10:28:40.980 [main] DEBUG net.safety.alerts.service.ChildAlertService - Children list retrieved from address 1509 Culver St has size 2
+10:28:40.980 [main] DEBUG net.safety.alerts.service.ChildAlertService - Adult list retrieved from address 1509 Culver St has size 3
+10:28:41.197 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1510%20Culver%20St
+10:28:41.203 [main] DEBUG net.safety.alerts.service.ChildAlertService - When calling getAddressOccurrence, count for address 1510 Culver St is 0.
+10:28:41.299 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:28:41.326 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=culver
+10:28:41.342 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=culveR
+10:28:41.351 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Los%20Angeles
+10:28:41.353 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:28:41.353 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Los Angeles not found in the list of person's address.
+10:28:41.360 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=New%20York
+10:28:41.362 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:28:41.362 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name New York not found in the list of person's address.
+10:28:41.370 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Miami
+10:28:41.377 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:28:41.377 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Miami not found in the list of person's address.
+10:28:41.385 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Cul%20ver
+10:28:41.388 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:28:41.388 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Cul ver not found in the list of person's address.
+10:28:41.395 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=%20culver
+10:28:41.402 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:28:41.403 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name  culver not found in the list of person's address.
+10:28:41.464 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Av
+10:28:41.468 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Av), station number retrieved is null
+10:28:41.469 [main] ERROR net.safety.alerts.service.FireService - No station was retrieved when searching by address for address 834 Binoc Av
+10:28:41.482 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:28:41.483 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Ave), station number retrieved is 3
+10:28:41.485 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Ave), station number retrieved is 3
+10:28:41.488 [main] DEBUG net.safety.alerts.service.FireService - Size of medicalRecords is : 23
+10:28:41.490 [main] DEBUG net.safety.alerts.service.FireService - Size of person list is : 23
+10:28:41.492 [main] DEBUG net.safety.alerts.service.FireService - List of person with medical info is not empty : [PersonMedicalDataDTO(fullName=Tessa Carman, phone=841-874-6512, age=12, medicalInfos={allergies=[], medications=[]})]
+10:28:41.594 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:28:41.609 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(1) is 5
+10:28:41.612 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(1) is 1
+10:28:41.627 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=6&stations=6
+10:28:41.629 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 6 exists in the list of firestations.
+10:28:41.630 [main] DEBUG net.safety.alerts.controller.FireStationController - Station number 6 does not exist.
+10:28:41.655 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:28:41.657 [main] INFO  net.safety.alerts.service.FloodService - Get the list of addresses from station number 4
+10:28:41.664 [main] INFO  net.safety.alerts.service.FloodService - Get list of person covered by address 489 Manchester St
+10:28:41.665 [main] DEBUG net.safety.alerts.service.FloodService - List of person covered by address 489 Manchester St : [Person(firstName=Lily, lastName=Cooper, address=489 Manchester St, city=Culver, zip=97451, phone=841-874-9845, email=lily@email.com)]
+10:28:41.669 [main] INFO  net.safety.alerts.service.FloodService - Map list of persons to their medical data
+10:28:41.670 [main] INFO  net.safety.alerts.service.FloodService - Add a list of persons covered by address 489 Manchester St to the list of flood dto
+10:28:41.670 [main] INFO  net.safety.alerts.service.FloodService - Get list of person covered by address 112 Steppes Pl
+10:28:41.670 [main] DEBUG net.safety.alerts.service.FloodService - List of person covered by address 112 Steppes Pl : [Person(firstName=Tony, lastName=Cooper, address=112 Steppes Pl, city=Culver, zip=97451, phone=841-874-6874, email=tcoop@ymail.com), Person(firstName=Ron, lastName=Peters, address=112 Steppes Pl, city=Culver, zip=97451, phone=841-874-8888, email=jpeter@email.com), Person(firstName=Allison, lastName=Boyd, address=112 Steppes Pl, city=Culver, zip=97451, phone=841-874-9888, email=aly@imail.com)]
+10:28:41.671 [main] INFO  net.safety.alerts.service.FloodService - Map list of persons to their medical data
+10:28:41.671 [main] INFO  net.safety.alerts.service.FloodService - Add a list of persons covered by address 112 Steppes Pl to the list of flood dto
+10:28:41.718 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=6
+10:28:41.720 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 6 exists in the list of firestations.
+10:28:41.721 [main] DEBUG net.safety.alerts.controller.FloodController - Station number 6 does not exist.
+10:28:41.780 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:28:41.781 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:28:41.783 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname Boyd exist in the list of person
+10:28:41.784 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:28:41.785 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname Boyd
+10:28:41.786 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.786 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.786 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.786 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.788 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.788 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.788 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.788 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.789 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.789 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.789 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.789 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.798 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=BOYD
+10:28:41.800 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:28:41.802 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname BOYD exist in the list of person
+10:28:41.802 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:28:41.804 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname BOYD
+10:28:41.804 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.804 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.804 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.804 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.804 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.805 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.805 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.805 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.805 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.805 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.805 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.805 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.811 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=boyd
+10:28:41.812 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:28:41.814 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname boyd exist in the list of person
+10:28:41.814 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:28:41.816 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname boyd
+10:28:41.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.817 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.817 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.817 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.817 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.817 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.817 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.822 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=bOyd
+10:28:41.823 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:28:41.824 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname bOyd exist in the list of person
+10:28:41.824 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:28:41.826 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname bOyd
+10:28:41.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.828 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.828 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.889 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Al&lastName=Boyd
+10:28:41.891 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "Al" and lastname Boyd was not found.
+10:28:41.901 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Tessa&lastName=Carma
+10:28:41.903 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "Tessa" and lastname Carma was not found.
+10:28:41.909 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:28:41.910 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:28:41.913 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname Boyd exist in the list of person
+10:28:41.913 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:28:41.916 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname Boyd
+10:28:41.916 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.917 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.917 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.917 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.918 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.918 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.918 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.918 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.919 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.919 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.919 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:28:41.920 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.928 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=BOYD
+10:28:41.930 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:28:41.932 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname BOYD exist in the list of person
+10:28:41.932 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:28:41.933 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname BOYD
+10:28:41.934 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.934 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.934 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.934 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.934 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.934 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.934 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.935 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.935 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.935 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.935 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:28:41.935 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.943 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=boyd
+10:28:41.945 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:28:41.948 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname boyd exist in the list of person
+10:28:41.948 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:28:41.951 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname boyd
+10:28:41.952 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.952 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.952 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.952 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.953 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.953 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.953 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.953 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.953 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.954 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.954 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:28:41.954 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.963 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=bOyd
+10:28:41.965 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:28:41.967 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname bOyd exist in the list of person
+10:28:41.967 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:28:41.968 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname bOyd
+10:28:41.969 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.969 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:28:41.969 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.969 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:28:41.969 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.969 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:28:41.969 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.970 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:28:41.970 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.970 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:28:41.970 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:28:41.970 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:28:41.979 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Allison&lastName=Boyd
+10:28:41.980 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:28:41.981 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname Allison and lastname Boyd exist in the list of person
+10:28:41.982 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:28:41.990 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=allison&lastName=BOYD
+10:28:41.992 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:28:41.997 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname allison and lastname BOYD exist in the list of person
+10:28:41.999 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:28:42.011 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=allisOn&lastName=boyd
+10:28:42.012 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:28:42.014 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname allisOn and lastname boyd exist in the list of person
+10:28:42.014 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:28:42.024 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=ALLISON&lastName=bOyd
+10:28:42.026 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:28:42.028 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname ALLISON and lastname bOyd exist in the list of person
+10:28:42.028 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:28:42.061 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=3
+10:28:42.065 [main] DEBUG net.safety.alerts.service.PhoneAlertService - Method getPhonesByFireStation(3) returns a list of phones : [841-874-6741, 841-874-6544, 841-874-6874, 841-874-6512, 841-874-6513, 841-874-8888, 841-874-9888]
+10:28:42.075 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=1
+10:28:42.079 [main] DEBUG net.safety.alerts.service.PhoneAlertService - Method getPhonesByFireStation(1) returns a list of phones : [841-874-7784, 841-874-7462, 841-874-6512, 841-874-8547]
+10:28:42.134 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=5
+10:28:42.136 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 5 exists in the list of firestations.
+10:28:42.136 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 5 does not exist.
+10:28:42.142 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=11
+10:28:42.144 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 11 exists in the list of firestations.
+10:28:42.144 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 11 does not exist.
+10:33:33.287 [main] INFO  net.safety.alerts.AlertsApplication - Starting AlertsApplication using Java 21.0.1 with PID 14580 (C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM\target\classes started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:33:33.295 [main] DEBUG net.safety.alerts.AlertsApplication - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:33:33.296 [main] INFO  net.safety.alerts.AlertsApplication - No active profile set, falling back to 1 default profile: "default"
+10:33:34.018 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+10:33:34.402 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+10:33:34.407 [main] INFO  net.safety.alerts.AlertsApplication - Started AlertsApplication in 1.458 seconds (process running for 2.132)
+10:33:49.433 [main] INFO  net.safety.alerts.AlertsApplication - Starting AlertsApplication using Java 21.0.1 with PID 24792 (C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM\target\classes started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:33:49.439 [main] DEBUG net.safety.alerts.AlertsApplication - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:33:49.439 [main] INFO  net.safety.alerts.AlertsApplication - No active profile set, falling back to 1 default profile: "default"
+10:33:50.139 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+10:33:50.493 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+10:33:50.497 [main] INFO  net.safety.alerts.AlertsApplication - Started AlertsApplication in 1.406 seconds (process running for 2.115)
+10:34:07.780 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - Starting ChildAlertControllerTest using Java 21.0.1 with PID 2168 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:07.791 [main] DEBUG net.safety.alerts.controller.ChildAlertControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:07.792 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:34:11.521 [main] INFO  net.safety.alerts.controller.ChildAlertControllerTest - Started ChildAlertControllerTest in 4.428 seconds (process running for 6.837)
+10:34:11.846 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1%20st%20Test
+10:34:12.093 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1%20st%20Test
+10:34:12.206 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - Starting CommunityEmailControllerTest using Java 21.0.1 with PID 2168 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:12.207 [main] DEBUG net.safety.alerts.controller.CommunityEmailControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:12.208 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:34:12.473 [main] INFO  net.safety.alerts.controller.CommunityEmailControllerTest - Started CommunityEmailControllerTest in 0.309 seconds (process running for 7.789)
+10:34:12.483 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:34:12.592 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:34:12.651 [main] INFO  net.safety.alerts.controller.FireControllerTest - Starting FireControllerTest using Java 21.0.1 with PID 2168 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:12.653 [main] DEBUG net.safety.alerts.controller.FireControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:12.654 [main] INFO  net.safety.alerts.controller.FireControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:34:12.890 [main] INFO  net.safety.alerts.controller.FireControllerTest - Started FireControllerTest in 0.275 seconds (process running for 8.206)
+10:34:12.898 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:34:12.924 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:34:12.988 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Starting FireStationControllerTest using Java 21.0.1 with PID 2168 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:12.988 [main] DEBUG net.safety.alerts.controller.FireStationControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:12.989 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:34:13.242 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Started FireStationControllerTest in 0.295 seconds (process running for 8.558)
+10:34:13.267 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:34:13.268 [main] DEBUG net.safety.alerts.controller.FireStationController - Station number 1 does not exist.
+10:34:13.289 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:34:13.349 [main] INFO  net.safety.alerts.controller.FloodControllerTest - Starting FloodControllerTest using Java 21.0.1 with PID 2168 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:13.350 [main] DEBUG net.safety.alerts.controller.FloodControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:13.350 [main] INFO  net.safety.alerts.controller.FloodControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:34:13.546 [main] INFO  net.safety.alerts.controller.FloodControllerTest - Started FloodControllerTest in 0.218 seconds (process running for 8.861)
+10:34:13.552 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:34:13.560 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:34:13.560 [main] DEBUG net.safety.alerts.controller.FloodController - Station number 4 does not exist.
+10:34:13.610 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - Starting PersonInfoControllerTest using Java 21.0.1 with PID 2168 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:13.611 [main] DEBUG net.safety.alerts.controller.PersonInfoControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:13.611 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:34:13.841 [main] INFO  net.safety.alerts.controller.PersonInfoControllerTest - Started PersonInfoControllerTest in 0.245 seconds (process running for 9.157)
+10:34:13.877 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=&lastName=Boyd
+10:34:13.886 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Phil&lastName=Boyd
+10:34:13.890 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:34:13.900 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=&lastName=By
+10:34:13.901 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "" and lastname By was not found.
+10:34:13.968 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - Starting PhoneAlertControllerTest using Java 21.0.1 with PID 2168 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:13.969 [main] DEBUG net.safety.alerts.controller.PhoneAlertControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:13.970 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - No active profile set, falling back to 1 default profile: "default"
+10:34:14.159 [main] INFO  net.safety.alerts.controller.PhoneAlertControllerTest - Started PhoneAlertControllerTest in 0.21 seconds (process running for 9.475)
+10:34:14.172 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=2
+10:34:14.179 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=2
+10:34:14.211 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=99
+10:34:14.212 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 99 does not exist.
+10:34:19.003 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - Starting FireStationServiceWithDaoIT using Java 21.0.1 with PID 4024 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:19.021 [main] DEBUG net.safety.alerts.integration.FireStationServiceWithDaoIT - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:19.022 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - No active profile set, falling back to 1 default profile: "default"
+10:34:20.615 [main] INFO  net.safety.alerts.integration.FireStationServiceWithDaoIT - Started FireStationServiceWithDaoIT in 2.014 seconds (process running for 3.437)
+10:34:21.596 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 7 exists in the list of firestations.
+10:34:21.673 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(6) is 0
+10:34:21.675 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(6) is 0
+10:34:21.687 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(1) is 5
+10:34:21.689 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(1) is 1
+10:34:25.864 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - Starting ChildAlertIntegrationTest using Java 21.0.1 with PID 13176 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+10:34:25.872 [main] DEBUG net.safety.alerts.integration.ChildAlertIntegrationTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+10:34:25.873 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - No active profile set, falling back to 1 default profile: "default"
+10:34:28.230 [main] INFO  net.safety.alerts.integration.ChildAlertIntegrationTest - Started ChildAlertIntegrationTest in 2.865 seconds (process running for 6.144)
+10:34:29.853 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1509%20Culver%20St
+10:34:29.959 [main] DEBUG net.safety.alerts.service.ChildAlertService - When calling getAddressOccurrence, count for address 1509 Culver St is 5.
+10:34:29.978 [main] DEBUG net.safety.alerts.service.ChildAlertService - Children list retrieved from address 1509 Culver St has size 2
+10:34:29.978 [main] DEBUG net.safety.alerts.service.ChildAlertService - Adult list retrieved from address 1509 Culver St has size 3
+10:34:30.163 [main] INFO  net.safety.alerts.controller.ChildAlertController - Request launched : http://localhost/childAlert?address=1510%20Culver%20St
+10:34:30.165 [main] DEBUG net.safety.alerts.service.ChildAlertService - When calling getAddressOccurrence, count for address 1510 Culver St is 0.
+10:34:30.243 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Culver
+10:34:30.260 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=culver
+10:34:30.277 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=culveR
+10:34:30.286 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Los%20Angeles
+10:34:30.287 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:34:30.287 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Los Angeles not found in the list of person's address.
+10:34:30.294 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=New%20York
+10:34:30.295 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:34:30.295 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name New York not found in the list of person's address.
+10:34:30.303 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Miami
+10:34:30.309 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:34:30.309 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Miami not found in the list of person's address.
+10:34:30.317 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=Cul%20ver
+10:34:30.319 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:34:30.319 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name Cul ver not found in the list of person's address.
+10:34:30.324 [main] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched : http://localhost/communityEmail?city=%20culver
+10:34:30.326 [main] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [] : 
+10:34:30.327 [main] ERROR net.safety.alerts.service.CommunityEmailService - City name  culver not found in the list of person's address.
+10:34:30.356 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Av
+10:34:30.360 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Av), station number retrieved is null
+10:34:30.362 [main] ERROR net.safety.alerts.service.FireService - No station was retrieved when searching by address for address 834 Binoc Av
+10:34:30.377 [main] INFO  net.safety.alerts.controller.FireController - Request launched : http://localhost/fire?address=834%20Binoc%20Ave
+10:34:30.381 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Ave), station number retrieved is 3
+10:34:30.382 [main] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(834 Binoc Ave), station number retrieved is 3
+10:34:30.385 [main] DEBUG net.safety.alerts.service.FireService - Size of medicalRecords is : 23
+10:34:30.387 [main] DEBUG net.safety.alerts.service.FireService - Size of person list is : 23
+10:34:30.388 [main] DEBUG net.safety.alerts.service.FireService - List of person with medical info is not empty : [PersonMedicalDataDTO(fullName=Tessa Carman, phone=841-874-6512, age=12, medicalInfos={allergies=[], medications=[]})]
+10:34:30.490 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=1&stations=1
+10:34:30.497 [main] DEBUG net.safety.alerts.service.FireStationService - Number of adults retrieved from method getNumberOfAdults(1) is 5
+10:34:30.499 [main] DEBUG net.safety.alerts.service.FireStationService - Number of children retrieved from method getNumberOfChildren(1) is 1
+10:34:30.511 [main] INFO  net.safety.alerts.controller.FireStationController - Request launched : http://localhost/firestation?stationNumber=6&stations=6
+10:34:30.512 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 6 exists in the list of firestations.
+10:34:30.512 [main] DEBUG net.safety.alerts.controller.FireStationController - Station number 6 does not exist.
+10:34:30.532 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=4
+10:34:30.537 [main] INFO  net.safety.alerts.service.FloodService - Get the list of addresses from station number 4
+10:34:30.549 [main] INFO  net.safety.alerts.service.FloodService - Get list of person covered by address 489 Manchester St
+10:34:30.551 [main] DEBUG net.safety.alerts.service.FloodService - List of person covered by address 489 Manchester St : [Person(firstName=Lily, lastName=Cooper, address=489 Manchester St, city=Culver, zip=97451, phone=841-874-9845, email=lily@email.com)]
+10:34:30.556 [main] INFO  net.safety.alerts.service.FloodService - Map list of persons to their medical data
+10:34:30.557 [main] INFO  net.safety.alerts.service.FloodService - Add a list of persons covered by address 489 Manchester St to the list of flood dto
+10:34:30.558 [main] INFO  net.safety.alerts.service.FloodService - Get list of person covered by address 112 Steppes Pl
+10:34:30.558 [main] DEBUG net.safety.alerts.service.FloodService - List of person covered by address 112 Steppes Pl : [Person(firstName=Tony, lastName=Cooper, address=112 Steppes Pl, city=Culver, zip=97451, phone=841-874-6874, email=tcoop@ymail.com), Person(firstName=Ron, lastName=Peters, address=112 Steppes Pl, city=Culver, zip=97451, phone=841-874-8888, email=jpeter@email.com), Person(firstName=Allison, lastName=Boyd, address=112 Steppes Pl, city=Culver, zip=97451, phone=841-874-9888, email=aly@imail.com)]
+10:34:30.558 [main] INFO  net.safety.alerts.service.FloodService - Map list of persons to their medical data
+10:34:30.558 [main] INFO  net.safety.alerts.service.FloodService - Add a list of persons covered by address 112 Steppes Pl to the list of flood dto
+10:34:30.610 [main] INFO  net.safety.alerts.controller.FloodController - Request launched : http://localhost/flood/stations?stations=6
+10:34:30.614 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 6 exists in the list of firestations.
+10:34:30.615 [main] DEBUG net.safety.alerts.controller.FloodController - Station number 6 does not exist.
+10:34:30.687 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:34:30.689 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:34:30.691 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname Boyd exist in the list of person
+10:34:30.691 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:34:30.694 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname Boyd
+10:34:30.694 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.694 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.695 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.695 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.700 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.700 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.700 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.700 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.700 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.700 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.701 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.701 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.708 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=BOYD
+10:34:30.709 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:34:30.711 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname BOYD exist in the list of person
+10:34:30.711 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:34:30.712 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname BOYD
+10:34:30.712 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.712 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.712 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.713 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.713 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.713 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.713 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.713 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.713 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.713 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.714 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.714 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.722 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=boyd
+10:34:30.723 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:34:30.726 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname boyd exist in the list of person
+10:34:30.726 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:34:30.727 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname boyd
+10:34:30.728 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.728 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.728 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.728 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.728 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.728 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.728 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.729 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.729 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.729 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.729 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.729 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.733 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=bOyd
+10:34:30.735 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:34:30.737 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname bOyd exist in the list of person
+10:34:30.737 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:34:30.739 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname bOyd
+10:34:30.739 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.739 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.739 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.739 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.739 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.739 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.740 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.740 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.740 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.740 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.740 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.740 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.796 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Al&lastName=Boyd
+10:34:30.797 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "Al" and lastname Boyd was not found.
+10:34:30.801 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Tessa&lastName=Carma
+10:34:30.803 [main] ERROR net.safety.alerts.controller.PersonInfoController - Person with firstname "Tessa" and lastname Carma was not found.
+10:34:30.809 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=Boyd
+10:34:30.810 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:34:30.812 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname Boyd exist in the list of person
+10:34:30.812 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:34:30.813 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname Boyd
+10:34:30.813 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.813 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.813 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.813 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.814 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.814 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.815 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.815 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname Boyd, create person infos object
+10:34:30.816 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.822 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=BOYD
+10:34:30.823 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:34:30.825 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname BOYD exist in the list of person
+10:34:30.825 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:34:30.826 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname BOYD
+10:34:30.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.826 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.827 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname BOYD, create person infos object
+10:34:30.828 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.840 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=boyd
+10:34:30.843 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:34:30.848 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname boyd exist in the list of person
+10:34:30.848 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:34:30.850 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname boyd
+10:34:30.850 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.850 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.851 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.852 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname boyd, create person infos object
+10:34:30.852 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.856 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName&lastName=bOyd
+10:34:30.858 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:34:30.861 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname null and lastname bOyd exist in the list of person
+10:34:30.862 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:34:30.864 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of persons having the same lastname bOyd
+10:34:30.864 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.864 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : []
+10:34:30.864 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.864 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]})]
+10:34:30.864 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.864 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]})]
+10:34:30.864 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.865 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]})]
+10:34:30.866 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.866 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]})]
+10:34:30.866 [main] DEBUG net.safety.alerts.service.PersonInfoService - For firstname null and lastname bOyd, create person infos object
+10:34:30.866 [main] DEBUG net.safety.alerts.service.PersonInfoService - Adding a person with fullname, address, age, email, medical infos to a  list : [PersonInfoDTO(fullName=John Boyd, address=1509 Culver St, age=39, email=jaboyd@email.com, medicalInfos={allergies=[nillacilan], medications=[aznol:350mg, hydrapermazol:100mg]}), PersonInfoDTO(fullName=Jacob Boyd, address=1509 Culver St, age=34, email=drk@email.com, medicalInfos={allergies=[], medications=[pharmacol:5000mg, terazine:10mg, noznazol:250mg]}), PersonInfoDTO(fullName=Tenley Boyd, address=1509 Culver St, age=12, email=tenz@email.com, medicalInfos={allergies=[peanut], medications=[]}), PersonInfoDTO(fullName=Roger Boyd, address=1509 Culver St, age=6, email=jaboyd@email.com, medicalInfos={allergies=[], medications=[]}), PersonInfoDTO(fullName=Felicia Boyd, address=1509 Culver St, age=38, email=jaboyd@email.com, medicalInfos={allergies=[xilliathal], medications=[tetracyclaz:650mg]})]
+10:34:30.872 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=Allison&lastName=Boyd
+10:34:30.873 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:34:30.875 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname Allison and lastname Boyd exist in the list of person
+10:34:30.875 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : Boyd
+10:34:30.886 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=allison&lastName=BOYD
+10:34:30.887 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:34:30.889 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname allison and lastname BOYD exist in the list of person
+10:34:30.890 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : BOYD
+10:34:30.898 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=allisOn&lastName=boyd
+10:34:30.899 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:34:30.901 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname allisOn and lastname boyd exist in the list of person
+10:34:30.901 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : boyd
+10:34:30.911 [main] INFO  net.safety.alerts.controller.PersonInfoController - Request launched : http://localhost/personInfo?firstName=ALLISON&lastName=bOyd
+10:34:30.911 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:34:30.912 [main] INFO  net.safety.alerts.service.PersonInfoService - Create one single person in the list if firstname ALLISON and lastname bOyd exist in the list of person
+10:34:30.913 [main] INFO  net.safety.alerts.service.PersonInfoService - Create a list of person found with lastname : bOyd
+10:34:30.939 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=3
+10:34:30.945 [main] DEBUG net.safety.alerts.service.PhoneAlertService - Method getPhonesByFireStation(3) returns a list of phones : [841-874-6741, 841-874-6544, 841-874-6874, 841-874-6512, 841-874-6513, 841-874-8888, 841-874-9888]
+10:34:30.955 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=1
+10:34:30.957 [main] DEBUG net.safety.alerts.service.PhoneAlertService - Method getPhonesByFireStation(1) returns a list of phones : [841-874-7784, 841-874-7462, 841-874-6512, 841-874-8547]
+10:34:30.987 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=5
+10:34:30.988 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 5 exists in the list of firestations.
+10:34:30.988 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 5 does not exist.
+10:34:30.993 [main] INFO  net.safety.alerts.controller.PhoneAlertController - Request launched : http://localhost/phoneAlert?firestation=11
+10:34:30.994 [main] DEBUG net.safety.alerts.service.FireStationService - No station number 11 exists in the list of firestations.
+10:34:30.994 [main] DEBUG net.safety.alerts.controller.PhoneAlertController - Station number 11 does not exist.

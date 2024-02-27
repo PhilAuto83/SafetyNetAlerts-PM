@@ -1,5 +1,6 @@
 package net.safety.alerts.controller;
 
+import net.safety.alerts.exceptions.PhoneNotFoundException;
 import net.safety.alerts.service.FireStationService;
 import net.safety.alerts.service.PhoneAlertService;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,6 @@ public class PhoneAlertControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-
     @MockBean
     private PhoneAlertService phoneAlertService;
     @MockBean
@@ -29,6 +29,14 @@ public class PhoneAlertControllerTest {
         when(fireStationService.doesStationNumberExist("2")).thenReturn(true);
         mockMvc.perform(get("/phoneAlert?firestation=2"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void whenPhonesAreEmptyThenReturns404() throws Exception {
+        when(fireStationService.doesStationNumberExist("2")).thenReturn(true);
+        when(phoneAlertService.getPhonesByFireStation("2")).thenThrow(PhoneNotFoundException.class);
+        mockMvc.perform(get("/phoneAlert?firestation=2"))
+                .andExpect(status().isNotFound());
     }
     @Test
     public void testingPhoneAlertControllerReturns400() throws Exception {

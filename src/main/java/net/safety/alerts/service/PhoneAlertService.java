@@ -1,10 +1,9 @@
 package net.safety.alerts.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.dao.FireStationsDAO;
-import net.safety.alerts.dao.MedicalRecordsDAO;
 import net.safety.alerts.dao.PersonsDAO;
+import net.safety.alerts.exceptions.PhoneNotFoundException;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.Person;
 import org.slf4j.Logger;
@@ -39,7 +38,10 @@ public class PhoneAlertService {
                     }
                 }
             }
-
+        }
+        if(phones.isEmpty()){
+            logger.error("No Phone found for station number {}", stationNumber);
+            throw new PhoneNotFoundException(String.format("No Phone found for station number %s", stationNumber));
         }
         logger.debug("Method getPhonesByFireStation({}) returns a list of phones : {}", stationNumber, phones);
         return phones;
