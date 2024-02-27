@@ -2,7 +2,6 @@
 <Configuration status="INFO" monitorInterval="10">
     <Properties>
         <Property name="layout">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
-        <Property name="filename" filePattern="">/target/alerts.log</Property>
     </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
@@ -14,18 +13,16 @@
             </PatternLayout>
             <Policies>
                 <OnStartupTriggeringPolicy />
-                <SizeBasedTriggeringPolicy size="50KB" />
+                <SizeBasedTriggeringPolicy size="200 MB" />
             </Policies>
         </RollingFile>
     </Appenders>
     <Loggers>
         <Root level="error">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="RollingFile"/>
         </Root>
         <Logger name="org.springframework.boot.web.embedded.tomcat" additivity="false" level="info">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="RollingFile"/>
         </Logger>
         <Logger name="net.safety.alerts" additivity="false" level="debug">
             <AppenderRef ref="Console"/>

@@ -66,4 +66,11 @@ public class PhoneAlertIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(expectedSize)));
     }
+
+    @Test
+    public void whenRequestingStation56_thenReturn404() throws Exception {
+        mockMvc.perform(get("/phoneAlert?firestation=56"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No Phone found for station number 56")));
+    }
 }

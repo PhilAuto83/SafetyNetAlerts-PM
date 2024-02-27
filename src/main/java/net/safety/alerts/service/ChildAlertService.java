@@ -23,7 +23,6 @@ import java.util.List;
 public class ChildAlertService {
     private static final Logger logger = LoggerFactory.getLogger(ChildAlertService.class);
 
-
     @Autowired
     private PersonsDAO personsDAO;
     @Autowired

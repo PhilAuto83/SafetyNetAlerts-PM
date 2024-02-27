@@ -16,7 +16,7 @@ public class PersonsDAO extends AlertsDAO {
         return getData().getPersons();
     }
 
-    public void savePersons(List<Person>persons, String fileName){
+    public void savePersons(List<Person>persons){
         AlertsDAO.save(new AlertsData(persons,getData().getFireStations(),getData().getMedicalRecords()));
     }
 }

@@ -52,4 +52,8 @@ public class AlertsDAO {
         AlertsDAO.filePath = newFilePath;
     }
 
+    public static String getFilePath(){
+        return AlertsDAO.filePath;
+    }
+
 }
