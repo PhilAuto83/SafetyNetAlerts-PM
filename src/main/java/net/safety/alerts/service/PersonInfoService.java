@@ -36,10 +36,12 @@ public class PersonInfoService {
             if(firstName !=null && !firstName.isEmpty()){
                 if(person.getFirstName().equalsIgnoreCase(firstName)
                         && person.getLastName().equalsIgnoreCase(lastname)){
+                    logger.debug("Person was found with {} and {}", firstName, lastname);
                     return true;
                 }
             }else{
                 if(person.getLastName().equalsIgnoreCase(lastname)){
+                    logger.debug("Almost one person was found with lastname {}", lastname);
                     return true;
                 }
             }
@@ -53,8 +55,8 @@ public class PersonInfoService {
         List<Person> personFoundWithLastName = personsDAO.getPersons().stream()
                 .filter(person -> person.getLastName().equalsIgnoreCase(lastName))
                 .toList();
+        logger.debug("List of persons found with lastname "+lastName+" : "+personFoundWithLastName);
         List<MedicalRecord>medicalRecords = medicalRecordsDAO.getMedicalRecords();
-        logger.info("Create one single person in the list if firstname {} and lastname {} exist in the list of person", firstName, lastName);
         if(firstName != null && !firstName.isEmpty()){
             for(Person person : personFoundWithLastName){
                 if(person.getFirstName().equalsIgnoreCase(firstName) && person.getLastName().equalsIgnoreCase(lastName)){
@@ -75,7 +77,6 @@ public class PersonInfoService {
     }
     public List<PersonInfoDTO> getPersonList(String firstName, String lastName) throws JsonProcessingException {
         personInfoDTOList = getSinglePersonWithLastNameAndFirstName(firstName, lastName);
-        logger.info("Create a list of person found with lastname : {}",lastName);
         List<Person> personFoundWithLastName = personsDAO.getPersons().stream()
                 .filter(person -> person.getLastName().equalsIgnoreCase(lastName))
                 .toList();
@@ -83,18 +84,18 @@ public class PersonInfoService {
         if(personInfoDTOList.isEmpty()){
             logger.info("Create a list of persons having the same lastname {}", lastName);
             for(Person person : personFoundWithLastName){
-                logger.debug("For firstname {} and lastname {}, create person infos object", firstName, lastName);
                 for (MedicalRecord medicalRecord : medicalRecords) {
                     if (person.getFirstName().equals(medicalRecord.getFirstName()) && person.getLastName().equals(medicalRecord.getLastName())) {
+                        logger.debug("For firstname {} and lastname {}, create person infos object", person.getFirstName(), person.getLastName());
                         Map<String, List<String>> medicalInfos = new HashMap<>();
                         medicalInfos.put("medications", medicalRecord.getMedications());
                         medicalInfos.put("allergies", medicalRecord.getAllergies());
-                        logger.debug("Adding a person with fullname, address, age, email, medical infos to a  list : {}", personInfoDTOList);
                         personInfoDTOList.add(new PersonInfoDTO(person.getFirstName() + " " + person.getLastName(), person.getAddress(),
                                 AlertsUtility.calculateAgeFromDate(medicalRecord.getBirthDate()), person.getEmail(), medicalInfos));
                     }
                 }
             }
+            logger.debug("List of persons with medical data added : {}", personInfoDTOList);
         }
         return personInfoDTOList;
     }

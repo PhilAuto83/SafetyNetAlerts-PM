@@ -30,10 +30,10 @@ public class CommunityEmailService {
             }
         }
         if(emails.isEmpty()){
-            logger.debug(String.format("Emails retrieved from city %s : ", emails));
             logger.error("City name {} not found in the list of person's address.", city);
             throw new CityNotFoundException(String.format("City name %s not found in the list of person's address.", city));
         }
+        logger.debug(String.format("Emails retrieved from city %s : ", emails));
         return emails;
     }
 }
