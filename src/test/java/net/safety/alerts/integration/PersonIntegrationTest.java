@@ -4,10 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.model.Person;
 import net.safety.alerts.service.PersonService;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -71,26 +68,24 @@ public class PersonIntegrationTest {
 
     @Test
     public void updateValidPersonReturns200() throws Exception {
-        Person validPerson2 = new Person("Philip", "Valid", "122 Candy St.",
-                "New York", "78946","111-222-9990","philip@test.fr");
-        mockMvc.perform(post("/person")
-                .content(mapper.writeValueAsString(validPerson2))
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON));
-        validPerson2.setCity("Paris");
-        validPerson2.setAddress("11 rue Marie Curie Paris");
+        validPerson.setCity("Paris");
+        validPerson.setAddress("11 rue Marie Curie Paris");
         mockMvc.perform(put("/person")
-                        .content(mapper.writeValueAsString(validPerson2))
+                        .content(mapper.writeValueAsString(validPerson))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
-                .andExpect(jsonPath("$.firstName",is("Philip")))
+                .andExpect(jsonPath("$.firstName",is("Phil")))
                 .andExpect(jsonPath("$.lastName",is("Valid")))
                 .andExpect(jsonPath("$.city",is("Paris")))
                 .andExpect(jsonPath("$.address",is("11 rue Marie Curie Paris")))
-                .andExpect(jsonPath("$.phone",is("111-222-9990")))
-                .andExpect(jsonPath("$.email",is("philip@test.fr")))
-                .andExpect(jsonPath("$.zip",is("78946")));
+                .andExpect(jsonPath("$.phone",is("111-222-9999")))
+                .andExpect(jsonPath("$.email",is("phil@test.fr")))
+                .andExpect(jsonPath("$.zip",is("78945")));
+        mockMvc.perform(delete("/person")
+                .content(mapper.writeValueAsString(validPerson))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
     }
 
     @Test
@@ -118,12 +113,18 @@ public class PersonIntegrationTest {
     }
     @Test
     public void deletePersonReturns200() throws Exception {
+        Person validPerson3 = new Person("Joe", "Test",
+                "11 rue du fake", "Joecity", "45674","444-555-7987","joe@test.fr");
+        mockMvc.perform(post("/person")
+                .content(mapper.writeValueAsString(validPerson3))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
         mockMvc.perform(delete("/person")
-                        .content(mapper.writeValueAsString(validPerson))
+                        .content(mapper.writeValueAsString(validPerson3))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message", is("Person with firstname Phil and lastname Valid has been deleted")));
+                .andExpect(jsonPath("$.message", is("Person with firstname Joe and lastname Test has been deleted")));
     }
 
     @Test
