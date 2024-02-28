@@ -74,7 +74,6 @@ public class PersonController {
         Map<String, String> params = new HashMap<>();
         params.put("date", new Date().toString());
         params.put("message", String.format("Person with firstname %s and lastname %s has been deleted", person.getFirstName(), person.getLastName()));
-        params.put("status code", HttpStatus.OK.name());
         return ResponseEntity.ok(params);
     }
 }

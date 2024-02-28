@@ -81,6 +81,83 @@ public class PersonControllerTest {
                 .andExpect(status().is(204));
     }
 
+    @Test
+    public void updateNonExistingPersonReturns404() throws Exception {
+        when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(false);
+       mockMvc.perform(put("/person")
+                        .content(mapper.writeValueAsString(rightPerson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(404))
+               .andExpect(jsonPath("$.message", is("No person found with firstname Jo-Jo and lastname Palmas")));
+    }
+
+    @Test
+    public void updateExistingPersonReturns200() throws Exception {
+        when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(true);
+        when(personService.update(rightPerson)).thenReturn(rightPerson);
+        mockMvc.perform(put("/person")
+                        .content(mapper.writeValueAsString(rightPerson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.firstName",is("Jo-Jo")))
+                .andExpect(jsonPath("$.lastName",is("Palmas")))
+                .andExpect(jsonPath("$.city",is("New York")))
+                .andExpect(jsonPath("$.address",is("123 Jojo ave")));
+    }
+
+    @Test
+    public void updateMalFormedPersonReturns400() throws Exception {
+        mockMvc.perform(put("/person")
+                        .content(mapper.writeValueAsString(malformedPerson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("should contain only letters, '-' or space, start with capital letter, have minimum two characters and match following examples  Li An, Li-An or Lo")))
+                .andExpect(jsonPath("$.message", containsString("should have 5 digits")))
+                .andExpect(jsonPath("$.message", containsString("must start with capital letter and can contain whitespace following theses examples New York or Miami")))
+                .andExpect(jsonPath("$.message", containsString("number should respect format example '123-456-9999'")))
+                .andExpect(jsonPath("$.message", containsString("format is not valid")));
+    }
+
+    @Test
+    public void deleteUnknownPersonReturns404() throws Exception {
+        when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(false);
+        mockMvc.perform(delete("/person")
+                        .content(mapper.writeValueAsString(rightPerson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No person found with firstname Jo-Jo and lastname Palmas")));
+    }
+
+    @Test
+    public void deleteMalFormedPersonReturns400() throws Exception {
+        mockMvc.perform(delete("/person")
+                        .content(mapper.writeValueAsString(malformedPerson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("should contain only letters, '-' or space, start with capital letter, have minimum two characters and match following examples  Li An, Li-An or Lo")))
+                .andExpect(jsonPath("$.message", containsString("should have 5 digits")))
+                .andExpect(jsonPath("$.message", containsString("must start with capital letter and can contain whitespace following theses examples New York or Miami")))
+                .andExpect(jsonPath("$.message", containsString("number should respect format example '123-456-9999'")))
+                .andExpect(jsonPath("$.message", containsString("format is not valid")));
+    }
+
+    @Test
+    public void deleteValidPersonReturns200() throws Exception {
+        when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(true);
+        mockMvc.perform(delete("/person")
+                        .content(mapper.writeValueAsString(rightPerson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("Person with firstname Jo-Jo and lastname Palmas has been deleted")));
+
+    }
+
 
 
 
