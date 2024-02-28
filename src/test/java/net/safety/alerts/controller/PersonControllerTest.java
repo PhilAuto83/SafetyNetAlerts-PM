@@ -1,10 +1,8 @@
 package net.safety.alerts.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.model.Person;
 import net.safety.alerts.service.PersonService;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -48,30 +48,43 @@ public class PersonControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                         .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message", containsString("must start with 2 letters and can contain whitespace or '-'")))
+                .andExpect(jsonPath("$.message", containsString("should contain only letters, '-' or space, start with capital letter, have minimum two characters and match following examples  Li An, Li-An or Lo")))
                 .andExpect(jsonPath("$.message", containsString("should have 5 digits")))
-                .andExpect(jsonPath("$.message", containsString("should contains only letters and minimum 2")))
+                .andExpect(jsonPath("$.message", containsString("must start with capital letter and can contain whitespace following theses examples New York or Miami")))
                 .andExpect(jsonPath("$.message", containsString("number should respect format example '123-456-9999'")))
-                .andExpect(jsonPath("$.message", containsString("format is not valid, minimum format should be 'a@bc.fr'")));
+                .andExpect(jsonPath("$.message", containsString("format is not valid")));
     }
 
     @Test
     public void testingWellformedPersonReturns201() throws Exception {
         when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(false);
+        when(personService.save(rightPerson)).thenReturn(rightPerson);
         mockMvc.perform(post("/person")
                         .content(mapper.writeValueAsString(rightPerson))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().is(201));
+                .andExpect(status().is(201))
+                .andExpect(jsonPath("$.firstName",is("Jo-Jo")))
+                .andExpect(jsonPath("$.lastName",is("Palmas")))
+                .andExpect(jsonPath("$.city",is("New York")))
+                .andExpect(jsonPath("$.address",is("123 Jojo ave")));
     }
 
-//    @Test
-//    public void testingPersonAlreadyInFileReturns204() throws Exception {
-//        when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(true);
-//        mockMvc.perform(post("/person")
-//                        .content(mapper.writeValueAsString(rightPerson))
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().is(204));
-//    }
+    @Test
+    public void postExistingPersonReturns204() throws Exception {
+        when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(true);
+        when(personService.save(rightPerson)).thenReturn(rightPerson);
+        mockMvc.perform(post("/person")
+                        .content(mapper.writeValueAsString(rightPerson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(204));
+    }
+
+
+
+
+
+
+
 }
