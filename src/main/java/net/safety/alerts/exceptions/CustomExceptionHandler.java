@@ -30,6 +30,7 @@ public class CustomExceptionHandler{
             errorBody.put("timestamp", new Date());
             errorBody.put("status", HttpStatus.BAD_REQUEST.value());
             errorBody.put("message", messagesWithOutPropertyPath);
+            errorBody.put("method", request.getMethod());
             errorBody.put("path", request.getRequestURL());
             errorBody.put("params",  request.getParameterMap());
             return errorBody;
@@ -40,6 +41,7 @@ public class CustomExceptionHandler{
     public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) throws IOException {
 
         Map<String, Object> errorBody = new HashMap<>();
+        errorBody.put("method", request.getMethod());
         errorBody.put("path", request.getRequestURL());
         errorBody.put("timestamp", new Date());
         errorBody.put("status", HttpStatus.BAD_REQUEST.value());
@@ -56,6 +58,7 @@ public class CustomExceptionHandler{
         errorBody.put("timestamp", new Date());
         errorBody.put("status", HttpStatus.NOT_FOUND.value());
         errorBody.put("message", ex.getMessage());
+        errorBody.put("method", request.getMethod());
         errorBody.put("path", request.getRequestURL());
         errorBody.put("params",  request.getParameterMap());
         return errorBody;

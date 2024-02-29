@@ -19,10 +19,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 import java.util.List;
+import java.util.Objects;
 
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -120,4 +122,28 @@ public class FireStationControllerTest {
                 .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")))
                 .andExpect(jsonPath("$.message", containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
     }
+
+    @Test
+    public void whenInValidStationReturns400() throws Exception {
+        FireStation stationWithSpaces = new FireStation(" ", " ");
+        mockMvc.perform(post("/firestation")
+                        .content(AlertsUtility.convertObjectToString(stationWithSpaces))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")))
+                .andExpect(jsonPath("$.message", containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
+    }
+
+    @Test
+    public void whenPassingNullFireStationObjectReturns400() throws Exception {
+        mockMvc.perform(post("/firestation")
+                        .content("{}")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("address: cannot be null")))
+                .andExpect(jsonPath("$.message", containsString("station: cannot be null")));
+    }
+
 }

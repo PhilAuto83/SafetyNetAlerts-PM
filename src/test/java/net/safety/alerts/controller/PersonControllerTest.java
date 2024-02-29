@@ -54,6 +54,16 @@ public class PersonControllerTest {
                 .andExpect(jsonPath("$.message", containsString("number should respect format example '123-456-9999'")))
                 .andExpect(jsonPath("$.message", containsString("format is not valid")));
     }
+    @Test
+    public void whenPassingNullPersonObjectReturns400() throws Exception {
+        mockMvc.perform(post("/person")
+                        .content("{}")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("firstName: cannot be null")))
+                .andExpect(jsonPath("$.message", containsString("lastName: cannot be null")));
+    }
 
     @Test
     public void testingWellformedPersonReturns201() throws Exception {
