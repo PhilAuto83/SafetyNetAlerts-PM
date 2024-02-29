@@ -39,7 +39,7 @@ public class FireStationController {
                 .fromCurrentRequest()
                 .replaceQueryParam("stationNumber", stationNumber)
                 .toUriString();
-        logger.info("Request launched : {}", currentRequest);
+        logger.info("Request launched to get person covered by a fire station through station number : {}", currentRequest);
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
             logger.debug("Station number {} does not exist.", stationNumber);
             throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));

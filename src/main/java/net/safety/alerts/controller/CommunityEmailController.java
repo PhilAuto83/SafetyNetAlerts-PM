@@ -28,7 +28,7 @@ public class CommunityEmailController {
                 .fromCurrentRequest()
                 .replaceQueryParam("city", city)
                 .toUriString();
-        logger.info("Request launched : {}", currentRequest);
+        logger.info("Request launched to retrieve email list from city : {}", currentRequest);
         return communityEmailService.getEmailsFromCity(city);
     }
 }

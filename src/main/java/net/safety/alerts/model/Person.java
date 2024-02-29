@@ -17,7 +17,7 @@ public class Person {
     private String firstName;
     @Pattern(regexp = "^[A-Z][a-z]+$", message="should contain only letters and start with capital letter")
     private String lastName;
-    @Pattern(regexp = "^[1-9]+[a-zA-Z0-9\\s.]{4,}$", message="must start with a digit and can contain only spaces, '.', digits or letters")
+    @Pattern(regexp = "^[1-9]+[a-zA-Z0-9\\s.]{4,}$", message="must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")
     private String address;
     @Pattern(regexp = "^[A-Z][a-z]{2,}$|^[A-Z][a-z]{2,}[\\s][A-Z][a-z]{2,}$", message="must start with capital letter and can contain whitespace following theses examples New York or Miami")
     private String city;

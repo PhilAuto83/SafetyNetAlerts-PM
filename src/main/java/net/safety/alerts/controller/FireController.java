@@ -28,7 +28,7 @@ public class FireController {
                 .fromCurrentRequest()
                 .replaceQueryParam("address", address)
                 .toUriString();
-        logger.info("Request launched : {}", currentRequest);
+        logger.info("Request launched to get persons medical data  by address for fire incident : {}", currentRequest);
         return fireService.getPersonMedicalInfoByAddress(address);
 
     }

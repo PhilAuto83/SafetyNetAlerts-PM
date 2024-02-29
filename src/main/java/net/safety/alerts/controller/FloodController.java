@@ -36,7 +36,7 @@ public class FloodController {
                 .fromCurrentRequest()
                 .replaceQueryParam("stations", stationNumber)
                 .toUriString();
-        logger.info("Request launched : {}", currentRequest);
+        logger.info("Request launched to get persons medical data by stationNumber for flood incident : {}", currentRequest);
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
             logger.debug("Station number {} does not exist.", stationNumber);
             throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));

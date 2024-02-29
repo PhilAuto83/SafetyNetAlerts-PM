@@ -1,6 +1,7 @@
 package net.safety.alerts.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import net.safety.alerts.exceptions.PersonNotFoundException;
@@ -9,6 +10,7 @@ import net.safety.alerts.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,7 @@ import java.util.Map;
 public class PersonController {
 
     private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     private PersonService personService;
@@ -36,9 +39,10 @@ public class PersonController {
         }
         URI currentUri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .buildAndExpand(person)
+                .buildAndExpand()
                 .toUri();
         logger.info("Request to create a person launched : {}", currentUri);
+        logger.info("Request payload : {}", mapper.writeValueAsString(person));
 
         return ResponseEntity.created(currentUri).body(personService.save(person));
     }
@@ -52,10 +56,10 @@ public class PersonController {
         }
         URI currentUri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .buildAndExpand(person)
+                .buildAndExpand()
                 .toUri();
         logger.info("Request to update a person launched : {}", currentUri);
-
+        logger.info("Request payload : {}", mapper.writeValueAsString(person));
         return ResponseEntity.ok(personService.update(person));
     }
 
@@ -63,9 +67,10 @@ public class PersonController {
     public ResponseEntity<Map<String, String>> delete(@Valid @RequestBody Person person) throws JsonProcessingException {
         URI currentUri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .buildAndExpand(person)
+                .buildAndExpand()
                 .toUri();
         logger.info("Request to delete a person launched : {}", currentUri);
+        logger.info("Request payload : {}", mapper.writeValueAsString(person));
         if(!personService.doesPersonAlreadyExist(person)){
             logger.error("No person found with firstname {} and lastname {}", person.getFirstName(), person.getLastName());
             throw new PersonNotFoundException(String.format("No person found with firstname %s and lastname %s", person.getFirstName(), person.getLastName()));

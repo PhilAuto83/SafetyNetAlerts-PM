@@ -32,7 +32,7 @@ public class ChildAlertController {
                 .fromCurrentRequest()
                 .replaceQueryParam("address", address)
                 .toUriString();
-        logger.info("Request launched : {}", currentRequest);
+        logger.info("Request launched to get children's list by address : {}", currentRequest);
         if(childAlertService.getAddressOccurrence(address)==0){
             throw new AddressNotFoundException("This address '"+address+"' has no person related to it.");
         }

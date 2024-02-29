@@ -30,14 +30,14 @@ public class PhoneAlertController {
     private FireStationService fireStationService;
 
     @GetMapping("/phoneAlert")
-    public Set<String> getPhonesByFireStation(@RequestParam("firestation") @NotBlank @Pattern(regexp ="^[1-9]\\d?$",
+    public Set<String> getPhonesByFireStation(@RequestParam("firestation") @Pattern(regexp ="^[1-9]\\d?$",
             message="station number must be positive with maximum 2 digits whose minimum value starts at 1") String stationNumber) throws JsonProcessingException {
         Set<String> phones = new HashSet<>();
         String currentRequest = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .replaceQueryParam("firestation", stationNumber)
                 .toUriString();
-        logger.info("Request launched : {}", currentRequest);
+        logger.info("Request launched to get a list of phones covered by fire station  : {}", currentRequest);
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
             logger.debug("Station number {} does not exist.", stationNumber);
             throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));

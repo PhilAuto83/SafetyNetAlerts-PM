@@ -37,7 +37,7 @@ public class PersonInfoController {
                 .replaceQueryParam("firstName", firstName)
                 .replaceQueryParam("lastName", lastName)
                 .toUriString();
-        logger.info("Request launched : {}", currentRequest);
+        logger.info("Request launched to get a person or a list of persons info through firstname and lastname : {}", currentRequest);
         if(!personInfoService.doesPersonExists(firstName, lastName)){
             logger.error("Person with firstname \"{}\" and lastname {} was not found.", firstName, lastName);
             throw new PersonNotFoundException(String.format("Person with firstname '%s' and lastname '%s' was not found.", firstName, lastName));
