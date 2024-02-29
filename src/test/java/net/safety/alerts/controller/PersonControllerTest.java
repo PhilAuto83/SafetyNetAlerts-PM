@@ -132,6 +132,17 @@ public class PersonControllerTest {
     }
 
     @Test
+    public void updatePassingNullPersonObjectReturns400() throws Exception {
+        mockMvc.perform(put("/person")
+                        .content("{}")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("firstName: cannot be null")))
+                .andExpect(jsonPath("$.message", containsString("lastName: cannot be null")));
+    }
+
+    @Test
     public void deleteUnknownPersonReturns404() throws Exception {
         when(personService.doesPersonAlreadyExist(rightPerson)).thenReturn(false);
         mockMvc.perform(delete("/person")
@@ -140,6 +151,17 @@ public class PersonControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.message", is("No person found with firstname Jo-Jo and lastname Palmas")));
+    }
+
+    @Test
+    public void deletePassingNullPersonObjectReturns400() throws Exception {
+        mockMvc.perform(put("/person")
+                        .content("{}")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("firstName: cannot be null")))
+                .andExpect(jsonPath("$.message", containsString("lastName: cannot be null")));
     }
 
     @Test
@@ -167,11 +189,6 @@ public class PersonControllerTest {
                 .andExpect(jsonPath("$.message", is("Person with firstname Jo-Jo and lastname Palmas has been deleted")));
 
     }
-
-
-
-
-
 
 
 }
