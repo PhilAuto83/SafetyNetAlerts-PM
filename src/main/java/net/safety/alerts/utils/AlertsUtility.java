@@ -1,6 +1,8 @@
 package net.safety.alerts.utils;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import net.safety.alerts.exceptions.PersonNotFoundException;
@@ -19,6 +21,8 @@ import java.util.Map;
 import static java.time.temporal.ChronoUnit.YEARS;
 
 public final class AlertsUtility {
+
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     public static int calculateAgeFromDate(LocalDate birthDate){
         return (int)YEARS.between(birthDate, LocalDate.now());
@@ -67,5 +71,9 @@ public final class AlertsUtility {
             }
         }
         return medicalData;
+    }
+
+    public static String convertObjectToString(Object object) throws JsonProcessingException {
+        return mapper.writeValueAsString(object);
     }
 }

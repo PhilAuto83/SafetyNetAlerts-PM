@@ -2,24 +2,22 @@ package net.safety.alerts.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import net.safety.alerts.dto.PersonByFireStation;
 import net.safety.alerts.exceptions.StationNumberNotFoundException;
+import net.safety.alerts.model.FireStation;
 import net.safety.alerts.service.FireStationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import static org.springframework.http.ResponseEntity.ok;
+import java.net.URI;
 
 
 @RestController
@@ -27,6 +25,7 @@ import static org.springframework.http.ResponseEntity.ok;
 public class FireStationController {
 
     private static final Logger logger = LoggerFactory.getLogger(FireStationController.class);
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     private FireStationService fireStationService;
@@ -50,5 +49,23 @@ public class FireStationController {
             logger.error(e.toString());
         }
         return personByFireStation;
+    }
+
+    @PostMapping(value ="/firestation", consumes={"application/json"}, produces ={"application/json"})
+    public ResponseEntity<FireStation> create(@Valid @RequestBody FireStation fireStation) throws JsonProcessingException{
+        if(fireStationService.doesStationAlreadyExist(fireStation)) {
+            logger.debug("Fire station with number {} and address {} already exists in file", fireStation.getStation(),
+                    fireStation.getAddress());
+            return ResponseEntity.noContent().build();
+        }
+        URI currentUri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .buildAndExpand()
+                .toUri();
+        logger.info("Request to create a person launched : {}", currentUri);
+        logger.info("Request payload : {}", mapper.writeValueAsString(fireStation));
+
+        return ResponseEntity.created(currentUri).body(fireStationService.save(fireStation));
+
     }
 }

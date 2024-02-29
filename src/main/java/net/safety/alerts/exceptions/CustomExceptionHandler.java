@@ -2,7 +2,6 @@ package net.safety.alerts.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
-import net.safety.alerts.utils.AlertsUtility;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -45,7 +44,6 @@ public class CustomExceptionHandler{
         errorBody.put("timestamp", new Date());
         errorBody.put("status", HttpStatus.BAD_REQUEST.value());
         errorBody.put("message", Objects.requireNonNull(ex.getDetailMessageArguments())[1]);
-
         return errorBody;
     }
 

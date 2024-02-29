@@ -2,7 +2,9 @@ package net.safety.alerts.integration;
 
 
 import net.safety.alerts.dao.AlertsDAO;
+import net.safety.alerts.model.FireStation;
 import net.safety.alerts.service.FireStationService;
+import net.safety.alerts.utils.AlertsUtility;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -17,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -28,6 +31,7 @@ public class FireStationIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
+
 
     @BeforeAll
     public static void setUpDataSource(){
@@ -66,5 +70,6 @@ public class FireStationIntegrationTest {
                 .andExpect(jsonPath("$.message",containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
 
     }
+
 
 }

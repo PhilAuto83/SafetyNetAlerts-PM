@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Service
 public class FireStationService {
@@ -90,4 +91,20 @@ public class FireStationService {
         return  new PersonByFireStation(getRestrictedPersonInfoByStationNumber(stationNumber),getNumberOfAdults(stationNumber), getNumberOfChildren(stationNumber));
     }
 
+    public boolean doesStationAlreadyExist(FireStation fireStation) throws JsonProcessingException {
+        AtomicBoolean isFound = new AtomicBoolean(false);
+        fireStationsDAO.getFireStations().forEach(station ->  {
+            if(station.equals(fireStation)){
+                isFound.set(true);
+            }
+        });
+        return isFound.get();
+    }
+
+    public FireStation save(FireStation fireStation) throws JsonProcessingException {
+        List<FireStation> fireStations = fireStationsDAO.getFireStations();
+        fireStations.add(fireStation);
+        fireStationsDAO.saveStations(fireStations);
+        return fireStationsDAO.getFireStations().getLast();
+    }
 }
