@@ -1,7 +1,6 @@
 package net.safety.alerts.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import net.safety.alerts.exceptions.StationNumberNotFoundException;
 import net.safety.alerts.service.FireStationService;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import java.util.HashSet;
 import java.util.Set;
 

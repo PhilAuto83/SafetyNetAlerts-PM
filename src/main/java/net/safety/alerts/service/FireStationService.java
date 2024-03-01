@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Service
 public class FireStationService {
@@ -91,11 +90,11 @@ public class FireStationService {
         return  new PersonByFireStation(getRestrictedPersonInfoByStationNumber(stationNumber),getNumberOfAdults(stationNumber), getNumberOfChildren(stationNumber));
     }
 
-    public boolean doesStationAlreadyExist(FireStation fireStation) throws JsonProcessingException {
+    public boolean doesStationAlreadyExist(String address, String number) throws JsonProcessingException {
         boolean isFound = false;
         for(FireStation fireStationInFile : fireStationsDAO.getFireStations()){
-            if (fireStationInFile.getStation().equalsIgnoreCase(fireStation.getStation())
-                    && fireStationInFile.getAddress().equalsIgnoreCase(fireStation.getAddress().trim()))
+            if (fireStationInFile.getStation().equalsIgnoreCase(number)
+                    && fireStationInFile.getAddress().equalsIgnoreCase(address.trim()))
              {
                 return true;
             }
@@ -135,5 +134,22 @@ public class FireStationService {
                 logger.info("Station was not removed from list");
             }
         }
+    }
+
+    public FireStation update(String address, String newStation) throws JsonProcessingException {
+        List<FireStation> fireStations = fireStationsDAO.getFireStations();
+        logger.debug("Try to update station with address {} from alerts data file", address);
+        fireStations.removeIf(stationInFile -> {
+            return stationInFile.getAddress().equalsIgnoreCase(address);
+        });
+        fireStations.add(new FireStation(address, newStation));
+        fireStationsDAO.saveStations(fireStations);
+        for(FireStation stationInFile : fireStationsDAO.getFireStations()){
+            if(stationInFile.getAddress().equalsIgnoreCase(address)){
+                logger.info("Station was not removed from list");
+            }
+        }
+        return fireStationsDAO.getFireStations().getLast();
+
     }
 }

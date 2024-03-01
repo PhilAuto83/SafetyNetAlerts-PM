@@ -81,7 +81,7 @@ public class FireStationControllerTest {
 
     @Test
     public void createValidFireStationReturns200() throws Exception {
-        when(fireStationService.doesStationAlreadyExist(VALID_STATION)).thenReturn(false);
+        when(fireStationService.doesStationAlreadyExist(VALID_STATION.getAddress(), VALID_STATION.getStation())).thenReturn(false);
         when(fireStationService.save(VALID_STATION)).thenReturn(VALID_STATION);
         mockMvc.perform(post("/firestation")
                         .content(AlertsUtility.convertObjectToString(VALID_STATION))
@@ -93,7 +93,7 @@ public class FireStationControllerTest {
     }
     @Test
     public void whenPostingExistingStationReturns204() throws Exception {
-        when(fireStationService.doesStationAlreadyExist(VALID_STATION)).thenReturn(true);
+        when(fireStationService.doesStationAlreadyExist(VALID_STATION.getAddress(), VALID_STATION.getStation())).thenReturn(true);
         mockMvc.perform(post("/firestation")
                         .content(AlertsUtility.convertObjectToString(VALID_STATION))
                         .contentType(MediaType.APPLICATION_JSON)
@@ -191,6 +191,49 @@ public class FireStationControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void whenUpdateWithUnknownStationReturns404() throws Exception {
+        FireStation fireStation = new FireStation("11 rue de Paris", "34");
+        when(fireStationService.doesNumberOrAddressExists("11 rue de Paris")).thenReturn(false);
+        when(fireStationService.doesStationAlreadyExist(fireStation.getAddress(), fireStation.getStation())).thenReturn(false);
+        mockMvc.perform(put("/firestation/11 rue de Paris/stationNumber=34")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No station found with address 11 rue de Paris")));
+    }
+
+    @Test
+    public void whenUpdateWithExistingStationReturns204() throws Exception {
+        when(fireStationService.doesNumberOrAddressExists("11 rue de Paris")).thenReturn(true);
+        when(fireStationService.doesStationAlreadyExist("11 rue de Paris", "34")).thenReturn(true);
+        mockMvc.perform(put("/firestation/11 rue de Paris/stationNumber=34")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(204));
+    }
+
+    @Test
+    public void whenUpdateWithValidStationReturns200() throws Exception {
+        FireStation validStation34 = new FireStation("11 rue de Paris", "34");
+        when(fireStationService.doesNumberOrAddressExists("11 rue de Paris")).thenReturn(true);
+        when(fireStationService.doesStationAlreadyExist("11 rue de Paris", "34")).thenReturn(false);
+        when(fireStationService.update("11 rue de Paris", "34")).thenReturn(validStation34);
+        mockMvc.perform(put("/firestation/11 rue de Paris/stationNumber=34")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+    @Test
+    public void whenUpdateWithMalformedStationReturns400() throws Exception {
+        mockMvc.perform(put("/firestation/rue de Paris/stationNumber=344")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters")))
+                .andExpect((jsonPath("$.message", containsString("number must be positive with maximum 2 digits whose minimum value starts at 1"))));
     }
 
 }

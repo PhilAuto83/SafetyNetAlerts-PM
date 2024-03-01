@@ -172,6 +172,27 @@ public class FireStationIntegrationTest {
                 .andExpect(jsonPath("$.message", is("List of stations with number or address 6 rue de Paris have been removed successfully")));
     }
 
+    @Test
+    public void whenUpdateWithUnknownStationReturns404() throws Exception {
+        mockMvc.perform(put("/firestation/1100 rue de Paris/stationNumber=34")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No station found with address 1100 rue de Paris")));
+    }
+
+    @Test
+    public void whenUpdateWithValidStationReturns200() throws Exception {
+        FireStation validStation34 = new FireStation("11 rue de Paris", "34");
+        mockMvc.perform(put("/firestation/748 Townings Dr/stationNumber=34")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.address", is("748 Townings Dr")))
+                .andExpect(jsonPath("$.station", is("34")));
+    }
+
+
 
 
 

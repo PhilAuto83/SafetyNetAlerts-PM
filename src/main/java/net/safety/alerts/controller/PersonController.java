@@ -3,7 +3,6 @@ package net.safety.alerts.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import net.safety.alerts.exceptions.PersonNotFoundException;
 import net.safety.alerts.model.Person;
 import net.safety.alerts.service.PersonService;
