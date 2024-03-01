@@ -107,4 +107,20 @@ public class FireStationService {
         fireStationsDAO.saveStations(fireStations);
         return fireStationsDAO.getFireStations().getLast();
     }
+
+    public void remove(String numberOrAddress) throws JsonProcessingException {
+        List<FireStation> fireStations = fireStationsDAO.getFireStations();
+        logger.debug("Try to remove station with number or address {} from alerts data file", numberOrAddress);
+        fireStations.removeIf(stationInFile -> {
+            return (stationInFile.getStation().equalsIgnoreCase(numberOrAddress.trim())
+                    || stationInFile.getAddress().equalsIgnoreCase(numberOrAddress.trim()));
+        });
+        fireStationsDAO.saveStations(fireStations);
+        for(FireStation stationInFile : fireStationsDAO.getFireStations()){
+            if(stationInFile.getStation().equalsIgnoreCase(numberOrAddress.trim())
+                    || stationInFile.getAddress().equalsIgnoreCase(numberOrAddress.trim())){
+                logger.info("Station was not removed from list");
+            }
+        }
+    }
 }

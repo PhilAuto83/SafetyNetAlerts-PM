@@ -102,10 +102,7 @@ public class PersonIntegrationTest {
 
     @Test
     public void deleteUnknownPersonReturns404() throws Exception {
-        Person unknown = new Person("Fail", "Fail",
-                "11 rue du fail", "Failcity", "45678","444-555-6987","fail@test.fr");
-        mockMvc.perform(delete("/person")
-                        .content(mapper.writeValueAsString(unknown))
+        mockMvc.perform(delete("/person/Fail/Fail")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -119,7 +116,7 @@ public class PersonIntegrationTest {
                 .content(mapper.writeValueAsString(validPerson3))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
-        mockMvc.perform(delete("/person")
+        mockMvc.perform(delete("/person/Joe/Test")
                         .content(mapper.writeValueAsString(validPerson3))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))

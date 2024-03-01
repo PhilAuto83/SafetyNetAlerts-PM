@@ -2,7 +2,6 @@ package net.safety.alerts.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import net.safety.alerts.dto.PersonInfoDTO;
 import net.safety.alerts.exceptions.PersonNotFoundException;
@@ -39,7 +38,7 @@ public class PersonInfoController {
                 .toUriString();
         logger.info("Request launched to get a person or a list of persons info through firstname and lastname : {}", currentRequest);
         if(!personInfoService.doesPersonExists(firstName, lastName)){
-            logger.error("Person with firstname \"{}\" and lastname {} was not found.", firstName, lastName);
+            logger.error("Person with firstname \"{}\" and lastname \"{}\" was not found.", firstName, lastName);
             throw new PersonNotFoundException(String.format("Person with firstname '%s' and lastname '%s' was not found.", firstName, lastName));
         }
         return personInfoService.getPersonList(firstName, lastName);

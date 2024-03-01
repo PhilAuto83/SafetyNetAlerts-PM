@@ -32,13 +32,16 @@ public class CustomExceptionHandler{
             errorBody.put("message", messagesWithOutPropertyPath);
             errorBody.put("method", request.getMethod());
             errorBody.put("path", request.getRequestURL());
-            errorBody.put("params",  request.getParameterMap());
-            return errorBody;
+            if(request.getMethod().equals("GET")){
+                errorBody.put("params",  request.getParameterMap());
+            }
+        return errorBody;
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) throws IOException {
+
 
         Map<String, Object> errorBody = new HashMap<>();
         errorBody.put("method", request.getMethod());
@@ -60,7 +63,9 @@ public class CustomExceptionHandler{
         errorBody.put("message", ex.getMessage());
         errorBody.put("method", request.getMethod());
         errorBody.put("path", request.getRequestURL());
-        errorBody.put("params",  request.getParameterMap());
+        if(request.getMethod().equals("GET")){
+            errorBody.put("params",  request.getParameterMap());
+        }
         return errorBody;
     }
 }

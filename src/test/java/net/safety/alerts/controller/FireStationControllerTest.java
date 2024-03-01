@@ -26,8 +26,7 @@ import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = FireStationController.class)
@@ -110,7 +109,7 @@ public class FireStationControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")))
-                .andExpect(jsonPath("$.message", containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
+                .andExpect(jsonPath("$.message", containsString("number must be positive with maximum 2 digits whose minimum value starts at 1")));
     }
     @Test
     public void whenPostingEmptyStationReturns400() throws Exception {
@@ -120,7 +119,7 @@ public class FireStationControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")))
-                .andExpect(jsonPath("$.message", containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
+                .andExpect(jsonPath("$.message", containsString("number must be positive with maximum 2 digits whose minimum value starts at 1")));
     }
 
     @Test
@@ -132,7 +131,7 @@ public class FireStationControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")))
-                .andExpect(jsonPath("$.message", containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
+                .andExpect(jsonPath("$.message", containsString("number must be positive with maximum 2 digits whose minimum value starts at 1")));
     }
 
     @Test
@@ -145,5 +144,8 @@ public class FireStationControllerTest {
                 .andExpect(jsonPath("$.message", containsString("address: cannot be null")))
                 .andExpect(jsonPath("$.message", containsString("station: cannot be null")));
     }
+
+
+
 
 }

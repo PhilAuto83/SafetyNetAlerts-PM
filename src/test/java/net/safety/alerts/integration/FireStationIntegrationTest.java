@@ -18,8 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -67,9 +66,58 @@ public class FireStationIntegrationTest {
     public void testingBadRequestWithStationNumberEmpty(String stationNumber) throws Exception {
         mockMvc.perform(get("/firestation?stationNumber="+stationNumber))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message",containsString("station number must be positive with maximum 2 digits whose minimum value starts at 1")));
+                .andExpect(jsonPath("$.message",containsString("number must be positive with maximum 2 digits whose minimum value starts at 1")));
 
     }
+
+    @Test
+    public void createStationReturns200() throws Exception {
+        FireStation validStation = new FireStation("10th downing street", "99");
+        mockMvc.perform(post("/firestation")
+                .content(AlertsUtility.convertObjectToString(validStation))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(201))
+                .andExpect(jsonPath("$.address", is("10th downing street")))
+                .andExpect(jsonPath("$.station", is("99")));
+    }
+
+    @Test
+    public void createInValidStationReturns400() throws Exception {
+        FireStation validStation = new FireStation("Th downing street", "9966");
+        mockMvc.perform(post("/firestation")
+                        .content(AlertsUtility.convertObjectToString(validStation))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(400))
+                .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")))
+                .andExpect(jsonPath("$.message", containsString("number must be positive with maximum 2 digits whose minimum value starts at 1")));
+    }
+
+    @Test
+    public void createEmptyStationReturns400() throws Exception {
+        FireStation validStation = new FireStation("", "");
+        mockMvc.perform(post("/firestation")
+                        .content(AlertsUtility.convertObjectToString(validStation))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(400))
+                .andExpect(jsonPath("$.message", containsString("must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")))
+                .andExpect(jsonPath("$.message", containsString("number must be positive with maximum 2 digits whose minimum value starts at 1")));
+    }
+
+    @Test
+    public void createEmptyJsonReturns400() throws Exception {
+        mockMvc.perform(post("/firestation")
+                        .content("{}")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(400))
+                .andExpect(jsonPath("$.message", containsString("cannot be null")))
+                .andExpect(jsonPath("$.message", containsString(" cannot be null")));
+    }
+
+
 
 
 }

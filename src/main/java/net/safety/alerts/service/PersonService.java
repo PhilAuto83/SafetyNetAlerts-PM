@@ -29,6 +29,15 @@ public class PersonService {
         return false;
     }
 
+    public boolean areFirstNameAndLastnamePresent(String firstName, String lastName) throws JsonProcessingException {
+        for(Person personInFile : personsDAO.getPersons()){
+            if(personInFile.getFirstName().equalsIgnoreCase(firstName)&& personInFile.getLastName().equalsIgnoreCase(lastName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Person save(Person person) throws JsonProcessingException {
         List<Person> persons = personsDAO.getPersons();
         persons.add(person);
