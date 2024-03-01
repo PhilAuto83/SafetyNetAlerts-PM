@@ -145,7 +145,52 @@ public class FireStationControllerTest {
                 .andExpect(jsonPath("$.message", containsString("station: cannot be null")));
     }
 
+    @Test
+    public void whenDeletingValidAddressReturns200() throws Exception {
+        when(fireStationService.doesNumberOrAddressExists("2th Elvis Blvd")).thenReturn(true);
+        mockMvc.perform(delete("/firestation/2th Elvis Blvd")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("List of stations with number or address 2th Elvis Blvd have been removed successfully")));
+    }
 
+    @Test
+    public void whenDeletingValidNumberReturns200() throws Exception {
+        when(fireStationService.doesNumberOrAddressExists("44")).thenReturn(true);
+        mockMvc.perform(delete("/firestation/44")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("List of stations with number or address 44 have been removed successfully")));
+    }
 
+    @Test
+    public void whenDeletingUnknownNumberReturns404() throws Exception {
+        when(fireStationService.doesNumberOrAddressExists("44")).thenReturn(false);
+        mockMvc.perform(delete("/firestation/44")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No station found with number or address 44")));
+    }
+
+    @Test
+    public void whenDeletingUnknownAddressReturns404() throws Exception {
+        when(fireStationService.doesNumberOrAddressExists("1 Fake St.")).thenReturn(false);
+        mockMvc.perform(delete("/firestation/1 Fake St.")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No station found with number or address 1 Fake St.")));
+    }
+
+    @Test
+    public void whenNoParamsReturns404() throws Exception {
+        mockMvc.perform(delete("/firestation/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
 
 }

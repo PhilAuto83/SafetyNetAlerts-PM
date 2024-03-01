@@ -81,14 +81,14 @@ public class FireStationController {
                 .buildAndExpand(numberOrAddress)
                 .toUri();
         logger.info("Request to delete a firestation launched : {}", currentUri);
-        if(!fireStationService.doesStationNumberExist(numberOrAddress)) {
+        if(!fireStationService.doesNumberOrAddressExists(numberOrAddress)) {
             logger.error("No station found with number or address \"{}\"", numberOrAddress);
-            throw new PersonNotFoundException(String.format("No station found with number or address %s", numberOrAddress));
+            throw new StationNumberNotFoundException(String.format("No station found with number or address %s", numberOrAddress));
         }
         fireStationService.remove(numberOrAddress);
         Map<String, String> response = new HashMap<>();
         response.put("date", new Date().toString());
-        response.put("message", String.format("Station with number or address %s has been deleted", numberOrAddress));
+        response.put("message", String.format("List of stations with number or address %s have been removed successfully", numberOrAddress));
         return ResponseEntity.ok(response);
     }
 

@@ -1,4 +1,5 @@
-11:03:54.225 [main] INFO  net.safety.alerts.integration.FireStationIntegrationTest - Starting FireStationIntegrationTest using Java 21.0.1 with PID 22448 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
-11:03:54.236 [main] DEBUG net.safety.alerts.integration.FireStationIntegrationTest - Running with Spring Boot v3.2.2, Spring v6.1.3
-11:03:54.238 [main] INFO  net.safety.alerts.integration.FireStationIntegrationTest - No active profile set, falling back to 1 default profile: "default"
-11:03:55.756 [main] INFO  net.safety.alerts.integration.FireStationIntegrationTest - Started FireStationIntegrationTest in 1.957 seconds (process running for 4.575)
+12:05:10.568 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Starting FireStationControllerTest using Java 21.0.1 with PID 1732 (started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+12:05:10.578 [main] DEBUG net.safety.alerts.controller.FireStationControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+12:05:10.580 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - No active profile set, falling back to 1 default profile: "default"
+12:05:12.986 [main] INFO  net.safety.alerts.controller.FireStationControllerTest - Started FireStationControllerTest in 2.863 seconds (process running for 4.847)
+12:05:13.193 [main] INFO  net.safety.alerts.controller.FireStationController - Request to delete a firestation launched : http://localhost/firestation/2th%2520Elvis%2520Blvd/2th%20Elvis%20Blvd

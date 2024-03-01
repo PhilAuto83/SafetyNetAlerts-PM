@@ -92,13 +92,26 @@ public class FireStationService {
     }
 
     public boolean doesStationAlreadyExist(FireStation fireStation) throws JsonProcessingException {
-        AtomicBoolean isFound = new AtomicBoolean(false);
-        fireStationsDAO.getFireStations().forEach(station ->  {
-            if(station.equals(fireStation)){
-                isFound.set(true);
+        boolean isFound = false;
+        for(FireStation fireStationInFile : fireStationsDAO.getFireStations()){
+            if (fireStationInFile.getStation().equalsIgnoreCase(fireStation.getStation())
+                    && fireStationInFile.getAddress().equalsIgnoreCase(fireStation.getAddress()))
+             {
+                return true;
             }
-        });
-        return isFound.get();
+        }
+        return isFound;
+    }
+    public boolean doesNumberOrAddressExists(String numberOrAddress) throws JsonProcessingException {
+        boolean isFound = false;
+        for(FireStation fireStationInFile : fireStationsDAO.getFireStations()){
+            if (fireStationInFile.getStation().equalsIgnoreCase(numberOrAddress)
+                    || fireStationInFile.getAddress().equalsIgnoreCase(numberOrAddress))
+            {
+                return true;
+            }
+        }
+        return isFound;
     }
 
     public FireStation save(FireStation fireStation) throws JsonProcessingException {
