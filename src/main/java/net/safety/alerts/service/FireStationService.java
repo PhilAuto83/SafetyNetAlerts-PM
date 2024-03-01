@@ -95,7 +95,7 @@ public class FireStationService {
         boolean isFound = false;
         for(FireStation fireStationInFile : fireStationsDAO.getFireStations()){
             if (fireStationInFile.getStation().equalsIgnoreCase(fireStation.getStation())
-                    && fireStationInFile.getAddress().equalsIgnoreCase(fireStation.getAddress()))
+                    && fireStationInFile.getAddress().equalsIgnoreCase(fireStation.getAddress().trim()))
              {
                 return true;
             }

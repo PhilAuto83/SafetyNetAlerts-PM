@@ -17,7 +17,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -33,12 +40,14 @@ public class FireStationIntegrationTest {
 
 
     @BeforeAll
-    public static void setUpDataSource(){
+    public static void setUpDataSource() throws IOException {
+        Files.copy(Paths.get("src/test/resources/data-test-source.json"), Paths.get("src/test/resources/data-test.json"), StandardCopyOption.REPLACE_EXISTING);
         AlertsDAO.setFilePath("src/test/resources/data-test.json");
     }
 
     @AfterAll
-    public static void rollbackDataSource(){
+    public static void rollbackDataSource() throws IOException {
+        Files.delete(Paths.get("src/test/resources/data-test.json"));
         AlertsDAO.setFilePath("src/main/resources/data.json");
     }
 
@@ -116,6 +125,53 @@ public class FireStationIntegrationTest {
                 .andExpect(jsonPath("$.message", containsString("cannot be null")))
                 .andExpect(jsonPath("$.message", containsString(" cannot be null")));
     }
+
+    @Test
+    public void whenDeletingUnknownNumberReturns404() throws Exception {
+        mockMvc.perform(delete("/firestation/77")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No station found with number or address 77")));
+    }
+
+    @Test
+    public void whenDeletingUnknownAddressReturns404() throws Exception {
+
+        mockMvc.perform(delete("/firestation/12 th North ave")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("No station found with number or address 12 th North ave")));
+    }
+
+    @Test
+    public void whenDeletingValidStationByNumberReturns200() throws Exception {
+        FireStation validStation = new FireStation("2 rue de Paris", "55");
+        mockMvc.perform(post("/firestation")
+                .content(AlertsUtility.convertObjectToString(validStation))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+        mockMvc.perform(delete("/firestation/55")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("List of stations with number or address 55 have been removed successfully")));
+    }
+    @Test
+    public void whenDeletingValidStationByAddressReturns200() throws Exception {
+        FireStation validStation = new FireStation("6 rue de Paris", "45");
+        mockMvc.perform(post("/firestation")
+                .content(AlertsUtility.convertObjectToString(validStation))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+        mockMvc.perform(delete("/firestation/6 rue de Paris")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("List of stations with number or address 6 rue de Paris have been removed successfully")));
+    }
+
 
 
 

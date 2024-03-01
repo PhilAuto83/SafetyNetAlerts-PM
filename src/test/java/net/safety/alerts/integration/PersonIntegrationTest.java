@@ -11,6 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -34,8 +39,15 @@ public class PersonIntegrationTest {
     private Person invalidPerson;
 
     @BeforeAll
-    public static void setUpDataSource(){
+    public static void setUpDataSource() throws IOException {
+        Files.copy(Paths.get("src/test/resources/data-test-source.json"), Paths.get("src/test/resources/data-test.json"), StandardCopyOption.REPLACE_EXISTING);
         AlertsDAO.setFilePath("src/test/resources/data-test.json");
+    }
+
+    @AfterAll
+    public static void rollbackDataSource() throws IOException {
+        Files.delete(Paths.get("src/test/resources/data-test.json"));
+        AlertsDAO.setFilePath("src/main/resources/data.json");
     }
     @BeforeEach
     public void setUpPersons(){
@@ -43,11 +55,6 @@ public class PersonIntegrationTest {
                 "Philadelphia", "78945","111-222-9999","phil@test.fr");
         invalidPerson = new Person("phil", "1Valid", "121 Candy St.$",
                 "", "-45678","222-9999","phil@test?fr");
-    }
-
-    @AfterAll
-    public static void rollbackDataSource(){
-        AlertsDAO.setFilePath("src/main/resources/data.json");
     }
 
     @Test

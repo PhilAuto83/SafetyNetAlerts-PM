@@ -14,6 +14,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -31,12 +36,14 @@ public class FloodIntegrationTest {
     private MockMvc mockMvc;
 
     @BeforeAll
-    public static void setUpDataSource(){
+    public static void setUpDataSource() throws IOException {
+        Files.copy(Paths.get("src/test/resources/data-test-source.json"), Paths.get("src/test/resources/data-test.json"), StandardCopyOption.REPLACE_EXISTING);
         AlertsDAO.setFilePath("src/test/resources/data-test.json");
     }
 
     @AfterAll
-    public static void rollbackDataSource(){
+    public static void rollbackDataSource() throws IOException {
+        Files.delete(Paths.get("src/test/resources/data-test.json"));
         AlertsDAO.setFilePath("src/main/resources/data.json");
     }
 
