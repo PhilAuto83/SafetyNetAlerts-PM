@@ -4,9 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import net.safety.alerts.exceptions.MedicalRecordNotFoundException;
 import net.safety.alerts.exceptions.MedicationOrAllergyFormatException;
 import net.safety.alerts.exceptions.PersonNotFoundException;
+import net.safety.alerts.exceptions.StationNumberNotFoundException;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
 import net.safety.alerts.service.MedicalRecordService;
@@ -14,13 +16,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class MedicalRecordController {
@@ -70,4 +72,34 @@ public class MedicalRecordController {
         }
         return ResponseEntity.ok(medicalRecordService.update(medicalRecord));
     }
+
+    @DeleteMapping("/medicalRecord/{lastname}/{firstname}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable("lastname") @NotBlank String lastName, @PathVariable("firstname") @NotBlank String firstName) throws JsonProcessingException {
+
+        URI currentUri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{lastname}/{firstname}")
+                .buildAndExpand(lastName, firstName)
+                .toUri();
+        logger.info("Request to delete a medical record launched : {}", currentUri);
+        if(!medicalRecordService.doesMedicalRecordExistWithFirstNameAndLastName(firstName, lastName)){
+            logger.error("Medical record does not exist with firstname {} and lastname {}", firstName, lastName);
+            throw new MedicalRecordNotFoundException(String.format("Medical record does not exist with firstname %s and lastname %s", firstName, lastName));
+        }
+        boolean isRemoved = medicalRecordService.remove(firstName, lastName);
+        Map<String, String> response = new HashMap<>();
+        response.put("date", new Date().toString());
+        response.put("method", "PUT");
+        if(isRemoved){
+            response.put("status", "200");
+            response.put("message", String.format("Medical record with firstname %s and lastname %s has been removed successfully", firstName, lastName));
+            return ResponseEntity.ok(response);
+        }else{
+            response.put("status", "400");
+            response.put("message", String.format("Medical record with firstname %s and lastname %s was not removed correctly", firstName, lastName));
+            return ResponseEntity.badRequest().body(response);
+        }
+
+    }
+
 }

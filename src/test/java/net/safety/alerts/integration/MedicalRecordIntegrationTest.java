@@ -24,8 +24,8 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -141,8 +141,36 @@ public class MedicalRecordIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", is("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg")));
-
     }
 
+    @Test
+    public void whenDeletingJohnBoydThenReturns200() throws Exception {
+
+        mockMvc.perform(delete("/medicalRecord/Boyd/John")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("Medical record with firstname John and lastname Boyd has been removed successfully")));
+    }
+
+    @Test
+    public void whenDeletingJohnBoydUpperCaseThenReturns200() throws Exception {
+
+        mockMvc.perform(delete("/medicalRecord/BOYD/JOHN")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("Medical record with firstname JOHN and lastname BOYD has been removed successfully")));
+    }
+
+    @Test
+    public void whenDeletingUnknownPersonThenReturns404() throws Exception {
+
+        mockMvc.perform(delete("/medicalRecord/BOYD/JO")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("Medical record does not exist with firstname JO and lastname BOYD")));
+    }
 
 }

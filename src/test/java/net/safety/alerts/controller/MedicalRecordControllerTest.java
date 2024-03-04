@@ -21,8 +21,7 @@ import java.util.Optional;
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.is;
@@ -206,5 +205,37 @@ public class MedicalRecordControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", is("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg")));
+    }
+
+    @Test
+    public void whenDeletingMedicalRecordWithUnknownFirstNameAndLastNameThenReturns404() throws Exception {
+        when(medicalRecordService.doesMedicalRecordExistWithFirstNameAndLastName("Tester", "Test")).thenReturn(false);
+        mockMvc.perform(delete("/medicalRecord/Test/Tester")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("Medical record does not exist with firstname Tester and lastname Test")));
+    }
+
+    @Test
+    public void whenDeletingMedicalRecordWithKnownFirstNameAndLastNameThenReturns200() throws Exception {
+        when(medicalRecordService.doesMedicalRecordExistWithFirstNameAndLastName("Tester", "Test")).thenReturn(true);
+        when(medicalRecordService.remove("Tester", "Test")).thenReturn(true);
+        mockMvc.perform(delete("/medicalRecord/Test/Tester")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message", is("Medical record with firstname Tester and lastname Test has been removed successfully")));
+    }
+
+    @Test
+    public void whenDeletingMedicalRecordWithKnownFirstNameAndLastNameThenReturns400() throws Exception {
+        when(medicalRecordService.doesMedicalRecordExistWithFirstNameAndLastName("Tester", "Test")).thenReturn(true);
+        when(medicalRecordService.remove("Tester", "Test")).thenReturn(false);
+        mockMvc.perform(delete("/medicalRecord/Test/Tester")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("Medical record with firstname Tester and lastname Test was not removed correctly")));
     }
 }
