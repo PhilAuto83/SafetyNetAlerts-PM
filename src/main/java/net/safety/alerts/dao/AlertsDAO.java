@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 @Repository
@@ -42,6 +41,7 @@ public class AlertsDAO {
             logger.debug("AlertsData object contains a list of persons : {}", alertsData.getPersons());
             logger.debug("AlertsData object contains a list of fire stations {}", alertsData.getFireStations());
             logger.debug("AlertsData object contains a list of medical records {}", alertsData.getMedicalRecords());
+            logger.debug("New file saved at {}", filePath);
             mapper.writeValue(new File(AlertsDAO.filePath), alertsData);
         } catch (IOException e) {
             logger.error(e.toString());

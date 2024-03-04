@@ -18,6 +18,9 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class CustomExceptionHandler{
 
+
+
+
     @ExceptionHandler({ConstraintViolationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Object handleValidationConstraintError(ConstraintViolationException ex, HttpServletRequest request) throws IOException {
@@ -25,15 +28,14 @@ public class CustomExceptionHandler{
                     .map(constraintViolation -> {
                         return constraintViolation == null ? "null" : constraintViolation.getMessage();
                     }).collect(Collectors.joining(", "));
-
             Map<String, Object> errorBody = new HashMap<>();
             errorBody.put("timestamp", new Date());
             errorBody.put("status", HttpStatus.BAD_REQUEST.value());
             errorBody.put("message", messagesWithOutPropertyPath);
             errorBody.put("method", request.getMethod());
             errorBody.put("path", request.getRequestURL());
-            if(request.getMethod().equals("GET")){
-                errorBody.put("params",  request.getParameterMap());
+            if(request.getMethod().equals("GET")) {
+                errorBody.put("params", request.getParameterMap());
             }
         return errorBody;
     }
@@ -42,13 +44,27 @@ public class CustomExceptionHandler{
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) throws IOException {
 
-
         Map<String, Object> errorBody = new HashMap<>();
         errorBody.put("method", request.getMethod());
         errorBody.put("path", request.getRequestURL());
         errorBody.put("timestamp", new Date());
         errorBody.put("status", HttpStatus.BAD_REQUEST.value());
         errorBody.put("message", Objects.requireNonNull(ex.getDetailMessageArguments())[1]);
+        return errorBody;
+    }
+
+    @ExceptionHandler({MedicationOrAllergyFormatException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Object handleMedicationOrAllergyMessage(Exception ex, HttpServletRequest request) throws IOException {
+        Map<String, Object> errorBody = new HashMap<>();
+        errorBody.put("timestamp", new Date());
+        errorBody.put("status", HttpStatus.BAD_REQUEST.value());
+        errorBody.put("message", ex.getMessage());
+        errorBody.put("method", request.getMethod());
+        errorBody.put("path", request.getRequestURL());
+        if(request.getMethod().equals("GET")){
+            errorBody.put("params",  request.getParameterMap());
+        }
         return errorBody;
     }
 

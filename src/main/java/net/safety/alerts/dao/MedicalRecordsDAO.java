@@ -15,7 +15,7 @@ public class MedicalRecordsDAO extends AlertsDAO{
         return AlertsDAO.getData().getMedicalRecords();
     }
 
-    public void savePersons(List<MedicalRecord>medicalRecords, String filename) throws JsonProcessingException {
+    public void saveRecords(List<MedicalRecord>medicalRecords) throws JsonProcessingException {
         AlertsDAO.save(new AlertsData(getData().getPersons(),getData().getFireStations(),medicalRecords));
     }
 }
