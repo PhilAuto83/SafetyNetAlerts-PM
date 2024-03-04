@@ -20,7 +20,7 @@ public class MedicalRecordService {
             return true;
         }
         for(String medication : medications){
-            Pattern pattern = Pattern.compile("^[a-z]{2,15}:[a-z]{2,15}m[gl]$");
+            Pattern pattern = Pattern.compile("^[a-z]{2,15}:[0-9]{1,4}m[gl]$");
             if(!pattern.matcher(medication).find()){
                 return false;
             }

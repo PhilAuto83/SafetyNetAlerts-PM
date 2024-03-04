@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -38,9 +39,10 @@ public class MedicalRecordControllerTest {
     private static MedicalRecord validMedicalRecord;
     private static MedicalRecord inValidMedicalRecord;
     @BeforeAll
-    public static void setUpData(){
-        validMedicalRecord = new MedicalRecord("Testing", "Test", LocalDate.of(1990,2, 10), List.of("dolip:500mg"), List.of("nuts"));
-        inValidMedicalRecord = new MedicalRecord("Testing2", "Test", LocalDate.of(1990,2, 10), List.of("dolip:500mg"), List.of("nuts"));
+    public static void setUpData() {
+        validMedicalRecord = new MedicalRecord("Testing", "Test", LocalDate.of(1990, 2, 10), List.of("dolip:500mg"), List.of("nuts"));
+
+        inValidMedicalRecord = new MedicalRecord("Testing2", "Test", LocalDate.of(1990, 2, 10), List.of("dolip:500mg"), List.of("nuts"));
     }
 
     @Test
@@ -55,6 +57,16 @@ public class MedicalRecordControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.medications[0]", is("dolip:500mg")));
+    }
+
+    @Test
+    public void whenInValidMedicalRecordThenReturns200() throws Exception {
+              mockMvc.perform(post("/medicalRecord")
+                        .content(mapper.writeValueAsString(inValidMedicalRecord))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", containsString("should contain only letters, '-' or space, start with capital letter, have minimum two characters and match following examples  Li An, Li-An or Lo")));
     }
     @Test
     public void whenPersonHasAlreadyRecordThenReturns204() throws Exception {
@@ -79,6 +91,7 @@ public class MedicalRecordControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", is("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg")));
     }
+
 
     @Test
     public void whenInvalidAllergyRecordFormatThenReturns400() throws Exception {
