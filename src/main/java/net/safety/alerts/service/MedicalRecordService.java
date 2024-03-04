@@ -58,4 +58,15 @@ public class MedicalRecordService {
         medicalRecordsDAO.saveRecords(medicalRecords);
         return medicalRecordsDAO.getMedicalRecords().getLast();
     }
+
+    public MedicalRecord update(MedicalRecord medicalRecord) throws JsonProcessingException {
+        List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        medicalRecords.removeIf(medicalRecordInFile ->{
+            return medicalRecordInFile.getFirstName().equals(medicalRecord.getFirstName())
+                    && medicalRecordInFile.getLastName().equals(medicalRecord.getLastName());
+        });
+        medicalRecords.add(medicalRecord);
+        medicalRecordsDAO.saveRecords(medicalRecords);
+        return medicalRecordsDAO.getMedicalRecords().getLast();
+    }
 }

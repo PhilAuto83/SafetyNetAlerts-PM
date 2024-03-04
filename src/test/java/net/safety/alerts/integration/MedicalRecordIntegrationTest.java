@@ -1,12 +1,10 @@
 package net.safety.alerts.integration;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.model.MedicalRecord;
-import net.safety.alerts.model.Person;
 import net.safety.alerts.service.MedicalRecordService;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,8 +24,8 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -105,4 +103,46 @@ public class MedicalRecordIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(204));
     }
+
+    @Test
+    public void whenUpdatingMedicalRecordFoundThenReturns200() throws Exception {
+        MedicalRecord ericCadigan = new MedicalRecord("Eric", "Cadigan",LocalDate.of(1966, 3, 12),List.of("tradoxidine:2000mg"),List.of("apples"));
+        mockMvc.perform(put("/medicalRecord")
+                        .content(mapper.writeValueAsString(ericCadigan))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.birthDate", is("03/12/1966")))
+                .andExpect(jsonPath("$.medications[0]", is("tradoxidine:2000mg")))
+                .andExpect(jsonPath("$.allergies[0]", is("apples")))
+                .andExpect(jsonPath("$.firstName", is("Eric")))
+                .andExpect(jsonPath("$.lastName", is("Cadigan")));
+    }
+
+    @Test
+    public void whenUpdatingMedicalRecordNotFoundThenReturns404() throws Exception {
+        MedicalRecord ericUnknown = new MedicalRecord("Eric", "Unknown",LocalDate.of(1966, 3, 12),List.of("tradoxidine:2000mg"),List.of("apples"));
+        mockMvc.perform(put("/medicalRecord")
+                        .content(mapper.writeValueAsString(ericUnknown))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("Medical record does not exist with firstname Eric and lastname Unknown")));
+
+    }
+
+    @Test
+    public void whenUpdatingMedicalRecordWithTooLongMedicationValueThenReturns400() throws Exception {
+        MedicalRecord longMedicationValue = new MedicalRecord("Eric", "Cadigan",LocalDate.of(1966, 3, 12),List.of("tradoxidineeeeeeeeeeeeee:2000mg"),List.of("apples"));
+
+        mockMvc.perform(put("/medicalRecord")
+                        .content(mapper.writeValueAsString(longMedicationValue))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg")));
+
+    }
+
+
 }

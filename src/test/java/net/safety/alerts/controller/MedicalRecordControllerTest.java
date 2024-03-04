@@ -22,6 +22,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.is;
@@ -154,6 +155,56 @@ public class MedicalRecordControllerTest {
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
+    }
 
+    @Test
+    public void whenMedicalRecordNotFoundThenReturns404() throws Exception {
+        when(medicalRecordService.isMedicationListValid(validMedicalRecord.getMedications())).thenReturn(true);
+        when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(true);
+        when(medicalRecordService.doesMedicalRecordExist(validMedicalRecord)).thenReturn(false);
+        mockMvc.perform(put("/medicalRecord")
+                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message", is("Medical record does not exist with firstname Testing and lastname Test")));
+    }
+
+    @Test
+    public void whenUpdatingMedicalRecordFoundThenReturns200() throws Exception {
+        when(medicalRecordService.isMedicationListValid(validMedicalRecord.getMedications())).thenReturn(true);
+        when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(true);
+        when(medicalRecordService.doesMedicalRecordExist(validMedicalRecord)).thenReturn(true);
+        mockMvc.perform(put("/medicalRecord")
+                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void whenUpdatingMedicalRecordWithWrongMedicationFormatThenReturns200() throws Exception {
+        when(medicalRecordService.isMedicationListValid(inValidMedicalRecord.getMedications())).thenReturn(false);
+        when(medicalRecordService.isAllergyListValid(inValidMedicalRecord.getAllergies())).thenReturn(true);
+        when(medicalRecordService.doesMedicalRecordExist(inValidMedicalRecord)).thenReturn(true);
+        mockMvc.perform(put("/medicalRecord")
+                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg")));
+    }
+
+    @Test
+    public void whenUpdatingMedicalRecordWithWrongAllergyFormatThenReturns200() throws Exception {
+        when(medicalRecordService.isMedicationListValid(inValidMedicalRecord.getMedications())).thenReturn(true);
+        when(medicalRecordService.isAllergyListValid(inValidMedicalRecord.getAllergies())).thenReturn(false);
+        when(medicalRecordService.doesMedicalRecordExist(inValidMedicalRecord)).thenReturn(true);
+        mockMvc.perform(put("/medicalRecord")
+                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg")));
     }
 }

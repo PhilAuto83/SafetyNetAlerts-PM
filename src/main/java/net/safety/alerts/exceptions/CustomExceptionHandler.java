@@ -70,7 +70,7 @@ public class CustomExceptionHandler{
 
 
     @ExceptionHandler({StationNumberNotFoundException.class, AddressNotFoundException.class, PersonNotFoundException.class,
-            PhoneNotFoundException.class, CityNotFoundException.class})
+            PhoneNotFoundException.class, CityNotFoundException.class, MedicalRecordNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Object handleNotFoundMessage(Exception ex, HttpServletRequest request) throws IOException {
         Map<String, Object> errorBody = new HashMap<>();
