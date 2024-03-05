@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,7 +49,16 @@ public class CustomExceptionHandler{
                 errorBody.put("message", messagesWithOutPropertyPath);
             }
             case MethodArgumentNotValidException invalidArgumentException -> errorBody.put("message", Objects.requireNonNull(invalidArgumentException.getDetailMessageArguments())[1]);
-            default -> errorBody.put("message", exception.getMessage());
+            case HttpMessageNotReadableException httpMessageNotReadableException -> {
+                if(httpMessageNotReadableException.getMessage().contains("DateTimeParseException")){
+                    errorBody.put("message", "date format must be MM/dd/yyyy");
+                }else{
+                    errorBody.put("message", httpMessageNotReadableException.getMostSpecificCause().toString());
+                }
+            }
+            default -> {
+                errorBody.put("message", exception.getMessage());
+            }
         }
         return errorBody;
     }
