@@ -20,10 +20,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -81,6 +81,36 @@ public class MedicalRecordIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message", is("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg")));
+    }
+
+    @Test
+    public void testInValidateSeparatorFormatReturns400() throws Exception {
+        String request = "{\"firstName\": \"Phil\","+
+                           "\"lastName\": \"Joe\","+
+                           "\"birthDate\": \"11-01-1984\","+
+                           "\"medications\": [\"ibu:20mg\"],"+
+                          "\"allergies\": [\"strawberry\"]}";
+        mockMvc.perform(post("/medicalRecord")
+                        .content(request)
+        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("date format must be MM/dd/yyyy")));
+    }
+
+    @Test
+    public void testInValidateFormatReturns400() throws Exception {
+        String request = "{\"firstName\": \"Phil\","+
+                "\"lastName\": \"Joe\","+
+                "\"birthDate\": \"13/01/1984\","+
+                "\"medications\": [\"i:20mg\"],"+
+                "\"allergies\": [\"strawberry\"]}";
+        mockMvc.perform(post("/medicalRecord")
+                        .content(request)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is("date format must be MM/dd/yyyy")));
     }
 
     @Test
