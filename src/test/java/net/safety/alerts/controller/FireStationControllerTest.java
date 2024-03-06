@@ -1,7 +1,7 @@
 package net.safety.alerts.controller;
 
 
-import net.safety.alerts.dto.PersonByFireStation;
+import net.safety.alerts.dto.PersonByFireStationDTO;
 import net.safety.alerts.dto.PersonDTO;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.service.FireStationService;
@@ -19,12 +19,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 import java.util.List;
-import java.util.Objects;
 
 
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -38,7 +36,7 @@ public class FireStationControllerTest {
     @MockBean
     private FireStationService fireStationService;
 
-    private PersonByFireStation personByFireStation;
+    private PersonByFireStationDTO personByFireStationDTO;
     private static final FireStation VALID_STATION = new FireStation("11 Test ave", "23");
     private static final FireStation INVALID_STATION = new FireStation("11", "223");
     private static final FireStation EMPTY_STATION = new FireStation("", "");
@@ -46,13 +44,13 @@ public class FireStationControllerTest {
 
     @BeforeEach
     public void setUpData(){
-        personByFireStation = new PersonByFireStation(List.of(new PersonDTO("Phil", "Test","1 st Test", "444-555-8888")),1,0);
+        personByFireStationDTO = new PersonByFireStationDTO(List.of(new PersonDTO("Phil", "Test","1 st Test", "444-555-8888")),1,0);
     }
 
     @Test
     public void givenStationNumberExists_whenCallingController_thenPersonByFireStationIsOk() throws Exception {
         when(fireStationService.doesStationNumberExist(any(String.class))).thenReturn(true);
-        when(fireStationService.getPersonsInfoByStationNumber(any(String.class))).thenReturn(personByFireStation);
+        when(fireStationService.getPersonsInfoByStationNumber(any(String.class))).thenReturn(personByFireStationDTO);
         mockMvc.perform(get("/firestation?stationNumber=1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import net.safety.alerts.dao.FireStationsDAO;
 import net.safety.alerts.dao.MedicalRecordsDAO;
 import net.safety.alerts.dao.PersonsDAO;
-import net.safety.alerts.dto.PersonByFireStation;
+import net.safety.alerts.dto.PersonByFireStationDTO;
 import net.safety.alerts.dto.PersonDTO;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.MedicalRecord;
@@ -86,8 +86,8 @@ public class FireStationService {
         return nbChildren;
     }
 
-    public PersonByFireStation getPersonsInfoByStationNumber(String stationNumber) throws JsonProcessingException {
-        return  new PersonByFireStation(getRestrictedPersonInfoByStationNumber(stationNumber),getNumberOfAdults(stationNumber), getNumberOfChildren(stationNumber));
+    public PersonByFireStationDTO getPersonsInfoByStationNumber(String stationNumber) throws JsonProcessingException {
+        return  new PersonByFireStationDTO(getRestrictedPersonInfoByStationNumber(stationNumber),getNumberOfAdults(stationNumber), getNumberOfChildren(stationNumber));
     }
 
     public boolean doesStationAlreadyExist(String address, String number) throws JsonProcessingException {
