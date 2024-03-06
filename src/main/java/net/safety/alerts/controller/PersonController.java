@@ -40,8 +40,6 @@ public class PersonController {
                 .fromCurrentRequest()
                 .buildAndExpand()
                 .toUri();
-        logger.info("Request to create a person launched : {}", currentUri);
-        logger.info("Request payload : {}", mapper.writeValueAsString(person));
 
         return ResponseEntity.created(currentUri).body(personService.save(person));
     }
@@ -53,24 +51,13 @@ public class PersonController {
             logger.error("No person found with firstname {} and lastname {}", person.getFirstName(), person.getLastName());
             throw new PersonNotFoundException(String.format("No person found with firstname %s and lastname %s", person.getFirstName(), person.getLastName()));
         }
-        URI currentUri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .buildAndExpand()
-                .toUri();
-        logger.info("Request to update a person launched : {}", currentUri);
-        logger.info("Request payload : {}", mapper.writeValueAsString(person));
         return ResponseEntity.ok(personService.update(person));
     }
 
     @DeleteMapping(value ="/person/{firstname}/{lastname}", produces = "application/json")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("firstname") String firstName, @PathVariable("lastname") String lastName) throws JsonProcessingException {
 
-        URI currentUri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{firstname}/{lastname}")
-                .buildAndExpand(firstName, lastName)
-                .toUri();
-        logger.info("Request to delete a person launched : {}", currentUri);
+
         if(!personService.areFirstNameAndLastnamePresent(firstName, lastName)) {
             logger.error("No person found with firstname \"{}\" and lastname \"{}\"", firstName, lastName);
             throw new PersonNotFoundException(String.format("No person found with firstname %s and lastname %s", firstName, lastName));

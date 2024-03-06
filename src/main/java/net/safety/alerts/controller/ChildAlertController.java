@@ -13,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 
@@ -21,19 +20,16 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @Validated
 public class ChildAlertController {
 
-    private static Logger logger = LoggerFactory.getLogger(ChildAlertController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ChildAlertController.class);
 
     @Autowired
     private ChildAlertService childAlertService;
 
     @GetMapping("/childAlert")
     public ChildAlertDTO getChildrenListByAddress(@RequestParam("address") @NotBlank(message="address cannot be null or empty") String address) throws JsonProcessingException {
-        String currentRequest = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .replaceQueryParam("address", address)
-                .toUriString();
-        logger.info("Request launched to get children's list by address : {}", currentRequest);
+
         if(childAlertService.getAddressOccurrence(address)==0){
+            logger.error("This address \"{}\" has no person related to it.", address);
             throw new AddressNotFoundException("This address '"+address+"' has no person related to it.");
         }
         return childAlertService.getPersonFromAddress(address);

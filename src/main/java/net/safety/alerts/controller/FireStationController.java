@@ -85,12 +85,6 @@ public class FireStationController {
     @DeleteMapping("firestation/{numberOrAddress}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("numberOrAddress") String numberOrAddress) throws JsonProcessingException {
 
-        URI currentUri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{numberOrAddress}")
-                .buildAndExpand(numberOrAddress)
-                .toUri();
-        logger.info("Request to delete a firestation launched : {}", currentUri);
         if(!fireStationService.doesNumberOrAddressExists(numberOrAddress)) {
             logger.error("No station found with number or address \"{}\"", numberOrAddress);
             throw new StationNumberNotFoundException(String.format("No station found with number or address %s", numberOrAddress));

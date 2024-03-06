@@ -57,12 +57,12 @@ public class MedicalRecordIntegrationTest {
     }
 
     @Test
-    public void testValidRecordReturns200() throws Exception {
+    public void testValidRecordReturns201() throws Exception {
         mockMvc.perform(post("/medicalRecord")
                         .content(AlertsUtility.convertObjectToString(validMedicalRecord2))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().is(201))
                 .andExpect(jsonPath("$.medications[0]", is("dolip:500mg")))
                 .andExpect(jsonPath("$.medications[1]", is("test:200ml")))
                 .andExpect(jsonPath("$.allergies[0]", is("nuts")))

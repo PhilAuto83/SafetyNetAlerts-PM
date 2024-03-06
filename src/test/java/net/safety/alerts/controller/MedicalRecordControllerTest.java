@@ -45,7 +45,7 @@ public class MedicalRecordControllerTest {
     }
 
     @Test
-    public void whenValidMedicalRecordThenReturns200() throws Exception {
+    public void whenValidMedicalRecordThenReturns201() throws Exception {
         when(medicalRecordService.isMedicationListValid(validMedicalRecord.getMedications())).thenReturn(true);
         when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(true);
         when(medicalRecordService.doesMedicalRecordExist(validMedicalRecord)).thenReturn(false);
@@ -54,12 +54,12 @@ public class MedicalRecordControllerTest {
                 .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                 .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().is(201))
                 .andExpect(jsonPath("$.medications[0]", is("dolip:500mg")));
     }
 
     @Test
-    public void whenInValidMedicalRecordThenReturns200() throws Exception {
+    public void whenInValidMedicalRecordThenReturns400() throws Exception {
               mockMvc.perform(post("/medicalRecord")
                         .content(AlertsUtility.convertObjectToString(inValidMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
@@ -105,7 +105,7 @@ public class MedicalRecordControllerTest {
     }
 
     @Test
-    public void testingNullValuesForAllergiesAndMedicationsReturns200() throws Exception {
+    public void testingNullValuesForAllergiesAndMedicationsReturns201() throws Exception {
         MedicalRecord nullAllergiesAndMedications = new MedicalRecord("Testing", "Test", LocalDate.of(1990,2, 10), null, null);
         when(medicalRecordService.isMedicationListValid(nullAllergiesAndMedications.getMedications())).thenReturn(true);
         when(medicalRecordService.isAllergyListValid(nullAllergiesAndMedications.getAllergies())).thenReturn(true);
@@ -115,12 +115,12 @@ public class MedicalRecordControllerTest {
                         .content(AlertsUtility.convertObjectToString(nullAllergiesAndMedications))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().is(201))
                 .andExpect(jsonPath("$.birthDate", is("02/10/1990")));
     }
 
     @Test
-    public void testingEmptyValuesForAllergiesAndMedicationsReturns200() throws Exception {
+    public void testingEmptyValuesForAllergiesAndMedicationsReturns201() throws Exception {
         MedicalRecord emptyAllergiesAndMedications = new MedicalRecord("Testing", "Test", LocalDate.of(1990,2, 10), List.of(""), List.of(""));
         when(medicalRecordService.isMedicationListValid(emptyAllergiesAndMedications.getMedications())).thenReturn(true);
         when(medicalRecordService.isAllergyListValid(emptyAllergiesAndMedications.getAllergies())).thenReturn(true);
@@ -130,7 +130,7 @@ public class MedicalRecordControllerTest {
                         .content(AlertsUtility.convertObjectToString(emptyAllergiesAndMedications))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().is(201))
                 .andExpect(jsonPath("$.birthDate", is("02/10/1990")));
     }
 

@@ -2,6 +2,7 @@ package net.safety.alerts.exceptions;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import java.io.IOException;
@@ -27,11 +29,13 @@ import java.util.stream.Collectors;
 public class CustomExceptionHandler{
 
 
+
     @ExceptionHandler({ConstraintViolationException.class,MethodArgumentNotValidException.class,
             MedicationOrAllergyFormatException.class, DateTimeException.class, DateTimeParseException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Object handleBadRequestResponse(Exception exception, HttpServletRequest request) throws IOException {
+
         Map<String, Object> errorBody = new HashMap<>();
         errorBody.put("timestamp", new Date());
         errorBody.put("status", HttpStatus.BAD_REQUEST.value());
