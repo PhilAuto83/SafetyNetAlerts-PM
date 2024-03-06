@@ -24,6 +24,10 @@
         <Logger name="org.springframework.boot.web.embedded.tomcat" additivity="false" level="info">
             <AppenderRef ref="Console"/>
         </Logger>
+        <Logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" additivity="false" level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
         <Logger name="net.safety.alerts" additivity="false" level="debug">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="RollingFile"/>

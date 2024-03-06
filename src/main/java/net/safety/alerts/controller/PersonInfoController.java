@@ -13,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +30,6 @@ public class PersonInfoController {
     public List<PersonInfoDTO> getPersonInfoByStationNumber(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName") @Pattern(regexp = "[a-zA-Z]{2,}", message= "lastname must be at least 2 characters long with letters only") String lastName) throws JsonProcessingException {
 
         List<PersonInfoDTO> personInfoDTOList = new ArrayList<>();
-        String currentRequest = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .replaceQueryParam("firstName", firstName)
-                .replaceQueryParam("lastName", lastName)
-                .toUriString();
-        logger.info("Request launched to get a person or a list of persons info through firstname and lastname : {}", currentRequest);
         if(!personInfoService.doesPersonExists(firstName, lastName)){
             logger.error("Person with firstname \"{}\" and lastname \"{}\" was not found.", firstName, lastName);
             throw new PersonNotFoundException(String.format("Person with firstname '%s' and lastname '%s' was not found.", firstName, lastName));

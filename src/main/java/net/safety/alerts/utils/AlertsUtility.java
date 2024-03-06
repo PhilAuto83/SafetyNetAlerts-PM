@@ -3,6 +3,7 @@ package net.safety.alerts.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import net.safety.alerts.dao.MedicalRecordsDAO;
 import net.safety.alerts.exceptions.PersonNotFoundException;
 import net.safety.alerts.model.FireStation;
@@ -22,7 +23,7 @@ import static java.time.temporal.ChronoUnit.YEARS;
  */
 public final class AlertsUtility {
 
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     /**
      * This method is computing age from a LocalDate passed as an argument and convert it to int

@@ -7,10 +7,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import net.safety.alerts.exceptions.MedicalRecordNotFoundException;
 import net.safety.alerts.exceptions.MedicationOrAllergyFormatException;
-import net.safety.alerts.exceptions.PersonNotFoundException;
-import net.safety.alerts.exceptions.StationNumberNotFoundException;
 import net.safety.alerts.model.MedicalRecord;
-import net.safety.alerts.model.Person;
 import net.safety.alerts.service.MedicalRecordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +37,6 @@ public class MedicalRecordController {
                 .fromCurrentRequest()
                 .buildAndExpand()
                 .toUri();
-        logger.info("Request to add a medical record launched : {}", currentUri);
-        logger.info("Request payload : {}", mapper.writeValueAsString(medicalRecord));
 
         if(!medicalRecordService.isMedicationListValid(medicalRecord.getMedications())
                 || !medicalRecordService.isAllergyListValid(medicalRecord.getAllergies())){
@@ -51,17 +46,12 @@ public class MedicalRecordController {
             logger.debug("Medical record already exists with firstname {} and lastname {}", medicalRecord.getFirstName(), medicalRecord.getLastName());
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(medicalRecordService.save(medicalRecord));
+        return ResponseEntity.created(currentUri).body(medicalRecordService.save(medicalRecord));
     }
 
     @PutMapping(value = "/medicalRecord", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<MedicalRecord> update(@Valid @RequestBody MedicalRecord medicalRecord) throws JsonProcessingException, MedicalRecordNotFoundException {
-        URI currentUri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .buildAndExpand()
-                .toUri();
-        logger.info("Request to update a medical record launched : {}", currentUri);
-        logger.info("Request payload : {}", mapper.writeValueAsString(medicalRecord));
+
         if(!medicalRecordService.isMedicationListValid(medicalRecord.getMedications())
                 || !medicalRecordService.isAllergyListValid(medicalRecord.getAllergies())){
             logger.error("The medication format or allergy format is not valid, medication or allergy should contain only lowercase letters between 2 or 15. Medication should have a dose in mg or ml such as doliparane:500mg");
@@ -76,13 +66,7 @@ public class MedicalRecordController {
     @DeleteMapping("/medicalRecord/{lastname}/{firstname}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("lastname") @NotBlank String lastName, @PathVariable("firstname") @NotBlank String firstName) throws JsonProcessingException {
 
-        URI currentUri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{lastname}/{firstname}")
-                .buildAndExpand(lastName, firstName)
-                .toUri();
-        logger.info("Request to delete a medical record launched : {}", currentUri);
-        if(!medicalRecordService.doesMedicalRecordExistWithFirstNameAndLastName(firstName, lastName)){
+       if(!medicalRecordService.doesMedicalRecordExistWithFirstNameAndLastName(firstName, lastName)){
             logger.error("Medical record does not exist with firstname {} and lastname {}", firstName, lastName);
             throw new MedicalRecordNotFoundException(String.format("Medical record does not exist with firstname %s and lastname %s", firstName, lastName));
         }

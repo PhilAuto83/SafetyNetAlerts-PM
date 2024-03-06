@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.model.Person;
 import net.safety.alerts.service.PersonService;
+import net.safety.alerts.utils.AlertsUtility;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -32,7 +33,6 @@ public class PersonIntegrationTest {
     @Autowired
     private PersonService personService;
 
-    private final static ObjectMapper mapper = new ObjectMapper();
 
     private Person validPerson;
 
@@ -60,7 +60,7 @@ public class PersonIntegrationTest {
     @Test
     public void createValidPersonReturns200() throws Exception {
         mockMvc.perform(post("/person")
-                        .content(mapper.writeValueAsString(validPerson))
+                        .content(AlertsUtility.convertObjectToString(validPerson))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(201))
@@ -78,7 +78,7 @@ public class PersonIntegrationTest {
         validPerson.setCity("Paris");
         validPerson.setAddress("11 rue Marie Curie Paris");
         mockMvc.perform(put("/person")
-                        .content(mapper.writeValueAsString(validPerson))
+                        .content(AlertsUtility.convertObjectToString(validPerson))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
@@ -90,7 +90,7 @@ public class PersonIntegrationTest {
                 .andExpect(jsonPath("$.email",is("phil@test.fr")))
                 .andExpect(jsonPath("$.zip",is("78945")));
         mockMvc.perform(delete("/person")
-                .content(mapper.writeValueAsString(validPerson))
+                .content(AlertsUtility.convertObjectToString(validPerson))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
     }
@@ -100,7 +100,7 @@ public class PersonIntegrationTest {
         Person unknown = new Person("Fail", "Fail",
                 "11 rue du fail", "Failcity", "45678","444-555-6987","fail@test.fr");
         mockMvc.perform(put("/person")
-                        .content(mapper.writeValueAsString(unknown))
+                        .content(AlertsUtility.convertObjectToString(unknown))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -120,11 +120,11 @@ public class PersonIntegrationTest {
         Person validPerson3 = new Person("Joe", "Test",
                 "11 rue du fake", "Joecity", "45674","444-555-7987","joe@test.fr");
         mockMvc.perform(post("/person")
-                .content(mapper.writeValueAsString(validPerson3))
+                .content(AlertsUtility.convertObjectToString(validPerson3))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON));
         mockMvc.perform(delete("/person/Joe/Test")
-                        .content(mapper.writeValueAsString(validPerson3))
+                        .content(AlertsUtility.convertObjectToString(validPerson3))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -134,7 +134,7 @@ public class PersonIntegrationTest {
     @Test
     public void testingInvalidPersonReturns400() throws Exception {
         mockMvc.perform(post("/person")
-                        .content(mapper.writeValueAsString(invalidPerson))
+                        .content(AlertsUtility.convertObjectToString(invalidPerson))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -150,7 +150,7 @@ public class PersonIntegrationTest {
         Person wemby = new Person("Wemby", "Nba", "11 San Antonio St.",
                 "San Antonio","45678","444-555-8888","spurs@center.com");
         mockMvc.perform(post("/person")
-                .content(mapper.writeValueAsString(wemby))
+                .content(AlertsUtility.convertObjectToString(wemby))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(204));

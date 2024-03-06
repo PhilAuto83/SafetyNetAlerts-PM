@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import net.safety.alerts.dao.FireStationsDAO;
 import net.safety.alerts.dao.MedicalRecordsDAO;
 import net.safety.alerts.dao.PersonsDAO;
-import net.safety.alerts.dto.PersonByFireStation;
+import net.safety.alerts.dto.PersonByFireStationDTO;
 import net.safety.alerts.dto.PersonDTO;
 import net.safety.alerts.model.FireStation;
 import net.safety.alerts.model.MedicalRecord;
@@ -86,8 +86,8 @@ public class FireStationService {
         return nbChildren;
     }
 
-    public PersonByFireStation getPersonsInfoByStationNumber(String stationNumber) throws JsonProcessingException {
-        return  new PersonByFireStation(getRestrictedPersonInfoByStationNumber(stationNumber),getNumberOfAdults(stationNumber), getNumberOfChildren(stationNumber));
+    public PersonByFireStationDTO getPersonsInfoByStationNumber(String stationNumber) throws JsonProcessingException {
+        return  new PersonByFireStationDTO(getRestrictedPersonInfoByStationNumber(stationNumber),getNumberOfAdults(stationNumber), getNumberOfChildren(stationNumber));
     }
 
     public boolean doesStationAlreadyExist(String address, String number) throws JsonProcessingException {
@@ -136,16 +136,16 @@ public class FireStationService {
         }
     }
 
-    public FireStation update(String address, String newStation) throws JsonProcessingException {
+    public FireStation update(FireStation newStation) throws JsonProcessingException {
         List<FireStation> fireStations = fireStationsDAO.getFireStations();
-        logger.debug("Try to update station with address {} from alerts data file", address);
+        logger.debug("Try to update station with address {} from alerts data file", newStation.getAddress());
         fireStations.removeIf(stationInFile -> {
-            return stationInFile.getAddress().equalsIgnoreCase(address);
+            return stationInFile.getAddress().equalsIgnoreCase(newStation.getAddress());
         });
-        fireStations.add(new FireStation(address, newStation));
+        fireStations.add(new FireStation(newStation.getAddress(), newStation.getStation()));
         fireStationsDAO.saveStations(fireStations);
         for(FireStation stationInFile : fireStationsDAO.getFireStations()){
-            if(stationInFile.getAddress().equalsIgnoreCase(address)){
+            if(stationInFile.getAddress().equalsIgnoreCase(newStation.getAddress())){
                 logger.info("Station was not removed from list");
             }
         }

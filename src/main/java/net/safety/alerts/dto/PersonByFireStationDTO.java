@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class PersonByFireStation {
+public class PersonByFireStationDTO {
 
     List<PersonDTO> persons;
     int nbAdults;
