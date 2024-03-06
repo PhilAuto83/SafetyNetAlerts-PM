@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.service.MedicalRecordService;
+import net.safety.alerts.utils.AlertsUtility;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,11 +21,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.Matchers.*;
-import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,8 +37,6 @@ public class MedicalRecordIntegrationTest {
     private MockMvc mockMvc;
     @Autowired
     private MedicalRecordService medicalRecordService;
-
-    private final static ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     private static MedicalRecord validMedicalRecord2;
     private static MedicalRecord inValidMedicalRecord2;
@@ -61,7 +59,7 @@ public class MedicalRecordIntegrationTest {
     @Test
     public void testValidRecordReturns200() throws Exception {
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord2))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord2))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -76,7 +74,7 @@ public class MedicalRecordIntegrationTest {
     @Test
     public void testInValidMedicationFormatReturns400() throws Exception {
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(inValidMedicalRecord2))
+                        .content(AlertsUtility.convertObjectToString(inValidMedicalRecord2))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -117,7 +115,7 @@ public class MedicalRecordIntegrationTest {
     public void whenInvalidMedicalDoseFormatThenReturns400() throws Exception {
         MedicalRecord inValidMedicationDoseRecord = new MedicalRecord("Testing", "Test", LocalDate.of(1990,2, 10), List.of("dolip:50000mg"), List.of("nuts"));
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(inValidMedicationDoseRecord))
+                        .content(AlertsUtility.convertObjectToString(inValidMedicationDoseRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -128,7 +126,7 @@ public class MedicalRecordIntegrationTest {
     public void userAlreadyExistsReturns204() throws Exception {
         MedicalRecord existingRecordWithFirstNameAndLastName = new MedicalRecord("John", "Boyd", LocalDate.of(1995,10,5), null, null);
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(existingRecordWithFirstNameAndLastName))
+                        .content(AlertsUtility.convertObjectToString(existingRecordWithFirstNameAndLastName))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(204));
@@ -138,7 +136,7 @@ public class MedicalRecordIntegrationTest {
     public void whenUpdatingMedicalRecordFoundThenReturns200() throws Exception {
         MedicalRecord ericCadigan = new MedicalRecord("Eric", "Cadigan",LocalDate.of(1966, 3, 12),List.of("tradoxidine:2000mg"),List.of("apples"));
         mockMvc.perform(put("/medicalRecord")
-                        .content(mapper.writeValueAsString(ericCadigan))
+                        .content(AlertsUtility.convertObjectToString(ericCadigan))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -153,7 +151,7 @@ public class MedicalRecordIntegrationTest {
     public void whenUpdatingMedicalRecordNotFoundThenReturns404() throws Exception {
         MedicalRecord ericUnknown = new MedicalRecord("Eric", "Unknown",LocalDate.of(1966, 3, 12),List.of("tradoxidine:2000mg"),List.of("apples"));
         mockMvc.perform(put("/medicalRecord")
-                        .content(mapper.writeValueAsString(ericUnknown))
+                        .content(AlertsUtility.convertObjectToString(ericUnknown))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -166,7 +164,7 @@ public class MedicalRecordIntegrationTest {
         MedicalRecord longMedicationValue = new MedicalRecord("Eric", "Cadigan",LocalDate.of(1966, 3, 12),List.of("tradoxidineeeeeeeeeeeeee:2000mg"),List.of("apples"));
 
         mockMvc.perform(put("/medicalRecord")
-                        .content(mapper.writeValueAsString(longMedicationValue))
+                        .content(AlertsUtility.convertObjectToString(longMedicationValue))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())

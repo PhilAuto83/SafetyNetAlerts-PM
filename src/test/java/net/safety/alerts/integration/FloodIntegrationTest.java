@@ -54,7 +54,7 @@ public class FloodIntegrationTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$.[0].address", is("489 Manchester St")))
-                .andExpect(jsonPath("$.[0].persons[0].age", is(29)))
+                .andExpect(jsonPath("$.[0].persons[0].age", is(30)))
                 .andExpect(jsonPath("$.[0].persons[0].phone", is("841-874-9845")))
                 .andExpect(jsonPath("$.[0].persons[0].fullName", is("Lily Cooper")))
                 .andExpect(jsonPath("$[1].persons[0].medicalInfos.allergies[0]", is("shellfish")));

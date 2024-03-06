@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.service.MedicalRecordService;
+import net.safety.alerts.utils.AlertsUtility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,6 @@ public class MedicalRecordControllerTest {
     @MockBean
     private MedicalRecordService medicalRecordService;
 
-    private static final ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
-
     private static MedicalRecord validMedicalRecord;
     private static MedicalRecord inValidMedicalRecord;
     @BeforeAll
@@ -52,7 +51,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.doesMedicalRecordExist(validMedicalRecord)).thenReturn(false);
         when(medicalRecordService.save(validMedicalRecord)).thenReturn(validMedicalRecord);
         mockMvc.perform(post("/medicalRecord")
-                .content(mapper.writeValueAsString(validMedicalRecord))
+                .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                 .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -62,7 +61,7 @@ public class MedicalRecordControllerTest {
     @Test
     public void whenInValidMedicalRecordThenReturns200() throws Exception {
               mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(inValidMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(inValidMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -74,7 +73,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(true);
         when(medicalRecordService.doesMedicalRecordExist(validMedicalRecord)).thenReturn(true);
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(204));
@@ -85,7 +84,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.isMedicationListValid(validMedicalRecord.getMedications())).thenReturn(false);
         when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(true);
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -98,7 +97,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.isMedicationListValid(validMedicalRecord.getMedications())).thenReturn(true);
         when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(false);
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -113,7 +112,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.doesMedicalRecordExist(nullAllergiesAndMedications)).thenReturn(false);
         when(medicalRecordService.save(nullAllergiesAndMedications)).thenReturn(nullAllergiesAndMedications);
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(nullAllergiesAndMedications))
+                        .content(AlertsUtility.convertObjectToString(nullAllergiesAndMedications))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -128,7 +127,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.doesMedicalRecordExist(emptyAllergiesAndMedications)).thenReturn(false);
         when(medicalRecordService.save(emptyAllergiesAndMedications)).thenReturn(emptyAllergiesAndMedications);
         mockMvc.perform(post("/medicalRecord")
-                        .content(mapper.writeValueAsString(emptyAllergiesAndMedications))
+                        .content(AlertsUtility.convertObjectToString(emptyAllergiesAndMedications))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -162,7 +161,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(true);
         when(medicalRecordService.doesMedicalRecordExist(validMedicalRecord)).thenReturn(false);
         mockMvc.perform(put("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -175,7 +174,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.isAllergyListValid(validMedicalRecord.getAllergies())).thenReturn(true);
         when(medicalRecordService.doesMedicalRecordExist(validMedicalRecord)).thenReturn(true);
         mockMvc.perform(put("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
@@ -187,7 +186,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.isAllergyListValid(inValidMedicalRecord.getAllergies())).thenReturn(true);
         when(medicalRecordService.doesMedicalRecordExist(inValidMedicalRecord)).thenReturn(true);
         mockMvc.perform(put("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
@@ -200,7 +199,7 @@ public class MedicalRecordControllerTest {
         when(medicalRecordService.isAllergyListValid(inValidMedicalRecord.getAllergies())).thenReturn(false);
         when(medicalRecordService.doesMedicalRecordExist(inValidMedicalRecord)).thenReturn(true);
         mockMvc.perform(put("/medicalRecord")
-                        .content(mapper.writeValueAsString(validMedicalRecord))
+                        .content(AlertsUtility.convertObjectToString(validMedicalRecord))
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())

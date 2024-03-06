@@ -174,7 +174,9 @@ public class FireStationIntegrationTest {
 
     @Test
     public void whenUpdateWithUnknownStationReturns404() throws Exception {
-        mockMvc.perform(put("/firestation/1100 rue de Paris/stationNumber=34")
+        FireStation stationNotFound = new FireStation("1100 rue de Paris", "34");
+        mockMvc.perform(put("/firestation")
+                        .content(AlertsUtility.convertObjectToString(stationNotFound))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -183,12 +185,13 @@ public class FireStationIntegrationTest {
 
     @Test
     public void whenUpdateWithValidStationReturns200() throws Exception {
-        FireStation validStation34 = new FireStation("11 rue de Paris", "34");
-        mockMvc.perform(put("/firestation/748 Townings Dr/stationNumber=34")
+        FireStation validStation34 = new FireStation("112 Steppes Pl", "34");
+        mockMvc.perform(put("/firestation")
+                        .content(AlertsUtility.convertObjectToString(validStation34))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.address", is("748 Townings Dr")))
+                .andExpect(jsonPath("$.address", is("112 Steppes Pl")))
                 .andExpect(jsonPath("$.station", is("34")));
     }
 

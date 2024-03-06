@@ -136,16 +136,16 @@ public class FireStationService {
         }
     }
 
-    public FireStation update(String address, String newStation) throws JsonProcessingException {
+    public FireStation update(FireStation newStation) throws JsonProcessingException {
         List<FireStation> fireStations = fireStationsDAO.getFireStations();
-        logger.debug("Try to update station with address {} from alerts data file", address);
+        logger.debug("Try to update station with address {} from alerts data file", newStation.getAddress());
         fireStations.removeIf(stationInFile -> {
-            return stationInFile.getAddress().equalsIgnoreCase(address);
+            return stationInFile.getAddress().equalsIgnoreCase(newStation.getAddress());
         });
-        fireStations.add(new FireStation(address, newStation));
+        fireStations.add(new FireStation(newStation.getAddress(), newStation.getStation()));
         fireStationsDAO.saveStations(fireStations);
         for(FireStation stationInFile : fireStationsDAO.getFireStations()){
-            if(stationInFile.getAddress().equalsIgnoreCase(address)){
+            if(stationInFile.getAddress().equalsIgnoreCase(newStation.getAddress())){
                 logger.info("Station was not removed from list");
             }
         }

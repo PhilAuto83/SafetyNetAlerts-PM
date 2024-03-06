@@ -198,7 +198,8 @@ public class FireStationControllerTest {
         FireStation fireStation = new FireStation("11 rue de Paris", "34");
         when(fireStationService.doesNumberOrAddressExists("11 rue de Paris")).thenReturn(false);
         when(fireStationService.doesStationAlreadyExist(fireStation.getAddress(), fireStation.getStation())).thenReturn(false);
-        mockMvc.perform(put("/firestation/11 rue de Paris/stationNumber=34")
+        mockMvc.perform(put("/firestation")
+                        .content(AlertsUtility.convertObjectToString(fireStation))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
@@ -207,9 +208,11 @@ public class FireStationControllerTest {
 
     @Test
     public void whenUpdateWithExistingStationReturns204() throws Exception {
+        FireStation validStation34 = new FireStation("11 rue de Paris", "34");
         when(fireStationService.doesNumberOrAddressExists("11 rue de Paris")).thenReturn(true);
         when(fireStationService.doesStationAlreadyExist("11 rue de Paris", "34")).thenReturn(true);
-        mockMvc.perform(put("/firestation/11 rue de Paris/stationNumber=34")
+        mockMvc.perform(put("/firestation")
+                        .content(AlertsUtility.convertObjectToString(validStation34))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(204));
@@ -220,15 +223,18 @@ public class FireStationControllerTest {
         FireStation validStation34 = new FireStation("11 rue de Paris", "34");
         when(fireStationService.doesNumberOrAddressExists("11 rue de Paris")).thenReturn(true);
         when(fireStationService.doesStationAlreadyExist("11 rue de Paris", "34")).thenReturn(false);
-        when(fireStationService.update("11 rue de Paris", "34")).thenReturn(validStation34);
-        mockMvc.perform(put("/firestation/11 rue de Paris/stationNumber=34")
+        when(fireStationService.update(validStation34)).thenReturn(validStation34);
+        mockMvc.perform(put("/firestation")
+                        .content(AlertsUtility.convertObjectToString(validStation34))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
     @Test
     public void whenUpdateWithMalformedStationReturns400() throws Exception {
-        mockMvc.perform(put("/firestation/rue de Paris/stationNumber=344")
+        FireStation newStation = new FireStation("rue de Paris", "344");
+        mockMvc.perform(put("/firestation")
+                        .content(AlertsUtility.convertObjectToString(newStation))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())

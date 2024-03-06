@@ -71,18 +71,15 @@ public class FireStationController {
         return ResponseEntity.created(currentUri).body(fireStationService.save(fireStation));
     }
 
-    @PutMapping("/firestation/{address}/stationNumber={newStation}")
-    public ResponseEntity<FireStation> update(@PathVariable("address")  @Pattern(regexp = "^[1-9]+[a-zA-Z0-9\\s.]{4,}$",
-            message="must start with a digit and can contain only spaces, '.', digits or letters. Length must be minimum 5 characters.")String address,
-                                              @PathVariable("newStation")  @Pattern(regexp = "^[1-9]\\d?$",
-                                                      message="number must be positive with maximum 2 digits whose minimum value starts at 1")String newStation) throws JsonProcessingException {
-        if(!fireStationService.doesNumberOrAddressExists(address)){
-            logger.error("No station found with address \"{}\"", address);
-            throw new StationNumberNotFoundException(String.format("No station found with address %s", address));
-        }else if(fireStationService.doesStationAlreadyExist(address, newStation)){
+    @PutMapping(value="/firestation", consumes={"application/json"}, produces={"application/json"})
+    public ResponseEntity<FireStation> update(@Valid @RequestBody FireStation newStation) throws JsonProcessingException {
+        if(!fireStationService.doesNumberOrAddressExists(newStation.getAddress())){
+            logger.error("No station found with address \"{}\"", newStation.getAddress());
+            throw new StationNumberNotFoundException(String.format("No station found with address %s", newStation.getAddress()));
+        }else if(fireStationService.doesStationAlreadyExist(newStation.getAddress(), newStation.getStation())){
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(fireStationService.update(address, newStation));
+        return ResponseEntity.ok(fireStationService.update(newStation));
     }
 
     @DeleteMapping("firestation/{numberOrAddress}")

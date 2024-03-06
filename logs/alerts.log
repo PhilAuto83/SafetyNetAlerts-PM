@@ -1,4 +1,21 @@
-10:41:18.085 [main] INFO  net.safety.alerts.AlertsApplication - Starting AlertsApplication using Java 21.0.1 with PID 260 (C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM\target\classes started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
-10:41:18.091 [main] DEBUG net.safety.alerts.AlertsApplication - Running with Spring Boot v3.2.2, Spring v6.1.3
-10:41:18.093 [main] INFO  net.safety.alerts.AlertsApplication - No active profile set, falling back to 1 default profile: "default"
-10:41:19.732 [main] INFO  net.safety.alerts.AlertsApplication - Started AlertsApplication in 2.089 seconds (process running for 3.023)
+21:20:52.186 [main] INFO  net.safety.alerts.AlertsApplication - Starting AlertsApplication using Java 21.0.1 with PID 14676 (C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM\target\classes started by B294LQ in C:\Users\B294LQ\OneDrive - AXA\Desktop\Formation Java\Projet 5\SafetyNetAlerts-PM)
+21:20:52.197 [main] DEBUG net.safety.alerts.AlertsApplication - Running with Spring Boot v3.2.2, Spring v6.1.3
+21:20:52.201 [main] INFO  net.safety.alerts.AlertsApplication - No active profile set, falling back to 1 default profile: "default"
+21:20:56.068 [main] INFO  net.safety.alerts.AlertsApplication - Started AlertsApplication in 4.582 seconds (process running for 6.605)
+21:21:31.621 [http-nio-8080-exec-1] INFO  net.safety.alerts.controller.ChildAlertController - Request launched to get children's list by address : http://localhost:8080/childAlert?address=12%20st
+21:21:31.687 [http-nio-8080-exec-1] DEBUG net.safety.alerts.service.ChildAlertService - When calling getAddressOccurrence, count for address 12 st is 0.
+21:22:51.720 [http-nio-8080-exec-5] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched to retrieve email list from city : http://localhost:8080/communityEmail?city=culver
+21:22:51.728 [http-nio-8080-exec-5] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [jaboyd@email.com, drk@email.com, tenz@email.com, jaboyd@email.com, jaboyd@email.com, drk@email.com, tenz@email.com, jaboyd@email.com, jaboyd@email.com, tcoop@ymail.com, lily@email.com, soph@email.com, ward@email.com, zarc@email.com, reg@email.com, jpeter@email.com, jpeter@email.com, aly@imail.com, bstel@email.com, ssanw@email.com, bstel@email.com, clivfd@ymail.com, gramps@email.com] : 
+21:23:17.542 [http-nio-8080-exec-3] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched to retrieve email list from city : http://localhost:8080/communityEmail?city=Culver
+21:23:17.546 [http-nio-8080-exec-3] DEBUG net.safety.alerts.service.CommunityEmailService - Emails retrieved from city [jaboyd@email.com, drk@email.com, tenz@email.com, jaboyd@email.com, jaboyd@email.com, drk@email.com, tenz@email.com, jaboyd@email.com, jaboyd@email.com, tcoop@ymail.com, lily@email.com, soph@email.com, ward@email.com, zarc@email.com, reg@email.com, jpeter@email.com, jpeter@email.com, aly@imail.com, bstel@email.com, ssanw@email.com, bstel@email.com, clivfd@ymail.com, gramps@email.com] : 
+21:23:23.623 [http-nio-8080-exec-7] INFO  net.safety.alerts.controller.CommunityEmailController - Request launched to retrieve email list from city : http://localhost:8080/communityEmail?city=ulver
+21:23:23.625 [http-nio-8080-exec-7] ERROR net.safety.alerts.service.CommunityEmailService - City name ulver not found in the list of person's address.
+21:24:25.606 [http-nio-8080-exec-9] INFO  net.safety.alerts.controller.FireController - Request launched to get persons medical data  by address for fire incident : http://localhost:8080/fire?address=948%20st
+21:24:25.610 [http-nio-8080-exec-9] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(948 st), station number retrieved is null
+21:24:25.610 [http-nio-8080-exec-9] ERROR net.safety.alerts.service.FireService - No station was retrieved when searching by address for address 948 st
+21:24:49.063 [http-nio-8080-exec-1] INFO  net.safety.alerts.controller.FireController - Request launched to get persons medical data  by address for fire incident : http://localhost:8080/fire?address=%22%20%22
+21:24:49.070 [http-nio-8080-exec-1] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(" "), station number retrieved is null
+21:24:49.070 [http-nio-8080-exec-1] ERROR net.safety.alerts.service.FireService - No station was retrieved when searching by address for address " "
+21:25:14.404 [http-nio-8080-exec-4] INFO  net.safety.alerts.controller.FireController - Request launched to get persons medical data  by address for fire incident : http://localhost:8080/fire?address=%22%22
+21:25:14.409 [http-nio-8080-exec-4] DEBUG net.safety.alerts.service.FireService - In getStationNumberByAddress(""), station number retrieved is null
+21:25:14.409 [http-nio-8080-exec-4] ERROR net.safety.alerts.service.FireService - No station was retrieved when searching by address for address ""
