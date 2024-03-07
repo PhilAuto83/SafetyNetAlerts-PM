@@ -37,11 +37,7 @@ public class FireStationController {
     public PersonByFireStationDTO getPersonInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="number must be positive with maximum 2 digits whose minimum value starts at 1")  String stationNumber) throws JsonProcessingException {
 
         PersonByFireStationDTO personByFireStationDTO = null;
-        String currentRequest = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .replaceQueryParam("stationNumber", stationNumber)
-                .toUriString();
-        logger.info("Request launched to get person covered by a fire station through station number : {}", currentRequest);
+        logger.info("Request launched to get person covered by a fire station through station number : {}", stationNumber);
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
             logger.debug("Station number {} does not exist.", stationNumber);
             throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));
@@ -56,6 +52,7 @@ public class FireStationController {
 
     @PostMapping(value ="/firestation", consumes={"application/json"}, produces ={"application/json"})
     public ResponseEntity<FireStation> create(@Valid @RequestBody FireStation fireStation) throws JsonProcessingException{
+        logger.info("Request to create a firestation  at address {} with number {} launched", fireStation.getAddress(), fireStation.getStation());
         if(fireStationService.doesStationAlreadyExist(fireStation.getAddress(), fireStation.getStation())) {
             logger.debug("Fire station with number {} and address {} already exists in file", fireStation.getStation(),
                     fireStation.getAddress());
@@ -65,14 +62,13 @@ public class FireStationController {
                 .fromCurrentRequest()
                 .buildAndExpand()
                 .toUri();
-        logger.info("Request to create a person launched : {}", currentUri);
-        logger.info("Request payload : {}", mapper.writeValueAsString(fireStation));
 
         return ResponseEntity.created(currentUri).body(fireStationService.save(fireStation));
     }
 
     @PutMapping(value="/firestation", consumes={"application/json"}, produces={"application/json"})
     public ResponseEntity<FireStation> update(@Valid @RequestBody FireStation newStation) throws JsonProcessingException {
+        logger.info("Request to update a firestation  at address {} with number {} launched", newStation.getAddress(), newStation.getStation());
         if(!fireStationService.doesNumberOrAddressExists(newStation.getAddress())){
             logger.error("No station found with address \"{}\"", newStation.getAddress());
             throw new StationNumberNotFoundException(String.format("No station found with address %s", newStation.getAddress()));
@@ -84,7 +80,7 @@ public class FireStationController {
 
     @DeleteMapping("firestation/{numberOrAddress}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("numberOrAddress") String numberOrAddress) throws JsonProcessingException {
-
+        logger.info("Request to delete a firestation  at address or number {} ", numberOrAddress);
         if(!fireStationService.doesNumberOrAddressExists(numberOrAddress)) {
             logger.error("No station found with number or address \"{}\"", numberOrAddress);
             throw new StationNumberNotFoundException(String.format("No station found with number or address %s", numberOrAddress));

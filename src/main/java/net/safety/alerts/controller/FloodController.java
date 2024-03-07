@@ -32,6 +32,7 @@ public class FloodController {
     public List<FloodDTO> getPersonMedicalDataByStationNumber(@RequestParam("stations") @Pattern(regexp ="^[1-9]\\d?$",  message="station number must be positive with maximum 2 digits whose minimum value starts at 1")
                                                                   String stationNumber) throws JsonProcessingException {
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
+            logger.info("Request launched to get a lsit of person with medical infos covered by fire station number : {}",stationNumber);
             logger.debug("Station number {} does not exist.", stationNumber);
             throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));
         }

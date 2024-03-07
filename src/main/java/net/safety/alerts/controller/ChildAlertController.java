@@ -27,7 +27,7 @@ public class ChildAlertController {
 
     @GetMapping("/childAlert")
     public ChildAlertDTO getChildrenListByAddress(@RequestParam("address") @NotBlank(message="address cannot be null or empty") String address) throws JsonProcessingException {
-
+        logger.info("Request launched to get children list at address : {}", address);
         if(childAlertService.getAddressOccurrence(address)==0){
             logger.error("This address \"{}\" has no person related to it.", address);
             throw new AddressNotFoundException("This address '"+address+"' has no person related to it.");

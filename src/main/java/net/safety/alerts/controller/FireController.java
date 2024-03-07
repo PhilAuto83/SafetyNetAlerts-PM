@@ -23,7 +23,7 @@ public class FireController {
 
     @GetMapping("/fire")
     public FireDTO getPersonMedicalDataByAddress(@RequestParam("address") @NotBlank(message= "address cannot be null or empty") String address) throws JsonProcessingException {
-
+        logger.info("Request launched to get a list of person with medical data at address: {}", address);
         return fireService.getPersonMedicalInfoByAddress(address);
     }
 }
