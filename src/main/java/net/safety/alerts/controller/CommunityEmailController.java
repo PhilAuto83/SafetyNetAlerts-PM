@@ -23,7 +23,7 @@ public class CommunityEmailController {
     private CommunityEmailService communityEmailService;
     @GetMapping(value = "/communityEmail")
     public List<String> getEmailsFromCity(@RequestParam("city") @NotBlank(message = "city name must not be null or empty.") String city) throws JsonProcessingException {
-
+        logger.info("Request launched to get email list in city : {}", city);
         return communityEmailService.getEmailsFromCity(city);
     }
 }

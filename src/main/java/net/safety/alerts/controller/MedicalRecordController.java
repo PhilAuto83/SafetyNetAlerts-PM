@@ -1,8 +1,6 @@
 package net.safety.alerts.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import net.safety.alerts.exceptions.MedicalRecordNotFoundException;
@@ -26,7 +24,6 @@ public class MedicalRecordController {
 
     private static final Logger logger = LoggerFactory.getLogger(MedicalRecordController.class);
 
-    private final static ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
     @Autowired
     private MedicalRecordService medicalRecordService;

@@ -31,6 +31,7 @@ public class PhoneAlertController {
     @GetMapping("/phoneAlert")
     public Set<String> getPhonesByFireStation(@RequestParam("firestation") @Pattern(regexp ="^[1-9]\\d?$",
             message="station number must be positive with maximum 2 digits whose minimum value starts at 1") String stationNumber) throws JsonProcessingException {
+        logger.info("Request launched to retrieve list of person's phone covered by firestation number : {}", stationNumber);
         Set<String> phones = new HashSet<>();
 
         if(!fireStationService.doesStationNumberExist(stationNumber)) {

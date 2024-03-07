@@ -29,6 +29,7 @@ public class PersonInfoController {
     @GetMapping("/personInfo")
     public List<PersonInfoDTO> getPersonInfoByStationNumber(@RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName") @Pattern(regexp = "[a-zA-Z]{2,}", message= "lastname must be at least 2 characters long with letters only") String lastName) throws JsonProcessingException {
 
+        logger.info("Request launched to get a list of person by name {} with optional firstname {} grouped by station address",lastName, firstName);
         List<PersonInfoDTO> personInfoDTOList = new ArrayList<>();
         if(!personInfoService.doesPersonExists(firstName, lastName)){
             logger.error("Person with firstname \"{}\" and lastname \"{}\" was not found.", firstName, lastName);

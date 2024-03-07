@@ -31,7 +31,7 @@ public class PersonController {
 
     @PostMapping(value = "/person", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<Person> create(@Valid @RequestBody Person person) throws JsonProcessingException {
-
+        logger.info("Request launched to create a person the following person : {}", person.getFirstName()+" "+person.getLastName());
         if(personService.doesPersonAlreadyExist(person)){
             logger.debug("Person with firstname {} and lastname {} already exists in file", person.getFirstName(), person.getLastName());
             return ResponseEntity.noContent().build();
@@ -46,7 +46,7 @@ public class PersonController {
 
     @PutMapping(value = "/person", produces = {"application/json"}, consumes = {"application/json"})
     public ResponseEntity<Person> update(@Valid @RequestBody Person person) throws JsonProcessingException {
-
+        logger.info("Request launched to update the following person : {}", person.getFirstName()+" "+person.getLastName());
         if(!personService.doesPersonAlreadyExist(person)){
             logger.error("No person found with firstname {} and lastname {}", person.getFirstName(), person.getLastName());
             throw new PersonNotFoundException(String.format("No person found with firstname %s and lastname %s", person.getFirstName(), person.getLastName()));
@@ -57,7 +57,7 @@ public class PersonController {
     @DeleteMapping(value ="/person/{firstname}/{lastname}", produces = "application/json")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("firstname") String firstName, @PathVariable("lastname") String lastName) throws JsonProcessingException {
 
-
+        logger.info("Request launched to delete the following person {}", firstName+" "+lastName);
         if(!personService.areFirstNameAndLastnamePresent(firstName, lastName)) {
             logger.error("No person found with firstname \"{}\" and lastname \"{}\"", firstName, lastName);
             throw new PersonNotFoundException(String.format("No person found with firstname %s and lastname %s", firstName, lastName));
