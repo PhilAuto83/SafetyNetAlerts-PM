@@ -32,23 +32,18 @@ public class FloodService {
 
 
     private List<String> getAddressesFromStationNumber(String stationNumber) throws JsonProcessingException {
-        try {
-            return fireStationsDAO.getFireStations().stream()
-                    .filter(fireStation -> fireStation.getStation().equals(stationNumber))
-                    .map(FireStation::getAddress)
-                    .toList();
-        } catch (JsonProcessingException e) {
-            logger.error(e.getMessage());
-            throw new RuntimeException(e);
-        }
+        return fireStationsDAO.findAll().stream()
+                .filter(fireStation -> fireStation.getStation().equals(stationNumber))
+                .map(FireStation::getAddress)
+                .toList();
     }
 
     public List<FloodDTO> getPersonsWithMedicalDataFromStationNumber(String stationNumber) throws JsonProcessingException {
         List<FloodDTO> personsGroupedByAddress = new ArrayList<>();
         logger.info("Get the list of addresses from station number {}", stationNumber);
         List<String> addresses = getAddressesFromStationNumber(stationNumber);
-        List<MedicalRecord>medicalRecords = medicalRecordsDAO.getMedicalRecords();
-        List<Person> persons = personsDAO.getPersons();
+        List<MedicalRecord>medicalRecords = medicalRecordsDAO.findAll();
+        List<Person> persons = personsDAO.findAll();
         for(String address : addresses){
             logger.info("Get list of person covered by address {}", address);
             List<Person> personCoveredByAddress = persons.stream().filter(person -> person.getAddress().equals(address)).toList();

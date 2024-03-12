@@ -21,7 +21,7 @@ public class PersonService {
     private PersonsDAO personsDAO;
 
     public boolean doesPersonAlreadyExist(Person person) throws JsonProcessingException {
-        for(Person personInFile : personsDAO.getPersons()){
+        for(Person personInFile : personsDAO.findAll()){
             if(personInFile.getFirstName().equalsIgnoreCase(person.getFirstName())&& personInFile.getLastName().equalsIgnoreCase(person.getLastName())){
                 return true;
             }
@@ -30,7 +30,7 @@ public class PersonService {
     }
 
     public boolean areFirstNameAndLastnamePresent(String firstName, String lastName) throws JsonProcessingException {
-        for(Person personInFile : personsDAO.getPersons()){
+        for(Person personInFile : personsDAO.findAll()){
             if(personInFile.getFirstName().equalsIgnoreCase(firstName)&& personInFile.getLastName().equalsIgnoreCase(lastName)){
                 return true;
             }
@@ -39,37 +39,35 @@ public class PersonService {
     }
 
     public Person save(Person person) throws JsonProcessingException {
-        List<Person> persons = personsDAO.getPersons();
-        persons.add(person);
+        List<Person> persons = personsDAO.findAll();
+
         logger.debug("Person : {} {} added to alerts data file", person.getFirstName(), person.getLastName());
-        personsDAO.savePersons(persons);
+        personsDAO.save(person);
         logger.info("Saving person to file {}", AlertsDAO.getFilePath());
         logger.info("Return last person saved in person's list");
-        return personsDAO.getPersons().getLast();
+        return personsDAO.findAll().getLast();
     }
 
     public Person update(Person person) throws JsonProcessingException {
-        List<Person> persons = personsDAO.getPersons();
+        List<Person> persons = personsDAO.findAll();
         persons.removeIf(personInFile -> {
              return personInFile.getFirstName().equalsIgnoreCase(person.getFirstName())
                     && personInFile.getLastName().equalsIgnoreCase(person.getLastName());
         });
-        persons.add(person);
         logger.debug("Person : {} {} updated to alerts data file", person.getFirstName(), person.getLastName());
-        personsDAO.savePersons(persons);
+        personsDAO.save(person);
         logger.info("Updating person {} {} in file {}", person.getFirstName(), person.getLastName(), AlertsDAO.getFilePath());
-        return personsDAO.getPersons().getLast();
+        return personsDAO.findAll().getLast();
     }
 
     public void remove(String firstName, String lastName) throws JsonProcessingException {
 
-        List<Person> persons = personsDAO.getPersons();
+        List<Person> persons = personsDAO.findAll();
         logger.debug("Try to remove person : {} {} from alerts data file", firstName, lastName);
         persons.removeIf(personInFile -> {
             return personInFile.getFirstName().equalsIgnoreCase(firstName)
                     && personInFile.getLastName().equalsIgnoreCase(lastName);
         });
-        personsDAO.savePersons(persons);
         for(Person personInFile : persons){
             if(personInFile.getFirstName().equalsIgnoreCase(firstName)&&
                     personInFile.getLastName().equalsIgnoreCase(lastName)){

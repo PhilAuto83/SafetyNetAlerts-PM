@@ -6,6 +6,7 @@ import net.safety.alerts.dao.MedicalRecordsDAO;
 import net.safety.alerts.dao.PersonsDAO;
 import net.safety.alerts.dto.ChildAlertDTO;
 import net.safety.alerts.dto.PersonAgeDTO;
+import net.safety.alerts.exceptions.AddressNotFoundException;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.model.Person;
 import net.safety.alerts.utils.AlertsUtility;
@@ -28,8 +29,8 @@ public class ChildAlertService {
     @Autowired
     private MedicalRecordsDAO medicalRecordsDAO;
 
-    public int getAddressOccurrence(String address) throws JsonProcessingException {
-        List<Person> personList = personsDAO.getPersons();
+    public int getAddressOccurrence(String address)  {
+        List<Person> personList = personsDAO.findAll();
         int countAddressOccurrence = 0;
         for (Person person : personList) {
             if (person.getAddress().equalsIgnoreCase(address)) {
@@ -41,8 +42,9 @@ public class ChildAlertService {
     }
 
     public ChildAlertDTO getPersonFromAddress(String address) throws JsonProcessingException {
-        List<Person> personsLivingAtAddress = AlertsUtility.getListOfPersonFromAddress(personsDAO.getPersons(), address);
-        List<MedicalRecord> medicalRecordList = medicalRecordsDAO.getMedicalRecords();
+
+        List<Person> personsLivingAtAddress = AlertsUtility.getListOfPersonFromAddress(personsDAO.findAll(), address);
+        List<MedicalRecord> medicalRecordList = medicalRecordsDAO.findAll();
         List<PersonAgeDTO> childrenList = new ArrayList<>();
         List<PersonAgeDTO> otherMembers = new ArrayList<>();
 

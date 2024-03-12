@@ -41,13 +41,11 @@ public class FireStationIntegrationTest {
 
     @BeforeAll
     public static void setUpDataSource() throws IOException {
-        Files.copy(Paths.get("src/test/resources/data-test-source.json"), Paths.get("src/test/resources/data-test.json"), StandardCopyOption.REPLACE_EXISTING);
-        AlertsDAO.setFilePath("src/test/resources/data-test.json");
+       AlertsDAO.setFilePath("src/test/resources/data-test-source.json");
     }
 
     @AfterAll
     public static void rollbackDataSource() throws IOException {
-        Files.delete(Paths.get("src/test/resources/data-test.json"));
         AlertsDAO.setFilePath("src/main/resources/data.json");
     }
 
@@ -195,9 +193,21 @@ public class FireStationIntegrationTest {
                 .andExpect(jsonPath("$.station", is("34")));
     }
 
-
-
-
-
+    @Test
+    public void whenRollbackStationNumberReturns200() throws Exception {
+        FireStation validStation3 = new FireStation("112 Steppes Pl", "4");
+        FireStation validStation4 = new FireStation("112 Steppes Pl", "3");
+        mockMvc.perform(delete("/firestation/34")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON));
+        mockMvc.perform(post("/firestation")
+                .content(AlertsUtility.convertObjectToString(validStation3))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+        mockMvc.perform(post("/firestation")
+                .content(AlertsUtility.convertObjectToString(validStation4))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+    }
 
 }

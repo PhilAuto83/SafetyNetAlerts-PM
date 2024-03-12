@@ -11,11 +11,21 @@ import java.util.List;
 @Repository
 public class MedicalRecordsDAO extends AlertsDAO{
 
-    public List<MedicalRecord> getMedicalRecords()  {
-        return AlertsDAO.getData().getMedicalRecords();
+    List<MedicalRecord>medicalRecordsInFile = getData().getMedicalRecords();
+    List<MedicalRecord>medicalRecordsInMemory = medicalRecordsInFile;
+
+    public List<MedicalRecord>findAll(){
+        return medicalRecordsInMemory;
     }
 
-    public void saveRecords(List<MedicalRecord>medicalRecords) throws JsonProcessingException {
-        AlertsDAO.save(new AlertsData(getData().getPersons(),getData().getFireStations(),medicalRecords));
+    public void save(MedicalRecord medicalRecord){
+        medicalRecordsInMemory.add(medicalRecord);
+    }
+
+    public  void delete(MedicalRecord medicalRecord){
+        medicalRecordsInMemory.removeIf(medicalRecordInFile -> {
+            return (medicalRecordInFile.getFirstName().equals(medicalRecord.getFirstName())
+                    && medicalRecordInFile.getLastName().equals(medicalRecord.getLastName()));
+        });
     }
 }

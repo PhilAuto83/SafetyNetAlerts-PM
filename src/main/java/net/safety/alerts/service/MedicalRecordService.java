@@ -46,7 +46,7 @@ public class MedicalRecordService {
     }
 
     public boolean doesMedicalRecordExist(MedicalRecord medicalRecord) throws JsonProcessingException {
-        List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        List<MedicalRecord> medicalRecords = medicalRecordsDAO.findAll();
         for (MedicalRecord medicalRecordInFile : medicalRecords) {
             if(medicalRecordInFile.getFirstName().equals(medicalRecord.getFirstName())
                     && medicalRecordInFile.getLastName().equals(medicalRecord.getLastName())){
@@ -57,7 +57,7 @@ public class MedicalRecordService {
     }
 
     public boolean doesMedicalRecordExistWithFirstNameAndLastName(String firstName, String lastName) throws JsonProcessingException {
-        List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        List<MedicalRecord> medicalRecords = medicalRecordsDAO.findAll();
         for (MedicalRecord medicalRecordInFile : medicalRecords) {
             if(medicalRecordInFile.getFirstName().equalsIgnoreCase(firstName)
                     && medicalRecordInFile.getLastName().equalsIgnoreCase(lastName)){
@@ -68,27 +68,26 @@ public class MedicalRecordService {
     }
 
     public MedicalRecord save(MedicalRecord medicalRecord) throws JsonProcessingException {
-        List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
-        medicalRecords.add(medicalRecord);
-        medicalRecordsDAO.saveRecords(medicalRecords);
+        List<MedicalRecord> medicalRecords = medicalRecordsDAO.findAll();
+        medicalRecordsDAO.save(medicalRecord);
         logger.debug("Medical record {} has been saved to file", medicalRecord);
-        return medicalRecordsDAO.getMedicalRecords().getLast();
+        return medicalRecordsDAO.findAll().getLast();
     }
 
     public MedicalRecord update(MedicalRecord medicalRecord) throws JsonProcessingException {
-        List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        List<MedicalRecord> medicalRecords = medicalRecordsDAO.findAll();
         medicalRecords.removeIf(medicalRecordInFile ->{
             return medicalRecordInFile.getFirstName().equals(medicalRecord.getFirstName())
                     && medicalRecordInFile.getLastName().equals(medicalRecord.getLastName());
         });
         medicalRecords.add(medicalRecord);
-        medicalRecordsDAO.saveRecords(medicalRecords);
+        medicalRecordsDAO.save(medicalRecord);
         logger.debug("Medical record {} has been updated to file", medicalRecord);
-        return medicalRecordsDAO.getMedicalRecords().getLast();
+        return medicalRecordsDAO.findAll().getLast();
     }
 
     public boolean remove(String firstName, String lastName) {
-        List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        List<MedicalRecord> medicalRecords = medicalRecordsDAO.findAll();
         medicalRecords.removeIf(medicalRecordInFile ->{
             return medicalRecordInFile.getFirstName().equalsIgnoreCase(firstName)
                     && medicalRecordInFile.getLastName().equalsIgnoreCase(lastName);
