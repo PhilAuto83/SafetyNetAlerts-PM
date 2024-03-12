@@ -40,21 +40,21 @@ public class PersonIntegrationTest {
 
     @BeforeAll
     public static void setUpDataSource() throws IOException {
-        Files.copy(Paths.get("src/test/resources/data-test-source.json"), Paths.get("src/test/resources/data-test.json"), StandardCopyOption.REPLACE_EXISTING);
-        AlertsDAO.setFilePath("src/test/resources/data-test.json");
+        AlertsDAO.setFilePath("src/main/resources/data-test-source.json");
     }
 
     @AfterAll
     public static void rollbackDataSource() throws IOException {
-        Files.delete(Paths.get("src/test/resources/data-test.json"));
         AlertsDAO.setFilePath("src/main/resources/data.json");
     }
+
     @BeforeEach
     public void setUpPersons(){
         validPerson = new Person("Phil", "Valid", "121 Candy St.",
                 "Philadelphia", "78945","111-222-9999","phil@test.fr");
         invalidPerson = new Person("phil", "1Valid", "121 Candy St.$",
                 "", "-45678","222-9999","phil@test?fr");
+
     }
 
     @Test

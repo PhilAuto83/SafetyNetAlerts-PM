@@ -27,8 +27,8 @@ public class PhoneAlertService {
 
 
     public Set<String> getPhonesByFireStation(String stationNumber) throws JsonProcessingException {
-        List<Person>persons = personsDAO.getPersons();
-        List<FireStation>fireStations = fireStationsDAO.getFireStations();
+        List<Person>persons = personsDAO.findAll();
+        List<FireStation>fireStations = fireStationsDAO.findAll();
         Set<String> phones = new HashSet<>();
         for(FireStation fireStation : fireStations){
             if(fireStation.getStation().equals(stationNumber)){

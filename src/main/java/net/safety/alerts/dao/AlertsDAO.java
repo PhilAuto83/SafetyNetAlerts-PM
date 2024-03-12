@@ -35,19 +35,6 @@ public class AlertsDAO {
         return alertsData;
     }
 
-    protected static void save(AlertsData alertsData){
-        logger.info("Write AlertsData Object to file");
-        try {
-            logger.debug("AlertsData object contains a list of persons : {}", alertsData.getPersons());
-            logger.debug("AlertsData object contains a list of fire stations {}", alertsData.getFireStations());
-            logger.debug("AlertsData object contains a list of medical records {}", alertsData.getMedicalRecords());
-            logger.debug("New file saved at {}", filePath);
-            mapper.writeValue(new File(AlertsDAO.filePath), alertsData);
-        } catch (IOException e) {
-            logger.error(e.toString());
-        }
-    }
-
     public static void setFilePath(String newFilePath){
         AlertsDAO.filePath = newFilePath;
     }

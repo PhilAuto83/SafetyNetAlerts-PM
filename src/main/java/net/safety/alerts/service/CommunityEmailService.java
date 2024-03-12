@@ -23,7 +23,7 @@ public class CommunityEmailService {
 
     public List<String> getEmailsFromCity(String city) throws JsonProcessingException {
         List<String> emails = new ArrayList<>();
-        List<Person> persons  = personsDAO.getPersons();
+        List<Person> persons  = personsDAO.findAll();
         for(Person person : persons){
             if(person.getCity().equalsIgnoreCase(city)){
                 emails.add(person.getEmail());

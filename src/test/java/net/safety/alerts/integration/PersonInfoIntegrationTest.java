@@ -37,30 +37,28 @@ public class PersonInfoIntegrationTest {
 
     @BeforeAll
     public static void setUpDataSource() throws IOException {
-        Files.copy(Paths.get("src/test/resources/data-test-source.json"), Paths.get("src/test/resources/data-test.json"), StandardCopyOption.REPLACE_EXISTING);
-        AlertsDAO.setFilePath("src/test/resources/data-test.json");
+       AlertsDAO.setFilePath("src/test/resources/data-test-source.json");
     }
 
     @AfterAll
     public static void rollbackDataSource() throws IOException {
-        Files.delete(Paths.get("src/test/resources/data-test.json"));
         AlertsDAO.setFilePath("src/main/resources/data.json");
     }
 
     @ParameterizedTest(name = "When searching with null firstname and for lastname {0}, result should be 200.")
-    @ValueSource(strings={"Boyd", "BOYD", "boyd", "bOyd"})
+    @ValueSource(strings={"Cooper", "COOPER", "cooper", "cOoper"})
     public void testingPersonInfoControllerWithDifferentLastNamesReturns200(String lastName) throws Exception {
         mockMvc.perform(get("/personInfo?lastName="+lastName))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(6)));
+                .andExpect(jsonPath("$", hasSize(2)));
     }
 
     @ParameterizedTest(name = "When searching with empty firstname and lastname {0}, result should be 200.")
-    @ValueSource(strings={"Boyd", "BOYD", "boyd", "bOyd"})
+    @ValueSource(strings={"Cooper", "COOPER", "cooper", "cOoper"})
     public void testingPersonInfoControllerWithDifferentLastNamesAndEmptyFirstNameReturns200(String lastName) throws Exception {
         mockMvc.perform(get("/personInfo?firstName&lastName="+lastName))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(6)));
+                .andExpect(jsonPath("$", hasSize(2)));
     }
 
     @ParameterizedTest(name = "When searching with firstname {0} and lastname {1}, result should be 200.")

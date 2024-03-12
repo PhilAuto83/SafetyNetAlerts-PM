@@ -7,9 +7,7 @@ import net.safety.alerts.dao.AlertsDAO;
 import net.safety.alerts.model.MedicalRecord;
 import net.safety.alerts.service.MedicalRecordService;
 import net.safety.alerts.utils.AlertsUtility;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -43,8 +41,7 @@ public class MedicalRecordIntegrationTest {
 
     @BeforeAll
     public static void setUpDataSource() throws IOException {
-        Files.copy(Paths.get("src/test/resources/data-test-source.json"), Paths.get("src/test/resources/data-test.json"), StandardCopyOption.REPLACE_EXISTING);
-        AlertsDAO.setFilePath("src/test/resources/data-test.json");
+        AlertsDAO.setFilePath("src/test/resources/data-test-source.json");
         validMedicalRecord2 = new MedicalRecord("Testing", "Test", LocalDate.of(1990, 2, 10), List.of("dolip:500mg", "test:200ml"), List.of("nuts", "almonds"));
         inValidMedicalRecord2 = new MedicalRecord("Testing", "Test", LocalDate.of(1990, 2, 10), List.of("dolip:500m"), List.of("nut2"));
 
@@ -52,8 +49,7 @@ public class MedicalRecordIntegrationTest {
 
     @AfterAll
     public static void rollbackDataSource() throws IOException {
-        Files.delete(Paths.get("src/test/resources/data-test.json"));
-        AlertsDAO.setFilePath("src/main/resources/data.json");
+       AlertsDAO.setFilePath("src/main/resources/data.json");
     }
 
     @Test
@@ -181,14 +177,17 @@ public class MedicalRecordIntegrationTest {
                 .andExpect(jsonPath("$.message", is("Medical record with firstname John and lastname Boyd has been removed successfully")));
     }
 
-    @Test
-    public void whenDeletingJohnBoydUpperCaseThenReturns200() throws Exception {
 
-        mockMvc.perform(delete("/medicalRecord/BOYD/JOHN")
+
+
+    @Test
+    public void whenDeletingRonPetersUpperCaseThenReturns200() throws Exception {
+
+        mockMvc.perform(delete("/medicalRecord/PETERS/RON")
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message", is("Medical record with firstname JOHN and lastname BOYD has been removed successfully")));
+                .andExpect(jsonPath("$.message", is("Medical record with firstname RON and lastname PETERS has been removed successfully")));
     }
 
     @Test

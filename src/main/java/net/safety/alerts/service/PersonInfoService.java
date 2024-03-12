@@ -31,7 +31,7 @@ public class PersonInfoService {
     @Autowired
     private MedicalRecordsDAO medicalRecordsDAO;
     public boolean doesPersonExists(String firstName, String lastname) throws JsonProcessingException {
-        List<Person>persons = personsDAO.getPersons();
+        List<Person>persons = personsDAO.findAll();
         for(Person person :persons){
             if(firstName !=null && !firstName.isEmpty()){
                 if(person.getFirstName().equalsIgnoreCase(firstName)
@@ -52,11 +52,11 @@ public class PersonInfoService {
     private List<PersonInfoDTO> getSinglePersonWithLastNameAndFirstName(String firstName, String lastName) throws JsonProcessingException {
         personInfoDTOList = new ArrayList<>();
         logger.info("Create a list of person found with lastname : {}",lastName);
-        List<Person> personFoundWithLastName = personsDAO.getPersons().stream()
+        List<Person> personFoundWithLastName = personsDAO.findAll().stream()
                 .filter(person -> person.getLastName().equalsIgnoreCase(lastName))
                 .toList();
         logger.debug("List of persons found with lastname "+lastName+" : "+personFoundWithLastName);
-        List<MedicalRecord>medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        List<MedicalRecord>medicalRecords = medicalRecordsDAO.findAll();
         if(firstName != null && !firstName.isEmpty()){
             for(Person person : personFoundWithLastName){
                 if(person.getFirstName().equalsIgnoreCase(firstName) && person.getLastName().equalsIgnoreCase(lastName)){
@@ -77,10 +77,10 @@ public class PersonInfoService {
     }
     public List<PersonInfoDTO> getPersonList(String firstName, String lastName) throws JsonProcessingException {
         personInfoDTOList = getSinglePersonWithLastNameAndFirstName(firstName, lastName);
-        List<Person> personFoundWithLastName = personsDAO.getPersons().stream()
+        List<Person> personFoundWithLastName = personsDAO.findAll().stream()
                 .filter(person -> person.getLastName().equalsIgnoreCase(lastName))
                 .toList();
-        List<MedicalRecord>medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        List<MedicalRecord>medicalRecords = medicalRecordsDAO.findAll();
         if(personInfoDTOList.isEmpty()){
             logger.info("Create a list of persons having the same lastname {}", lastName);
             for(Person person : personFoundWithLastName){

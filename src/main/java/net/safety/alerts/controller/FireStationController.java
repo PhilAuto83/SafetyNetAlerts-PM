@@ -36,17 +36,13 @@ public class FireStationController {
     @GetMapping("/firestation")
     public PersonByFireStationDTO getPersonInfoByStationNumber(@RequestParam(name = "stationNumber") @Pattern(regexp ="^[1-9]\\d?$",  message="number must be positive with maximum 2 digits whose minimum value starts at 1")  String stationNumber) throws JsonProcessingException {
 
-        PersonByFireStationDTO personByFireStationDTO = null;
-        logger.info("Request launched to get person covered by a fire station through station number : {}", stationNumber);
         if(!fireStationService.doesStationNumberExist(stationNumber)) {
             logger.debug("Station number {} does not exist.", stationNumber);
             throw new StationNumberNotFoundException(String.format("Station number %s does not exist.", stationNumber));
         }
-        try {
-            personByFireStationDTO = fireStationService.getPersonsInfoByStationNumber(stationNumber);
-        }catch (JsonProcessingException e) {
-            logger.error(e.toString());
-        }
+        PersonByFireStationDTO personByFireStationDTO = fireStationService.getPersonsInfoByStationNumber(stationNumber);
+        logger.info("Request launched to get person covered by a fire station through station number : {}", stationNumber);
+
         return personByFireStationDTO;
     }
 

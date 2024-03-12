@@ -31,7 +31,7 @@ public class FireService {
     private MedicalRecordsDAO medicalRecordsDAO;
 
     private String getStationNumberByAddress(String address) throws JsonProcessingException {
-        List<FireStation>fireStations =fireStationsDAO.getFireStations();
+        List<FireStation>fireStations =fireStationsDAO.findAll();
         String stationNumber = null;
         for(FireStation fireStation: fireStations){
             if(fireStation.getAddress().equalsIgnoreCase(address)){
@@ -44,9 +44,9 @@ public class FireService {
 
     private List<PersonMedicalDataDTO> getPersonMedicalDataListFromAddress(String address) throws JsonProcessingException {
         List<PersonMedicalDataDTO> personMedicalDataDTOList = new ArrayList<>();
-        List<MedicalRecord> medicalRecords = medicalRecordsDAO.getMedicalRecords();
+        List<MedicalRecord> medicalRecords = medicalRecordsDAO.findAll();
         logger.debug("Size of medicalRecords is : {}", medicalRecords.size());
-        List<Person> persons = personsDAO.getPersons();
+        List<Person> persons = personsDAO.findAll();
         logger.debug("Size of person list is : {}", persons.size());
         for(Person person : persons){
             if(person.getAddress().equalsIgnoreCase(address)){
